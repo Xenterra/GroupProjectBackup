@@ -1,1 +1,1 @@
-web: gunicorn airMonitor.wsgi
+web: gunicorn mysite.wsgi
