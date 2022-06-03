@@ -12,11 +12,7 @@ def listPage(request):
 	return render(request, 'airMonitor/sensorListPage.html', {'sensors' : sensors})
 
 def comparisons(request):
-	sL = sensorList.objects.all()
-	sensors = []
-	for x in sL:
-		sensors.append(x.sensorID)
-		
+	sensors = sensorList.objects.all()
 	if request.method == "POST":
 		s1 = request.POST.get('sensor1','')
 		s2 = request.POST.get('sensor2','')
