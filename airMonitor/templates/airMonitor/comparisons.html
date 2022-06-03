@@ -11,9 +11,59 @@
 </head>
 <body>
 	<h1>Comparing Sensors</h1>
-	<p>
-		The list of sensors will go below:
-	</p>
-	
+
+<form action="" method="POST">
+	{% csrf_token %}
+	<h2> Select sensor 1 </h2>
+		<label for="sensor1">Choose first sensor:</label>
+		<select name="sensor1" id="sensor1">
+			{% for sensor in sensors %}
+			<option value={{sensor.sensorID}}> {{sensor.sensorID}} </option>
+			{% endfor %}
+		</select>
+	<h2> Select sensor 2 </h2>
+		<label for="sensor2">Choose second sensor:</label>
+		<select name="sensor2" id="sensor2">
+			{% for sensor in sensors %}
+				<option value={{sensor.sensorID}}> {{sensor.sensorID}} </option>
+			{% endfor %}
+		</select>
+	<br>
+	<input type="submit" value="Submit">		
+</form>
+	{% if sList1 %}
+	<br><br>
+	<table width=100% style="text-align:center;">
+		<tr>
+			<th>ID</th>
+			<th>Longitude</th>
+			<th>Latitude</th>
+			<th>Install Date</th>
+		</tr>
+		<tr>
+			<td>{{sList1.sensorID}}</th>
+			<td>{{sList1.longitude}}</th>
+			<td>{{sList1.latitude}}</th>
+			<td>{{sList1.installDate}}</th>
+		</tr>
+	</table>
+	<br><br>
+	<table width=100% style="text-align:center;">
+		<tr>
+			<th>ID</th>
+			<th>Longitude</th>
+			<th>Latitude</th>
+			<th>Install Date</th>
+		</tr>
+		<tr>
+			<td>{{sList2.sensorID}}</th>
+			<td>{{sList2.longitude}}</th>
+			<td>{{sList2.latitude}}</th>
+			<td>{{sList2.installDate}}</th>
+		</tr>
+	</table>
+	{%else %}
+	<p> Sumbit two sensors to see comparisons</p>
+	{% endif %}
 </body>
 </html>
