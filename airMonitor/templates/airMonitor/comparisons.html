@@ -18,14 +18,14 @@
 		<label for="sensor1">Choose first sensor:</label>
 		<select name="sensor1" id="sensor1">
 			{% for s in sensors %}
-			<option value={{s}}> {{s}} </option>
+			<option value={{s.sensorID}}> {{s.sensorID}} </option>
 			{% endfor %}
 		</select>
 	<h2> Select sensor 2 </h2>
 		<label for="sensor2">Choose second sensor:</label>
 		<select name="sensor2" id="sensor2">
 			{% for s in sensors %}
-			<option value={{s}}> {{s}} </option>
+			<option value={{s.sensorID}}> {{s.sensorID}} </option>
 			{% endfor %}
 		</select>
 	<br>
