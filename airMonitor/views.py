@@ -9,7 +9,7 @@ def sensor(request):
 
 def sensorListPage(request):
 	sensors = sensorList.objects.all()
-	return render(request, 'airMonitor/sensorList.html', {'sensors' : sensors})
+	return render(request, 'airMonitor/sensorListPage.html', {'sensors' : sensors})
 
 def comparisons(request):
 	sensors = sensorList.objects.all()		
