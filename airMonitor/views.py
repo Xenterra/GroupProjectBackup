@@ -7,7 +7,7 @@ def index(request):
 def sensor(request):
 	return render(request, 'airMonitor/sensor.html')
 
-def sensorListPage(request):
+def listPage(request):
 	sensors = sensorList.objects.all()
 	return render(request, 'airMonitor/sensorListPage.html', {'sensors' : sensors})
 

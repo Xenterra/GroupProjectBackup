@@ -8,7 +8,7 @@ class sensorList(models.Model):
 	installDate = models.DateField()
 
 	class Meta:
-		db_table = "sensorList"
+		db_table = "sensorlist"
 
 class sensor1(models.Model):
 	timestamp = models.IntegerField(primary_key=True)
