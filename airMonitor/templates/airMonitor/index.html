@@ -20,7 +20,7 @@
              <a class="nav-link" href="/">Home</a>
           </li>
           <li class="nav-item">
-             <a class="nav-link" href="/sensorList">Sensor List</a>
+             <a class="nav-link" href="/sensorListPage">Sensor List</a>
           </li>
           <li class="nav-item">
              <a class="nav-link" href="/comparisons">Comparison</a>
@@ -98,7 +98,7 @@
             			<td> {{result.latitude}} </td> 
             			<td> {{result.installDate}} </td>
 						<td>
-							<form method="POST" action="sensor/">
+							<form method="POST" action="/sensor/">
 								{% csrf_token %}
 								<button class="selectButton" id="Selection" name="Selection" value={{ result.sensorID }} >More Details</button>
 							</form>
