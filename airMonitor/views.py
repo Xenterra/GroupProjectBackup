@@ -1,10 +1,21 @@
 from django.shortcuts import  render, redirect
 from .models import sensorList, sensor1
 # Create your views here.
+
 def index(request):
-	return render(request, 'airMonitor/index.html')
+	results = sensorList.objects.all()
+	if request.method == "POST" and 'sensorID' in request.POST:
+		sID = request.POST.get('sensorID', '')
+		results = sensorList.objects.filter(sensorID = sID) 
+		return render(request, 'airMonitor/index.html', {'results': results})
+
+	return render(request, 'airMonitor/index.html', {'results': results})
 
 def sensor(request):
+	if request.method == "POST" and 'sensorID' in request.POST:
+		sID = request.POST.get('Selection', '')
+		results = sensorList.objects.filter(sensorID = sID) 
+		return render(request, 'airMonitor/index.html', {'results': results})
 	return render(request, 'airMonitor/sensor.html')
 
 def listPage(request):

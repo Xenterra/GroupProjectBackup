@@ -39,12 +39,19 @@
 			<th>Longitude</th>
 			<th>Latitude</th>
 			<th>Install Date</th>
+			<th>Details...</th>
 		</tr>
 		<tr>
 			<td>{{sList1.sensorID}}</th>
 			<td>{{sList1.longitude}}</th>
 			<td>{{sList1.latitude}}</th>
 			<td>{{sList1.installDate}}</th>
+			<td>
+				<form method="POST" action="sensor/">
+					{% csrf_token %}
+					<button class="selectButton" id="Selection" name="Selection" value={{ result.sensorID }} >More Details</button>
+				</form>
+			</td>	
 		</tr>
 	</table>
 	<br><br>
@@ -54,12 +61,19 @@
 			<th>Longitude</th>
 			<th>Latitude</th>
 			<th>Install Date</th>
+			<th>Details...</th>
 		</tr>
 		<tr>
 			<td>{{sList2.sensorID}}</th>
 			<td>{{sList2.longitude}}</th>
 			<td>{{sList2.latitude}}</th>
 			<td>{{sList2.installDate}}</th>
+			<td>
+				<form method="POST" action="sensor/">
+					{% csrf_token %}
+					<button class="selectButton" id="Selection" name="Selection" value={{ result.sensorID }} >More Details</button>
+				</form>
+			</td>	
 		</tr>
 	</table>
 	{%else %}
