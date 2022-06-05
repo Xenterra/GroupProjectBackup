@@ -12,8 +12,15 @@
 <body>
 	<h1>All Sensor List</h1>
 	<p>
-		The list of sensors will go below:
-	</p>
-	
+		{% for sensor in sensors %}
+		{{sensor.sensorID }} 
+		{{sensor.longitude}}	| 
+        {{sensor.latitude}} |
+        {{sensor.installDate}}
+    </p>
+    {% endfor %}
+
+
+
 </body>
 </html>
