@@ -14,6 +14,25 @@
 	<p>
 		Here is where the info will go:
 	</p>
-	
+	<table class="table table-striped" width=100%>
+		<tr >
+			<th> Timestamp </th>
+			<th> P1 </th>
+			<th> P2 </th>
+			<th> Humidity </th>
+			<th> Temperature </th>
+		</tr>		
+		{% for sensor in results %}
+		<tr>
+			<td>{{sensor.timestamp }} </td>
+			<td>{{sensor.P1}}</td>
+			<td>{{sensor.P2}}<td>
+			<td>{{sensor.humidity}}</td>
+			<td>{{sensor.temperature}}</td>
+		</tr>
+		{% endfor %}
+	</table>
+    </p>
+    
 </body>
 </html>

@@ -3,19 +3,40 @@ from .models import sensorList, sensor1
 # Create your views here.
 
 def index(request):
+	longList = []
+	latList  = []
 	results = sensorList.objects.all()
 	if request.method == "POST" and 'sensorID' in request.POST:
 		sID = request.POST.get('sensorID', '')
 		results = sensorList.objects.filter(sensorID = sID) 
-		return render(request, 'airMonitor/index.html', {'results': results})
+		for x in results:
+			longList.append(x.longitude)
+			latList.append(x.latitude)
+		lLength = len(longList)
+		
+		context = 	{	'results': results,
+						'longList': longList,
+						'latList': latList,
+						'lLength': lLength,
+					}
+		return render(request, 'airMonitor/index.html', context)
 
-	return render(request, 'airMonitor/index.html', {'results': results})
+	for x in results:
+		longList.append(x.longitude)
+		latList.append(x.latitude)
+	lLength = len(longList)
+
+	context = 	{	'results': results,
+					'longList': longList,
+					'latList': latList,
+					'lLength': lLength,
+			  	}
+	return render(request, 'airMonitor/index.html', context)
 
 def sensor(request):
-	if request.method == "POST" and 'sensorID' in request.POST:
-		sID = request.POST.get('Selection', '')
-		results = sensorList.objects.filter(sensorID = sID) 
-		return render(request, 'airMonitor/index.html', {'results': results})
+	if request.method == "POST":
+		results = sensor1.objects.all() 
+		return render(request, 'airMonitor/sensor.html', {'results': results})
 	return render(request, 'airMonitor/sensor.html')
 
 def listPage(request):
