@@ -40,11 +40,13 @@ def sensor(request):
 	return render(request, 'airMonitor/sensor.html')
 
 def listPage(request):
-	if request.method == "POST" and 'sensorID' in request.POST:
+	if request.method == "POST" and 'criteria' in request.POST:
 		criteria = request.POST.get('criteria', '')
 		searchType = request.POST.get('searchType','')
 		print(criteria, searchType)
-		if searchType == "sensorID":
+		if criteria == '':
+			sensors = sensorList.objects.all()
+		elif searchType == "sensorID":
 			sensors = sensorList.objects.filter(sensorID = criteria) 
 		elif searchType == "longitude":
 			sensors = sensorList.objects.filter(longitude = criteria) 
