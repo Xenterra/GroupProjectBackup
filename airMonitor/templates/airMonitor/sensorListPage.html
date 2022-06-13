@@ -11,14 +11,34 @@
 </head>
 <body>
 	<h1>All Sensor List</h1>
+	<form action="/sensorListPage/" method="POST">
+		{% csrf_token %}
+		<input type="text" name="criteria" placeholder="Enter search..." style="width: 15%;" require><br>
+		<p> Search for a sensor by its: </p>
+		<input type="radio" id="sensorID" name="searchType" value="sensorID" checked>
+		<label for="sensorID">SensorID</label>
+		<input type="radio" id="longitude" name="searchType" value="longitude">
+		<label for="longitude">Longitude</label>
+		<input type="radio" id="latitude" name="searchType" value="latitude">
+		<label for="latitude">Latitude</label>
+		<input type="radio" id="installDate" name="searchType" value="installDate">
+		<label for="installDate">Install Date</label>
+	</form>
+	<br>
 	<p>
 		{% for sensor in sensors %}
-		{{sensor.sensorID }} 
-		{{sensor.longitude}}	| 
+	<div>
+		{{sensor.sensorID }} | 
+		{{sensor.longitude}} | 
         {{sensor.latitude}} |
-        {{sensor.installDate}}
-    </p>
+        {{sensor.installDate}} |
+		<form method="POST" action="/sensor/">
+			{% csrf_token %}
+			<button class="selectButton" id="Selection" name="Selection" value={{ result.sensorID }} >More Details</button>
+		</form><br>    
+	</div>
     {% endfor %}
+	</p>
 
 
 
