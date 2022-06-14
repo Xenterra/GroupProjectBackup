@@ -136,23 +136,18 @@
 			<table class="table table-striped">
 					<tr style="color: rgb(151, 192, 142);">
 						<th> Sensor ID </th>
+						<th> Sensor Type </th>
+						<th> Location ID </th>
 						<th> Longitude </th>
 						<th> Latitude </th>
-						<th> Install Date </th>
-						<th> Details... </th>
 					</tr>
 				 	{% for result in results %}
 					<tr style="text-align: center;"> 
 						<td> <b>{{result.sensorID}}</b> </td> 
+						<td> {{result.sensorType}} </td>
+						<td> {{result.location_id}} </td>
 						<td> {{result.longitude}} </td> 
 						<td> {{result.latitude}} </td> 
-						<td> {{result.installDate}} </td>
-						<td>
-							<form method="POST" action="/sensor/">
-								{% csrf_token %}
-								<button class="selectButton" id="Selection" name="Selection" value={{ result.sensorID }} >More Details</button>
-							</form>
-						</td>	
 					</tr>
 					{% endfor %}
 			</table>

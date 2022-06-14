@@ -1,5 +1,5 @@
 from django.shortcuts import  render, redirect
-from .models import sensorList, sensor1
+from airMonitor.models import sensorList, BME280Reading, SDS011Reading, DHT22Reading
 # Create your views here.
 
 def index(request):
