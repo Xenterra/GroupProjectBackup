@@ -35,8 +35,20 @@ def index(request):
 
 def sensor(request):
 	if request.method == "POST":
-		results = sensor1.objects.all() 
-		return render(request, 'airMonitor/sensor.html', {'results': results})
+		criteria = request.POST.get('Selection', '')
+		sType = sensorList.objects.filter(sensorID = criteria) 
+		if sType[0].sensorType == "SDS011":
+			results = SDS011Reading.objects.filter(sensorID = criteria)
+			return render(request, 'airMonitor/sensor_SDS.html', {'results': results})
+		elif sType[0].sensorType == "BME280":
+			results = BME280Reading.objects.filter(sensorID = criteria)
+			return render(request, 'airMonitor/sensor_BME.html', {'results': results})
+		elif sType[0].sensorType == "DHT22":
+			results = DHT22Reading.objects.filter(sensorID = criteria)
+			return render(request, 'airMonitor/sensor_DHT.html', {'results': results})
+		else:
+			return render(request, 'airMonitor/sensor.html', {'results': results})
+
 	return render(request, 'airMonitor/sensor.html')
 
 def listPage(request):
@@ -63,6 +75,9 @@ def listPage(request):
 
 def comparisons(request):
 	sensors = sensorList.objects.all()
+	SDSsensors = sensorList.objects.filter(sensorType = "SDS011")
+	BMEsensors = sensorList.objects.filter(sensorType = "BME280")
+	DHTsensors = sensorList.objects.filter(sensorType = "DHT22")
 	if request.method == "POST":
 		s1 = request.POST.get('sensor1','')
 		s2 = request.POST.get('sensor2','')
@@ -71,6 +86,14 @@ def comparisons(request):
 		context = 	{	'sensors' : sensors,
 						'sList1' : sList1,
 						'sList2' : sList2,
+						"SDSsensors" : SDSsensors,
+						"BMEsensors" : BMEsensors,
+						"DHTsensors" : DHTsensors,
 					}
 		return render(request, 'airMonitor/comparisons.html', context)	
-	return render(request, 'airMonitor/comparisons.html', {'sensors' : sensors})	
+	context = 	{	'sensors' : sensors,
+					"SDSsensors" : SDSsensors,
+					"BMEsensors" : BMEsensors,
+					"DHTsensors" : DHTsensors,
+				}
+	return render(request, 'airMonitor/comparisons.html', context)	

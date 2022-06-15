@@ -1,0 +1,34 @@
+<html>
+<table width=100%>
+<tr>
+	<th ><a href="/">Home </a></th>
+	<th><a href="/sensorListPage">Sensor List </a></th>
+	<th><a href="/comparisons">Comparison </a></th>
+</tr>
+</table>
+<head>
+	<title>SDS011 Sensor</title>
+</head>
+<body>
+	<h1>Sensor Information</h1>
+	<p>
+		Here is where the info will go:
+	</p>
+	<table class="table table-striped" width=100%>
+		<tr >
+			<th> Timestamp </th>
+			<th> P1 </th>
+			<th> P2 </th>
+		</tr>		
+		{% for sensor in results %}
+		<tr>
+			<td>{{sensor.timestamp }} </td>
+			<td>{{sensor.P1}}</td>
+			<td>{{sensor.P2}}<td>
+		</tr>
+		{% endfor %}
+	</table>
+    </p>
+    
+</body>
+</html>

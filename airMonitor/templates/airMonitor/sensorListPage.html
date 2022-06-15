@@ -34,7 +34,7 @@
         {{sensor.installDate}} |
 		<form method="POST" action="/sensor/">
 			{% csrf_token %}
-			<button class="selectButton" id="Selection" name="Selection" value={{ result.sensorID }} >More Details</button>
+			<button class="selectButton" id="Selection" name="Selection" value={{ sensor.sensorID }} >More Details</button>
 		</form><br>    
 	</div>
     {% endfor %}
