@@ -1,34 +1,40 @@
-<html>
-<table width=100%>
-<tr>
-	<th ><a href="/">Home </a></th>
-	<th><a href="/sensorListPage">Sensor List </a></th>
-	<th><a href="/comparisons">Comparison </a></th>
-</tr>
-</table>
-<head>
-	<title>SDS011 Sensor</title>
-</head>
-<body>
-	<h1>Sensor Information</h1>
-	<p>
-		Here is where the info will go:
-	</p>
-	<table class="table table-striped" width=100%>
-		<tr >
-			<th> Timestamp </th>
-			<th> P1 </th>
-			<th> P2 </th>
-		</tr>		
-		{% for sensor in results %}
-		<tr>
-			<td>{{sensor.timestamp }} </td>
-			<td>{{sensor.P1}}</td>
-			<td>{{sensor.P2}}<td>
-		</tr>
-		{% endfor %}
-	</table>
-    </p>
+{% extends 'base.html' %} 
+
+{% block title %} SDS011 Sensor {% endblock %}
+
+{% block content %}
+
+<!-- Container 1: sensor information -->
+<div class="container bg-dark my-3">
+	<div class="row bg-info">
+		<div class="col table-responsive"> 
+			<table class="table table-striped table-bordered table-hover align-middle caption-top w-100" style="text-align: center;">
+				<caption style="text-align:center; color: black;"> Sensor Information </caption>
+				<thead class="table-danger">
+					<tr>
+						<th> Timestamp </th>
+						<th> P1 </th>
+						<th> P2 </th>
+						<th> Example </th>
+						<th> Example </th>
+						<th> Example </th><th> Example </th><th> Example </th><th> Example </th><th> Example </th>
+					</tr>
+				</thead>
+				<tbody> 
+					{% for sensor in results %} 
+					<tr style="text-align: center;">
+						<td> {{ sensor.timestamp }} </td> 
+						<td> {{ sensor.P1 }} </td>
+						<td> {{ sensor.P2 }} </td>
+						<td> Example </td>
+						<td> Example </td>
+						<td> Example </td><td> Example </td><td> Example </td><td> Example </td><td> Example </td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
     
-</body>
-</html>
+{% endblock %}

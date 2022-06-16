@@ -8,13 +8,13 @@ def index(request):
 	results = sensorList.objects.all()
 	if request.method == "POST" and 'sensorID' in request.POST:
 		sID = request.POST.get('sensorID', '')
-		results = sensorList.objects.filter(sensorID = sID) 
+		sensors = sensorList.objects.filter(sensorID = sID) 
 		for x in results:
 			longList.append(x.longitude)
 			latList.append(x.latitude)
 		lLength = len(longList)
 		
-		context = 	{	'results': results,
+		context = 	{	'sensors': sensors,
 						'longList': longList,
 						'latList': latList,
 						'lLength': lLength,
