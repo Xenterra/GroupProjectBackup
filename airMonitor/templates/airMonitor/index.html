@@ -21,19 +21,21 @@
                     zoom: 10,
                     });
 
+                    var idList = {{idList}};
                     var longitudeList = {{longList}};
                     var latitudeList = {{latList}};
                     var listLength = {{lLength}};
 
+                    var idArray = JSON.parse("[" + idList + "]");
                     var longArray = JSON.parse("[" + longitudeList + "]");
                     var latArray = JSON.parse("[" + latitudeList + "]");
 
                     for (let r=0; r<listLength; r++){
-                        textHTML = "".concat(r+1)
+                        textHTML = "".concat(idArray[r])
                         textHTML1 = textHTML.concat(" >More Details</button></form>");
                         textHTML2 = '<form method="POST" action="/sensor/">{% csrf_token %}<button class="selectButton btn btn-link" id="Selection" name="Selection" value='.concat(textHTML1);
                         
-                        sensorName = "Sensor".concat(" ",r+1)
+                        sensorName = "Sensor".concat(" ",idArray[r])
                         sensorHTML = sensorName.concat('</h2>')
                         sensorHTML1 = '<h2>'.concat(sensorHTML)
                         

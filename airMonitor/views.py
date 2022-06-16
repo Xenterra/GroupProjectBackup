@@ -5,6 +5,7 @@ from airMonitor.models import sensorList, BME280Reading, SDS011Reading, DHT22Rea
 def index(request):
 	longList = []
 	latList  = []
+	idList = []
 	results = sensorList.objects.all()
 	if request.method == "POST" and 'sensorID' in request.POST:
 		sID = request.POST.get('sensorID', '')
@@ -22,14 +23,16 @@ def index(request):
 		return render(request, 'airMonitor/index.html', context)
 
 	for x in results:
+		idList.append(x.sensorID)
 		longList.append(x.longitude)
 		latList.append(x.latitude)
-	lLength = len(longList)
+	lLength = len(idList)
 
-	context = 	{	'results': results,
-					'longList': longList,
-					'latList': latList,
-					'lLength': lLength,
+	context = 	{	'results'	: results,
+					'idList' 	: idList,
+					'longList'	: longList,
+					'latList'	: latList,
+					'lLength'	: lLength,
 			  	}
 	return render(request, 'airMonitor/index.html', context)
 
