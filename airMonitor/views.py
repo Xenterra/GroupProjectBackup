@@ -10,16 +10,18 @@ def index(request):
 	if request.method == "POST" and 'sensorID' in request.POST:
 		sID = request.POST.get('sensorID', '')
 		sensors = sensorList.objects.filter(sensorID = sID) 
-		for x in results:
+		for x in sensors:
+			idList.append(x.sensorID)
 			longList.append(x.longitude)
 			latList.append(x.latitude)
-		lLength = len(longList)
-		
-		context = 	{	'sensors': sensors,
-						'longList': longList,
-						'latList': latList,
-						'lLength': lLength,
-					}
+		lLength = len(idList)
+
+		context = 	{	'sensors'	: sensors,
+						'idList' 	: idList,
+						'longList'	: longList,
+						'latList'	: latList,
+						'lLength'	: lLength,
+				  	}
 		return render(request, 'airMonitor/index.html', context)
 
 	for x in results:
