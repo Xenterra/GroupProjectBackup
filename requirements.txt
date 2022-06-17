@@ -15,7 +15,6 @@ idna==3.3
 importlib-metadata==4.8.3
 parse==1.19.0
 parse-type==0.6.0
-pkg_resources==0.0.0
 pytz==2022.1
 requests==2.27.1
 selenium==3.141.0
