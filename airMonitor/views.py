@@ -40,14 +40,12 @@ def index(request):
 
 def sensor(request):
 	if request.method == "POST":
-
 		criteria = request.POST.get('Selection', '')
 		sType = sensorList.objects.filter(sensorID = criteria) 
 		if sType[0].sensorType == "SDS011":
 			p1List = []
 			p2List = []
 			labelList = []
-			count=0
 			results = SDS011Reading.objects.filter(sensorID = criteria)
 			for x in results:
 				p1List.append(x.P1)
@@ -64,7 +62,6 @@ def sensor(request):
 			humList = []
 			pressList = []
 			labelList = []
-			count=0
 			results = BME280Reading.objects.filter(sensorID = criteria)
 			for x in results:
 				tempList.append(x.temperature)
@@ -82,7 +79,6 @@ def sensor(request):
 			tempList = []
 			humList = []
 			labelList = []
-			count=0
 			results = DHT22Reading.objects.filter(sensorID = criteria)
 			for x in results:
 				tempList.append(x.temperature)
@@ -103,7 +99,6 @@ def listPage(request):
 	if request.method == "POST" and 'criteria' in request.POST:
 		criteria = request.POST.get('criteria', '')
 		searchType = request.POST.get('searchType','')
-		print(criteria, searchType)
 		if criteria == '':
 			sensors = sensorList.objects.all()
 		elif searchType == "sensorID":
@@ -131,7 +126,108 @@ def comparisons(request):
 		s2 = request.POST.get('sensor2','')
 		sList1 = sensorList.objects.get(sensorID=s1)
 		sList2 = sensorList.objects.get(sensorID=s2)
+		sType = sList1.sensorType
+
+		if sType == "SDS011":
+			p1List1 = []
+			p2List1 = []
+			p1List2 = []
+			p2List2 = []
+			labelList = []
+			results1 = SDS011Reading.objects.filter(sensorID = s1)
+			results2 = SDS011Reading.objects.filter(sensorID = s2)
+			for x in results1:
+				p1List1.append(x.P1)
+				p2List1.append(x.P2)
+				labelList.append((x.timestamp).strftime("%d/%m/%Y, %H:%M:%S"))
+			for y in results2:
+				p1List2.append(y.P1)
+				p2List2.append(y.P2)
+
+			context = 	{	'sensors' : sensors,
+							'sType' : sType,
+							'p1List1': p1List1,
+							'p2List1': p2List1,
+							'p1List2': p1List2,
+							'p2List2': p2List2,
+							'labelList': labelList,
+							'sList1' : sList1,
+							'sList2' : sList2,
+							"SDSsensors" : SDSsensors,
+							"BMEsensors" : BMEsensors,
+							"DHTsensors" : DHTsensors,
+						}
+			return render(request, 'airMonitor/comparisons.html', context)
+		elif sType == "BME280":
+			tempList1 = []
+			humList1 = []
+			pressList1 = []
+			tempList2 = []
+			humList2 = []
+			pressList2 = []
+			labelList = []
+			results1 = BME280Reading.objects.filter(sensorID = s1)
+			results2 = BME280Reading.objects.filter(sensorID = s2)			
+			for x in results1:
+				tempList1.append(x.temperature)
+				humList1.append(x.humidity)
+				pressList1.append(x.pressure)
+				labelList.append((x.timestamp).strftime("%d/%m/%Y, %H:%M:%S"))
+			for y in results2:
+				tempList2.append(y.temperature)
+				humList2.append(y.humidity)
+				pressList2.append(y.pressure)
+
+			context = 	{	'results1': results1,
+							'sType' : sType,
+							'humList1': humList1,
+							'tempList1': tempList1,
+							'pressList1': pressList1,
+							'humList2': humList2,
+							'tempList2': tempList2,
+							'pressList2': pressList2,
+							'labelList': labelList,
+							'sList1' : sList1,
+							'sList2' : sList2,
+							"SDSsensors" : SDSsensors,
+							"BMEsensors" : BMEsensors,
+							"DHTsensors" : DHTsensors,
+						}
+			return render(request, 'airMonitor/comparisons.html', context)
+		elif sType == "DHT22":
+			tempList1 = []
+			humList1 = []
+			tempList2 = []
+			humList2 = []
+			labelList = []
+			results1 = DHT22Reading.objects.filter(sensorID = s1)
+			results2 = DHT22Reading.objects.filter(sensorID = s2)			
+			for x in results1:
+				tempList1.append(x.temperature)
+				humList1.append(x.humidity)
+				labelList.append((x.timestamp).strftime("%d/%m/%Y, %H:%M:%S"))
+			for y in results2:
+				tempList2.append(y.temperature)
+				humList2.append(y.humidity)
+			context = 	{	'results1': results1,
+							'sType' : sType,
+							'humList1': humList1,
+							'tempList1': tempList1,
+							'humList2': humList2,
+							'tempList2': tempList2,
+							'labelList': labelList,
+							'sList1' : sList1,
+							'sList2' : sList2,
+							"SDSsensors" : SDSsensors,
+							"BMEsensors" : BMEsensors,
+							"DHTsensors" : DHTsensors,
+						}
+			return render(request, 'airMonitor/comparisons.html', context)
+		else:
+			print("ERROR!")	
+
 		context = 	{	'sensors' : sensors,
+						'sType' : sType,
 						'sList1' : sList1,
 						'sList2' : sList2,
 						"SDSsensors" : SDSsensors,
