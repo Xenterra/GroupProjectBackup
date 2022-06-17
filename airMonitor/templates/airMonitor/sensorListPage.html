@@ -36,7 +36,7 @@
 						<th> Sensor ID </th>
 						<th> Longitude </th>
 						<th> Latitude </th>
-						<th> Install Date </th>
+						<th> Sensor Type </th>
 						<th> Details </th>
 						<th> Example </th><th> Example </th><th> Example </th><th> Example </th><th> Example </th>
 					</tr>
@@ -47,7 +47,7 @@
 						<td> {{sensor.sensorID }} </td> 
 						<td> {{sensor.longitude}} </td>
 						<td> {{sensor.latitude}} </td>
-						<td> {{sensor.installDate}} </td>
+						<td> {{sensor.sensorType}} </td>
 						<td> 
 							<form method="POST" action="/sensor/">
 								{% csrf_token %}

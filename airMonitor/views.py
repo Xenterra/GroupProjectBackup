@@ -40,17 +40,60 @@ def index(request):
 
 def sensor(request):
 	if request.method == "POST":
+
 		criteria = request.POST.get('Selection', '')
 		sType = sensorList.objects.filter(sensorID = criteria) 
 		if sType[0].sensorType == "SDS011":
+			p1List = []
+			p2List = []
+			labelList = []
+			count=0
 			results = SDS011Reading.objects.filter(sensorID = criteria)
-			return render(request, 'airMonitor/sensor_SDS.html', {'results': results})
+			for x in results:
+				p1List.append(x.P1)
+				p2List.append(x.P2)
+				labelList.append((x.timestamp).strftime("%d/%m/%Y, %H:%M:%S"))
+			context = 	{	'results': results,
+							'p1List': p1List,
+							'p2List': p2List,
+							'labelList': labelList
+						}
+			return render(request, 'airMonitor/sensor_SDS.html', context)
 		elif sType[0].sensorType == "BME280":
+			tempList = []
+			humList = []
+			pressList = []
+			labelList = []
+			count=0
 			results = BME280Reading.objects.filter(sensorID = criteria)
-			return render(request, 'airMonitor/sensor_BME.html', {'results': results})
+			for x in results:
+				tempList.append(x.temperature)
+				humList.append(x.humidity)
+				pressList.append(x.pressure)
+				labelList.append((x.timestamp).strftime("%d/%m/%Y, %H:%M:%S"))
+			context = 	{	'results': results,
+							'humList': humList,
+							'tempList': tempList,
+							'pressList': pressList,
+							'labelList': labelList
+						}
+			return render(request, 'airMonitor/sensor_BME.html', context)
 		elif sType[0].sensorType == "DHT22":
+			tempList = []
+			humList = []
+			labelList = []
+			count=0
 			results = DHT22Reading.objects.filter(sensorID = criteria)
-			return render(request, 'airMonitor/sensor_DHT.html', {'results': results})
+			for x in results:
+				tempList.append(x.temperature)
+				humList.append(x.humidity)
+				labelList.append((x.timestamp).strftime("%d/%m/%Y, %H:%M:%S"))
+			context = 	{	'results': results,
+							'humList': humList,
+							'tempList': tempList,
+							'labelList': labelList
+						}
+			return render(request, 'airMonitor/sensor_DHT.html', context)
 		else:
 			return render(request, 'airMonitor/sensor.html', {'results': results})
 
