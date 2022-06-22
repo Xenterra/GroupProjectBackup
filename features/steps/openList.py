@@ -3,8 +3,6 @@ from urllib.parse import urljoin, urlparse
 from behave import given, when, then, model
 from django.conf import settings
 from django.shortcuts import resolve_url
-from selenium import webdriver
-from selenium.webdriver.common.by import By
 
 
 @given(u'we want to view the list of sensors')
