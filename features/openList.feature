@@ -4,3 +4,6 @@ Feature: checking all sensor details
 		Given we want to view the list of sensors
 		When we click the List link
 		Then the page opens
+
+
+
