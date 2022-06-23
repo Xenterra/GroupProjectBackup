@@ -39,3 +39,20 @@ def step_impl(context):
 @then(u'I go to the Sensor Details page (the Sensor Details page opens)')
 def list_page_opens(context):
 	assert 'BMEdetailsPage' in context.browser.page_source
+
+
+# Scenario 3: Get data collected by the sensor
+@given(u'We want to query the data collected by the sensor')
+def user_on_index_page(context):
+	base_url = urllib.request.url2pathname(context.test_case.live_server_url)
+	#print(base_url)
+	open_url = urljoin(base_url,'/')
+	context.browser.get(open_url)
+
+@when(u'we use the list link')
+def user_clicks_list_button(context):
+	context.browser.find_element_by_name('listLink').click()
+
+@then(u'display the information collected by the sensor')
+def list_page_opens(context):
+	assert 'listPage' in context.browser.page_source 

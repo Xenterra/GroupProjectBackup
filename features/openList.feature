@@ -10,3 +10,8 @@ Feature: checking all sensor details
 		When I click the List link
 		Then I click the More Details button  
 		Then I go to the Sensor Details page (the Sensor Details page opens)
+	
+	Scenario: Get data collected by the sensor
+		Given We want to query the data collected by the sensor
+		When we use the list link
+		Then display the information collected by the sensor
