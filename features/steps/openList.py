@@ -18,4 +18,29 @@ def user_clicks_list_button(context):
 
 @then(u'the page opens')
 def list_page_opens(context):
+<<<<<<< HEAD
 	assert 'listPage' in context.browser.page_source
+=======
+	assert 'listPage' in context.browser.page_source 
+
+
+# Scenario 2: click the pin on the map 
+@given(u'I want to find out more details of one sensor on the map.')
+def user_on_index_page(context):
+	base_url = urllib.request.url2pathname(context.test_case.live_server_url)
+	open_url = urljoin(base_url,'/')
+	context.browser.get(open_url)
+
+@when(u'I click one sensor pin on the map.')
+def user_clicks_list_button(context):
+	context.browser.find_element_by_name('listLink').click()
+
+@then(u'I click the More Details link.')
+def step_impl(context):
+    assert NotImplementedError(u'STEP: Then I click the More Details link.')
+
+@then(u'I go to the Sensor Details page. (the Sensor Details page opens)')
+def list_page_opens(context):
+	assert 'listPage' in context.browser.page_source
+
+>>>>>>> 613e640475b0e1e296bb314a14d57be40dbf9033
