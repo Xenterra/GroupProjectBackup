@@ -18,9 +18,6 @@ def user_clicks_list_button(context):
 
 @then(u'the page opens')
 def list_page_opens(context):
-<<<<<<< HEAD
-	assert 'listPage' in context.browser.page_source
-=======
 	assert 'listPage' in context.browser.page_source 
 
 
@@ -42,5 +39,3 @@ def step_impl(context):
 @then(u'I go to the Sensor Details page. (the Sensor Details page opens)')
 def list_page_opens(context):
 	assert 'listPage' in context.browser.page_source
-
->>>>>>> 613e640475b0e1e296bb314a14d57be40dbf9033
