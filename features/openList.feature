@@ -6,7 +6,7 @@ Feature: checking all sensor details
 		Then the page opens
 
 	Scenario: Get details of one sensor
-		Given I want to find out more details of one sensor on the map.
-		When I click one sensor pin on the map.
-		Then I click the More Details link.  
-		Then I go to the Sensor Details page. (the Sensor Details page opens)
+		Given I want to find out more details of one sensor in the system
+		When I click the List link
+		Then I click the More Details button  
+		Then I go to the Sensor Details page (the Sensor Details page opens)
