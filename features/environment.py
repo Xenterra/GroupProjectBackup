@@ -14,6 +14,7 @@ from django.test.runner import DiscoverRunner
 from django.test.testcases import LiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from airMonitor.models import sensorList, BME280Reading
 
 CHROME_DRIVER = os.path.join("driver/chromedriver")
 chrome_options = Options()
@@ -22,6 +23,19 @@ chrome_options = Options()
 chrome_options.add_argument("--no-proxy-server")
 chrome_options.add_argument("--proxy-server='direct://'")
 chrome_options.add_argument("--proxy-bypass-list=*")
+
+class BaseTestCase(LiveServerTestCase):
+	@classmethod
+	def setUpClass(cls):
+		sensorList.objects.create(sensorID="134256724", longitude="-1", latitude="1", sensorType="BME280", location_id = "1234").save()
+		BME280Reading.objects.create(uniqueID=1, sensorID=sensorList.objects.get(sensorID=134256724),  timestamp="2021-01-01T00:00:01", humidity=100.0, temperature = 13.87, pressure= 100401.97).save()
+		super(BaseTestCase, cls).setUpClass()
+ 	 	 
+	@classmethod
+	def tearDownClass(cls):
+		sensorList.objects.filter().delete()
+		BME280Reading.objects.filter().delete()
+		super(BaseTestCase, cls).tearDownClass()
 
 
 def before_all(context):
@@ -51,7 +65,7 @@ def django_test_runner(context):
 
 @fixture
 def django_test_case(context):
-	context.test_case = LiveServerTestCase
+	context.test_case = BaseTestCase
 	context.test_case.setUpClass()
 	yield
 	context.test_case.tearDownClass()

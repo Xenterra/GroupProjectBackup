@@ -34,8 +34,8 @@ def user_clicks_list_button(context):
 
 @then(u'I click the More Details link.')
 def step_impl(context):
-    assert NotImplementedError(u'STEP: Then I click the More Details link.')
+	context.browser.find_element_by_name('Selection').click()
 
 @then(u'I go to the Sensor Details page. (the Sensor Details page opens)')
 def list_page_opens(context):
-	assert 'listPage' in context.browser.page_source
+	assert 'BMEdetailsPage' in context.browser.page_source
