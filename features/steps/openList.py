@@ -7,7 +7,6 @@ from django.shortcuts import resolve_url
 
 @given(u'we want to view the list of sensors')
 def user_on_index_page(context):
-	#print("Cart Given Step Here:")
 	base_url = urllib.request.url2pathname(context.test_case.live_server_url)
 	#print(base_url)
 	open_url = urljoin(base_url,'/')
