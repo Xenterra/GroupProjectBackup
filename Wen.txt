@@ -7,4 +7,6 @@
 07) 14-06-2022, mob programming, get data from .json, database from Bruce (project tutor)
 08) 15-06-2022, pair programming with Serwa, comparisons page design (comparisons.html)
                 update map page and sensor_list page
-09) 
+09) 16-06-2022, discussion with Serwa, map page and comparisons page (index.html, comparisons.html)
+10) 22-06-2022, mob programming, testing (BDD) setup 
+11) 23-06-2022, scenario for BDD (miro), BDD testing (Codio)

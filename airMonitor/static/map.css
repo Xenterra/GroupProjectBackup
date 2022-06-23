@@ -1,0 +1,37 @@
+/* for displaying map */
+.marker {
+    background-image: url('mapbox-icon.png');
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.mapboxgl-popup {
+    width: 200px;
+    font: 16px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    color: black;
+}
+
+/* Table fixed header and scrollable body */
+/* code from https://stackoverflow.com/questions/21168521/table-fixed-header-and-scrollable-body */
+.tableFixHead{
+    overflow: auto; 
+    height: 235px; 
+}
+.tableFixHead, thead, th {
+    position: sticky; 
+    top: 0; 
+    z-index: 1; 
+}
+/* Just common table stuff. Really. */
+table{
+    border-collapse: collapse; 
+    width: 100%;
+}
+th, td{
+    padding: 8px 16px;
+}
+th{
+    background:#eee;
+}
