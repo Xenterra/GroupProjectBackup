@@ -4,7 +4,81 @@
 
 {% block content %}
 <h1 name="BMEdetailsPage"></h1>
+
+<div>
+	<table class="table table-striped table-bordered table-hover align-middle caption-top w-100" style="text-align: center;">
+				<caption style="text-align:center; color: black;"> <h1>Sensor Information </h1> </caption>
+				<thead class="table-danger">
+					<tr>
+						<th> Sensor ID </th>
+						<td>{{ sType.sensorID }}</td>
+					</tr>
+					<tr>
+						<th> Longitude </th>
+						<td>{{ sType.longitude }}</td>
+					</tr>
+					<tr>
+						<th> Latitude </th>
+						<td>{{ sType.latitude }}</td>
+					</tr>
+					<tr>
+						<th> Location ID </th>
+						<td>{{ sType.location_id }}</td>
+					</tr>
+				</thead>
+				</tbody>
+			</table>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$("#sType").on('change',function(){
+			$(".display").hide();
+			$("#" + $(this).val()).fadeIn(200);
+		}).change();
+	});
+</script>
+
+<select name="sType" id="sType">
+	<option value="Live"> Live Data </option>
+	<option value="Archive"> Past Data </option>
+	<option value="Charts"> Data Charts </option>
+</select>
+
+<!-- Container 3: Live Sensor Data -->
+<div class="display" id="Live">
+<div class="container bg-dark my-3" >
+	<div class="row bg-info">
+		<div class="col table-responsive"> 
+			<table class="table table-striped table-bordered table-hover align-middle caption-top w-100" style="text-align: center;">
+				<caption style="text-align:center; color: black;"> <h1>Live Sensor Data Table </h1> </caption>
+				<thead class="table-danger">
+					<tr>
+						<th> Timestamp </th>
+						<th> Pressure </th>
+						<th> Humidity </th>
+						<th> Temperature </th>
+					</tr>
+				</thead>
+				<tbody> 
+					<tr style="text-align: center;">
+						<td> sensor.timestamp </td> 
+						<td> sensor.pressure </td>
+						<td> sensor.humidity </td>
+						<td> sensor.temperature </td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+</div>
+
+<!-- Container 2: Charts -->
+<div class="display" id="Charts">
 <div id="container" style="margin:0 auto; width:80%;">
+	<caption style="text-align:center; color: black;"> <h1>Data Tables </h1> </caption>
 	<canvas id="line-chart1"></canvas>
 </div>
 <div id="container2" style="margin:0 auto; width: 80%;">
@@ -12,6 +86,7 @@
 </div>
 <div id="container3" style="margin:0 auto; width: 80%;">
 	<canvas id="line-chart3"></canvas>
+</div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
@@ -71,12 +146,13 @@
 	};
 </script>
 
-<!-- Container 1: sensor information -->
+<!-- Container 1: past sensor data -->
+<div class="display" id="Archive">
 <div class="container bg-dark my-3">
 	<div class="row bg-info">
 		<div class="col table-responsive"> 
 			<table class="table table-striped table-bordered table-hover align-middle caption-top w-100" style="text-align: center;">
-				<caption style="text-align:center; color: black;"> Sensor Information </caption>
+				<caption style="text-align:center; color: black;"> <h1>Sensor Data Table </h1> </caption>
 				<thead class="table-danger">
 					<tr>
 						<th> Timestamp </th>
@@ -100,6 +176,7 @@
 			</table>
 		</div>
 	</div>
+</div>
 </div>
 
 {% endblock %}

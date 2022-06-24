@@ -54,7 +54,8 @@ def sensor(request):
 			context = 	{	'results': results,
 							'p1List': p1List,
 							'p2List': p2List,
-							'labelList': labelList
+							'labelList': labelList,
+							'sType' : sType[0]
 						}
 			return render(request, 'airMonitor/sensor_SDS.html', context)
 		elif sType[0].sensorType == "BME280":
@@ -72,7 +73,8 @@ def sensor(request):
 							'humList': humList,
 							'tempList': tempList,
 							'pressList': pressList,
-							'labelList': labelList
+							'labelList': labelList,
+							'sType' : sType[0],
 						}
 			return render(request, 'airMonitor/sensor_BME.html', context)
 		elif sType[0].sensorType == "DHT22":
@@ -87,7 +89,8 @@ def sensor(request):
 			context = 	{	'results': results,
 							'humList': humList,
 							'tempList': tempList,
-							'labelList': labelList
+							'labelList': labelList,
+							'sType' : sType[0],
 						}
 			return render(request, 'airMonitor/sensor_DHT.html', context)
 		else:
