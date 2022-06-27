@@ -1,12 +1,28 @@
-01) ??-06-2022, mob programming, ???
-02) 01-06-2022, pair programming with Serwa, map page design (index.html)
-03) 02-06-2022, pair programming with Serwa, map page design (index.html)
-04) 02-06-2022, pair programming with Serwa, map page design (index.html)
-05) 08??-06-2022, mob programming, insert a map on index.html
-06) 10-06-2022, programming, map page and sensor_list page design (sensorListPage.html, index.html)
-07) 14-06-2022, mob programming, get data from .json, database from Bruce (project tutor)
-08) 15-06-2022, pair programming with Serwa, comparisons page design (comparisons.html)
-                update map page and sensor_list page
-09) 16-06-2022, discussion with Serwa, map page and comparisons page (index.html, comparisons.html)
-10) 22-06-2022, mob programming, testing (BDD) setup 
-11) 23-06-2022, scenario for BDD (miro), BDD testing (Codio)
+Week 01 
+(mainly planning) 
+01) 23~24-05-2022, Mon.~Tue., planning (miro) 
+02) 25-05-2022, Wed., planning (miro), mob programming (building app "airMonitor" on Codio) 
+03) 26~27-05-2022, Thu.~Fri., planning (miro) ??, mob programming (Heroku deployment) ?? 
+
+Week 02
+04) 31-05-2022, Tue., mob programming (setting pages?? on Codio) 
+05) 01-06-2022, Wed., pair programming with Serwa, map page design (index.html)
+06) 02-06-2022, Thu., pair programming with Serwa, map page design (index.html)
+07) 03-06-2022, Fri., pair programming with Serwa, map page design (index.html) 
+
+Week 03 
+(mainly waiting for data + writing individual report) 
+08) 08-06-2022, Wed., mob programming, insert a map on index.html
+09) 10-06-2022, Fri., programming, map page and sensor_list page design (index.html, sensorListPage.html)
+
+Week 04
+10) 14-06-2022, Tue., mob programming, get data from .json provided by Bruce (project tutor)
+11) 15-06-2022, Wed., pair programming with Serwa, comparisons page design (comparisons.html),
+                updating map page and sensor_list page (index.html, sensorListPage.html)
+12) 16-06-2022, Thu., discussion with Serwa, map page and comparisons page (index.html, comparisons.html) 
+13) 17-06-2022, Fri., mob programming, inserting charts to sensor_detail page and comparisons page (sensor.html x 3 types of sensors, comparisons.html) 
+
+Week 05
+14) 22-06-2022, Wed., mob programming, BDD testing setup 
+15) 23-06-2022, Thu., BDD scenarios (miro), BDD testing (Codio) 
+16) 24-06-2022, Fri., mob programming, redesigning sensor_detail page (sensor.html x 3 types of sensors) 
