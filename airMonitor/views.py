@@ -6,7 +6,6 @@ def index(request):
 	longList = []
 	latList  = []
 	idList = []
-	results = sensorList.objects.all()
 	if request.method == "POST" and 'sensorID' in request.POST:
 		sID = request.POST.get('sensorID', '')
 		sensors = sensorList.objects.filter(sensorID = sID) 
@@ -24,6 +23,7 @@ def index(request):
 				  	}
 		return render(request, 'airMonitor/index.html', context)
 
+	results = sensorList.objects.all()
 	for x in results:
 		idList.append(x.sensorID)
 		longList.append(x.longitude)
@@ -81,11 +81,13 @@ def sensor(request):
 			tempList = []
 			humList = []
 			labelList = []
-			results = DHT22Reading.objects.filter(sensorID = criteria)
+			results = DHT22Reading.objects.filter(sensorID = criteria )
 			for x in results:
 				tempList.append(x.temperature)
 				humList.append(x.humidity)
 				labelList.append((x.timestamp).strftime("%d/%m/%Y, %H:%M:%S"))
+				print(x.uniqueID, x.timestamp, x.temperature)
+
 			context = 	{	'results': results,
 							'humList': humList,
 							'tempList': tempList,
@@ -94,9 +96,11 @@ def sensor(request):
 						}
 			return render(request, 'airMonitor/sensor_DHT.html', context)
 		else:
+			results = sensorList.objects.all()
 			return render(request, 'airMonitor/sensor.html', {'results': results})
-
-	return render(request, 'airMonitor/sensor.html')
+	
+	sensors = BME280Reading.objects.filter(humidity =100)
+	return render(request, 'airMonitor/sensor.html', {'results' : sensors})
 
 def listPage(request):
 	if request.method == "POST" and 'criteria' in request.POST:

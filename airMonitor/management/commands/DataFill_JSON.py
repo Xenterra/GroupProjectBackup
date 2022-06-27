@@ -19,7 +19,7 @@ class Command(BaseCommand):
 		jsonContent = fileObject.read()
 		aList = json.loads(jsonContent)
 		listOfSensorID =[]
-		listOfSensorType =[]
+
 		for x in aList:
 			listOfSensorID.append(""+x["sensor_id"]+","+x["sensor_type"]+","+x["latitude"]+","+x["longitude"]+","+x["location_id"])
 		listOfSensorID = list(set(listOfSensorID))
@@ -35,19 +35,20 @@ class Command(BaseCommand):
 			sList.save()
 			print("Completed Row:",arr[0])
 
+
 		listOfBME280Readings =[]
 		listOfSDS011Readings =[]
 		listOfDHT22Readings =[]
 
 		for x in aList:
 			if x["sensor_type"] == "BME280":
-				shortDate = x["timestamp"]+"+01:00"
+				shortDate = x["timestamp"]+"-01:00"
 				listOfBME280Readings.append(""+x["sensor_id"]+","+shortDate+","+x["humidity"]+","+x["pressure"]+","+x["temperature"])
 			elif x["sensor_type"] == "SDS011":
-				shortDate = x["timestamp"]+"+01:00"
+				shortDate = x["timestamp"]+"-01:00"
 				listOfSDS011Readings.append(""+x["sensor_id"]+","+shortDate+","+x["P1"]+","+x["P2"])
 			elif x["sensor_type"] == "DHT22":
-				shortDate = x["timestamp"]+"+01:00"
+				shortDate = x["timestamp"]+"-01:00"
 				listOfDHT22Readings.append(""+x["sensor_id"]+","+shortDate+","+x["humidity"]+","+x["temperature"])
 			else:
 				print("Invalid Sensor Type")
@@ -61,7 +62,6 @@ class Command(BaseCommand):
 				pressure = arr[3],
 				temperature = arr[4],
 				)
-			sList.save()
 			print("Completed BME280 Reading:",arr[0],arr[1])
 		
 		for b in listOfSDS011Readings:
@@ -72,7 +72,6 @@ class Command(BaseCommand):
 				P1  = arr[2],
 				P2 = arr[3],
 				)
-			sList.save()
 			print("Completed SDS011 Reading:",arr[0],arr[1])
 		
 		for c in listOfDHT22Readings:
@@ -83,5 +82,4 @@ class Command(BaseCommand):
 				humidity  = arr[2],
 				temperature = arr[3],
 				)
-			sList.save()
 			print("Completed DHT22 Reading:",arr[0],arr[1])

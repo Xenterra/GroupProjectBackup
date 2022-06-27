@@ -24,9 +24,9 @@
 		</tr>		
 		{% for sensor in results %}
 		<tr>
-			<td>{{sensor.timestamp }} </td>
-			<td>{{sensor.P1}}</td>
-			<td>{{sensor.P2}}<td>
+			<td>{{sensor.timestamp }}</td>
+			<td>{{sensor.sensorID }}</td>
+			<td>{{sensor.uniqueID }}</td>
 			<td>{{sensor.humidity}}</td>
 			<td>{{sensor.temperature}}</td>
 		</tr>
