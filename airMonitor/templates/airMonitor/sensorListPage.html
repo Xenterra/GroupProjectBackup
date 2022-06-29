@@ -37,8 +37,8 @@
 						<th> Longitude </th>
 						<th> Latitude </th>
 						<th> Sensor Type </th>
+						<th> Data Type 1 </th><th> Data Type 2 </th><th> Data Type 3 </th>
 						<th> Details </th>
-						<th> Example </th><th> Example </th><th> Example </th><th> Example </th><th> Example </th>
 					</tr>
 				</thead>
 				<tbody> 
@@ -48,13 +48,21 @@
 						<td> {{sensor.longitude}} </td>
 						<td> {{sensor.latitude}} </td>
 						<td> {{sensor.sensorType}} </td>
+						{% if sensor.sensorType == "SDS011" %}
+						<td> P1 </td><td> P2 </td><td> - </td>
+						{% elif sensor.sensorType == "BME280" %}
+						<td> Temperature </td><td> Humidity </td><td> Pressure </td>
+						{% elif sensor.sensorType == "DHT22" %}						
+						<td> Temperature </td><td> Humidity </td><td> - </td>
+						{% else %}
+						<td> ERROR </td><td> ERROR </td><td> ERROR </td>
+						{% endif %}
 						<td> 
 							<form method="POST" action="/sensor/">
 								{% csrf_token %}
 								<button class="selectButton btn btn-primary" id="Selection" name="Selection" value={{ sensor.sensorID }} > More Details </button>
 							</form> 
 						</td>
-						<td> Example </td><td> Example </td><td> Example </td><td> Example </td><td> Example </td>
 					</tr>
 					{% endfor %}
 				</tbody>
