@@ -66,7 +66,7 @@ def sensor(request):
 							'idList' : idList,
 							'longList' : longList,
 							'latList' : latList,
-							'lLength'	: lLength,							
+							'lLength'	: lLength,
 							'sType' : sType[0]
 						}
 			return render(request, 'airMonitor/sensor_SDS.html', context)
@@ -89,8 +89,8 @@ def sensor(request):
 							'idList' : idList,
 							'longList' : longList,
 							'latList' : latList,
-							'lLength'	: lLength,
 							'sType' : sType[0],
+							'lLength'	: lLength,
 						}
 			return render(request, 'airMonitor/sensor_BME.html', context)
 		elif sType[0].sensorType == "DHT22":
@@ -111,8 +111,8 @@ def sensor(request):
 							'idList' : idList,
 							'longList' : longList,
 							'latList' : latList,
-							'lLength'	: lLength,
 							'sType' : sType[0],
+							'lLength'	: lLength,
 						}
 			return render(request, 'airMonitor/sensor_DHT.html', context)
 		else:
@@ -144,6 +144,12 @@ def listPage(request):
 	return render(request, 'airMonitor/sensorListPage.html', {'sensors' : sensors})
 
 def comparisons(request):
+	longList = []
+	latList  = []
+	idList = []	
+	longList2 = []
+	latList2  = []
+	idList2 = []
 	sensors = sensorList.objects.all()
 	SDSsensors = sensorList.objects.filter(sensorType = "SDS011")
 	BMEsensors = sensorList.objects.filter(sensorType = "BME280")
@@ -154,6 +160,13 @@ def comparisons(request):
 		sList1 = sensorList.objects.get(sensorID=s1)
 		sList2 = sensorList.objects.get(sensorID=s2)
 		sType = sList1.sensorType
+		idList.append(sList1.sensorID)
+		longList.append(sList1.longitude)
+		latList.append(sList1.latitude)
+		idList2.append(sList2.sensorID)
+		longList2.append(sList2.longitude)
+		latList2.append(sList2.latitude)
+		lLength = len(idList)
 
 		if sType == "SDS011":
 			p1List1 = []
@@ -183,6 +196,13 @@ def comparisons(request):
 							"SDSsensors" : SDSsensors,
 							"BMEsensors" : BMEsensors,
 							"DHTsensors" : DHTsensors,
+							'idList' : idList,
+							'longList' : longList,
+							'latList' : latList,
+							'idList2' : idList2,
+							'longList2' : longList2,
+							'latList2' : latList2,
+							'lLength'	: lLength,
 						}
 			return render(request, 'airMonitor/comparisons.html', context)
 		elif sType == "BME280":
@@ -219,6 +239,13 @@ def comparisons(request):
 							"SDSsensors" : SDSsensors,
 							"BMEsensors" : BMEsensors,
 							"DHTsensors" : DHTsensors,
+							'idList' : idList,
+							'longList' : longList,
+							'latList' : latList,
+							'idList2' : idList2,
+							'longList2' : longList2,
+							'latList2' : latList2,
+							'lLength'	: lLength,
 						}
 			return render(request, 'airMonitor/comparisons.html', context)
 		elif sType == "DHT22":
@@ -248,6 +275,13 @@ def comparisons(request):
 							"SDSsensors" : SDSsensors,
 							"BMEsensors" : BMEsensors,
 							"DHTsensors" : DHTsensors,
+							'idList' : idList,
+							'longList' : longList,
+							'latList' : latList,
+							'idList2' : idList2,
+							'longList2' : longList2,
+							'latList2' : latList2,
+							'lLength'	: lLength,
 						}
 			return render(request, 'airMonitor/comparisons.html', context)
 		else:
