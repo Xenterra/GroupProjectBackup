@@ -39,9 +39,17 @@ def index(request):
 	return render(request, 'airMonitor/index.html', context)
 
 def sensor(request):
+	longList = []
+	latList  = []
+	idList = []
 	if request.method == "POST":
 		criteria = request.POST.get('Selection', '')
-		sType = sensorList.objects.filter(sensorID = criteria) 
+		sType = sensorList.objects.filter(sensorID = criteria)
+		for x in sType:
+			idList.append(x.sensorID)
+			longList.append(x.longitude)
+			latList.append(x.latitude)
+		lLength = len(idList)
 		if sType[0].sensorType == "SDS011":
 			p1List = []
 			p2List = []
@@ -55,6 +63,10 @@ def sensor(request):
 							'p1List': p1List,
 							'p2List': p2List,
 							'labelList': labelList,
+							'idList' : idList,
+							'longList' : longList,
+							'latList' : latList,
+							'lLength'	: lLength,							
 							'sType' : sType[0]
 						}
 			return render(request, 'airMonitor/sensor_SDS.html', context)
@@ -74,6 +86,10 @@ def sensor(request):
 							'tempList': tempList,
 							'pressList': pressList,
 							'labelList': labelList,
+							'idList' : idList,
+							'longList' : longList,
+							'latList' : latList,
+							'lLength'	: lLength,
 							'sType' : sType[0],
 						}
 			return render(request, 'airMonitor/sensor_BME.html', context)
@@ -87,11 +103,15 @@ def sensor(request):
 				humList.append(x.humidity)
 				labelList.append((x.timestamp).strftime("%d/%m/%Y, %H:%M:%S"))
 				print(x.uniqueID, x.timestamp, x.temperature)
-
-			context = 	{	'results': results,
-							'humList': humList,
-							'tempList': tempList,
-							'labelList': labelList,
+			
+			context = 	{	'results' : results,
+							'humList' : humList,
+							'tempList' : tempList,
+							'labelList' : labelList,
+							'idList' : idList,
+							'longList' : longList,
+							'latList' : latList,
+							'lLength'	: lLength,
 							'sType' : sType[0],
 						}
 			return render(request, 'airMonitor/sensor_DHT.html', context)
@@ -99,7 +119,7 @@ def sensor(request):
 			results = sensorList.objects.all()
 			return render(request, 'airMonitor/sensor.html', {'results': results})
 	
-	sensors = BME280Reading.objects.filter(humidity =100)
+	sensors = BME280Reading.objects.filter(humidity=90)
 	return render(request, 'airMonitor/sensor.html', {'results' : sensors})
 
 def listPage(request):

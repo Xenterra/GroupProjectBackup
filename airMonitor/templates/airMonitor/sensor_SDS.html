@@ -14,16 +14,39 @@
 						<td>{{ sType.sensorID }}</td>
 					</tr>
 					<tr>
-						<th> Longitude </th>
-						<td>{{ sType.longitude }}</td>
-					</tr>
-					<tr>
-						<th> Latitude </th>
-						<td>{{ sType.latitude }}</td>
-					</tr>
-					<tr>
 						<th> Location ID </th>
 						<td>{{ sType.location_id }}</td>
+					</tr>
+					<tr>
+						<th>Map Location: </th>
+						<td><div id='map' style='width: 200px; height: 200px; '>
+							    <script>
+							        mapboxgl.accessToken = 'pk.eyJ1IjoieGVudGVycmEiLCJhIjoiY2w0NW4wOHBzMDA3NDNrczA5bHVwaHZqbyJ9.-vV70Us_kN66fPKzCGSLxg';
+							        var map = new mapboxgl.Map({
+							        	container: 'map',
+							        	style: 'mapbox://styles/mapbox/streets-v11',
+							        	center: [{{sType.longitude}}, {{sType.latitude}}],
+							        	zoom: 10,
+							        });
+							        var idList = {{idList}};
+							        var longitudeList = {{longList}};
+							        var latitudeList = {{latList}};
+							        var listLength = {{lLength}};
+							        var idArray = JSON.parse("[" + idList + "]");
+							        var longArray = JSON.parse("[" + longitudeList + "]");
+							        var latArray = JSON.parse("[" + latitudeList + "]");
+							        for (let r=0; r<listLength; r++){								
+							            finalHTML = ""+{{sType.longitude}}+","+{{sType.latitude}}+""
+							            popup = new mapboxgl.Popup({ offset: 25 })
+							            .setHTML(finalHTML);
+							            marker = new mapboxgl.Marker()
+							            .setLngLat([longArray[r],latArray[r]])
+							            .setPopup(popup)
+							            .addTo(map);
+							        }
+							    </script>	
+							</div>
+						</td>
 					</tr>
 				</thead>
 				</tbody>
