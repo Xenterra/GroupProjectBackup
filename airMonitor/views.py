@@ -1,3 +1,7 @@
+import requests
+import json
+from datetime import datetime
+import pytz
 from django.shortcuts import  render, redirect
 from airMonitor.models import sensorList, BME280Reading, SDS011Reading, DHT22Reading
 # Create your views here.
@@ -50,6 +54,27 @@ def sensor(request):
 			longList.append(x.longitude)
 			latList.append(x.latitude)
 		lLength = len(idList)
+
+		targetLong = sType[0].longitude
+		targetLat = sType[0].latitude
+		url = "https://community-open-weather-map.p.rapidapi.com/weather"
+		querystring = {"q":"Aberdeen","lat":targetLat,"lon":targetLong,"lang":"null","units":"metric"}
+		headers = {
+			"X-RapidAPI-Key": "47079ababdmshc4905f943207bedp19acf7jsn5bcb9cf62b22",
+			"X-RapidAPI-Host": "community-open-weather-map.p.rapidapi.com"
+		}
+		response = requests.request("GET", url, headers=headers, params=querystring)
+		rawLiveJSON=response.text
+		liveJSON	= json.loads(rawLiveJSON)
+
+		liveTemp	= liveJSON["main"]["temp"]
+		livePress	= liveJSON["main"]["pressure"]
+		liveHumi	= liveJSON["main"]["humidity"]
+		liveP1		= liveJSON["wind"]["speed"]
+		liveP2		= liveJSON["wind"]["speed"]+1
+		now = datetime.now(pytz.timezone('Europe/London'))
+		liveTimestamp = now.strftime("%d/%m/%Y %H:%M:%S")
+
 		if sType[0].sensorType == "SDS011":
 			p1List = []
 			p2List = []
@@ -66,8 +91,11 @@ def sensor(request):
 							'idList' : idList,
 							'longList' : longList,
 							'latList' : latList,
-							'lLength'	: lLength,
-							'sType' : sType[0]
+							'lLength' : lLength,
+							'sType' : sType[0],
+							'liveP1' : liveP1,
+							'liveP2' : liveP2,
+							'liveTimestamp':liveTimestamp,
 						}
 			return render(request, 'airMonitor/sensor_SDS.html', context)
 		elif sType[0].sensorType == "BME280":
@@ -87,10 +115,14 @@ def sensor(request):
 							'pressList': pressList,
 							'labelList': labelList,
 							'idList' : idList,
-							'longList' : longList,
-							'latList' : latList,
+							'longList': longList,
+							'latList': latList,
 							'sType' : sType[0],
-							'lLength'	: lLength,
+							'lLength': lLength,
+							'liveTemp': liveTemp,
+							'livePress': livePress,
+							'liveHumi': liveHumi,
+							'liveTimestamp':liveTimestamp,
 						}
 			return render(request, 'airMonitor/sensor_BME.html', context)
 		elif sType[0].sensorType == "DHT22":
@@ -102,7 +134,6 @@ def sensor(request):
 				tempList.append(x.temperature)
 				humList.append(x.humidity)
 				labelList.append((x.timestamp).strftime("%d/%m/%Y, %H:%M:%S"))
-				print(x.uniqueID, x.timestamp, x.temperature)
 			
 			context = 	{	'results' : results,
 							'humList' : humList,
@@ -112,7 +143,10 @@ def sensor(request):
 							'longList' : longList,
 							'latList' : latList,
 							'sType' : sType[0],
-							'lLength'	: lLength,
+							'lLength' : lLength,
+							'liveTemp': liveTemp,
+							'liveHumi': liveHumi,
+							'liveTimestamp':liveTimestamp,
 						}
 			return render(request, 'airMonitor/sensor_DHT.html', context)
 		else:
