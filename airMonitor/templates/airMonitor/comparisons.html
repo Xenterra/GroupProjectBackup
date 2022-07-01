@@ -3,181 +3,174 @@
 {% block title %} Comparisons {% endblock %}
 
 {% block content %}
+
 <h1 name="comparisonPage"></h1>
-<body>
 
-	<!-- Container 1: Selection Area -->
-	<div class="container bg-primary">
-		<!-- Row 1: Title -->
-		<div class="row bg-secondary" style="text-align: center;"> 
-			<h1> Comparing Sensors </h1>
-		</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script>
-	$(document).ready(function(){
-		$("#sType").on('change',function(){
-			$(".compare").hide();
-			$("#" + $(this).val()).fadeIn(200);
-		}).change();
-	});
-</script>
-
-		<!-- Row 2: Type Selection -->
-		<div class="row bg-success my-3">
-			<form action="" method="POST">
-				{% csrf_token %}
-				<!-- Row 1: Type Selection  -->
-				<div class="row bg-danger">
-					<!-- Column 1: sensor 1 -->
-					<div class="col-md-4 bg-info align-self-center">
-						<!-- <h2> Select sensor 1 </h2> -->
-						<label for="sensor1"> Choose a type of sensor: </label>
-						<select name="sType" id="sType">
-							<option value="x"> Type... </option>
-							<option value="SDS011"> SDS011 </option>
-							<option value="BME280"> BME280 </option>
-							<option value="DHT22"> DHT22 </option>
-						</select>
-					</div>
-				</div>
-			</form>
-		</div>
-		<div class="compare" id="x">
-			<form action="" method="POST">
-				{% csrf_token %}
-				<!-- Row 1: sensor selections  -->
-				<div class="row bg-danger">
-					<!-- Column 1: sensor 1 -->
-					<h2>Please select a sensor type!</h2>
-				</div>
-			</form>
-		</div>
-
-		<div class="compare" id="SDS011">
-			<form action="" method="POST">
-				{% csrf_token %}
-				<!-- Row 1: sensor selections  -->
-				<div class="row bg-danger">
-					<!-- Column 1: sensor 1 -->
-					<div class="col-md-4 bg-info align-self-center">
-						<!-- <h2> Select sensor 1 </h2> -->
-						<label for="sensor1"> Choose first sensor: </label>
-						<select name="sensor1" id="sensor1">
-							{% for s in SDSsensors %}
-							<option value={{s.sensorID}}> {{s.sensorID}} </option>
-							{% endfor %}
-						</select>
-					</div>
-					
-					<!-- Column 2: sensor 2 -->
-					<div class="col-md-4 bg-warning align-self-center">
-						<!-- <h2> Select sensor 2 </h2> -->
-						<label for="sensor2">Choose second sensor:</label>
-						<select name="sensor2" id="sensor2">
-							{% for s in SDSsensors %}
-							<option value={{s.sensorID}}> {{s.sensorID}} </option>
-							{% endfor %}
-						</select>
-					</div>
-					<!-- Column 2: sensor 2 -->
-					<div class="col text-center align-self-center">
-						<button type="submit" class="btn btn-primary my-1"> Compare </button>
-						<!-- <input type="submit" value="Submit"> -->
-					</div>
-				</div>
-			</form>
-		</div>
-		<div class="compare" id="BME280">
-			<form action="" method="POST">
-				{% csrf_token %}
-				<!-- Row 1: sensor selections  -->
-				<div class="row bg-danger">
-					<!-- Column 1: sensor 1 -->
-					<div class="col-md-4 bg-info align-self-center">
-						<!-- <h2> Select sensor 1 </h2> -->
-						<label for="sensor1"> Choose first sensor: </label>
-						<select name="sensor1" id="sensor1">
-							{% for s in BMEsensors %}
-							<option value={{s.sensorID}}> {{s.sensorID}} </option>
-							{% endfor %}
-						</select>
-					</div>
-					
-					<!-- Column 2: sensor 2 -->
-					<div class="col-md-4 bg-warning align-self-center">
-						<!-- <h2> Select sensor 2 </h2> -->
-						<label for="sensor2">Choose second sensor:</label>
-						<select name="sensor2" id="sensor2">
-							{% for s in BMEsensors %}
-							<option value={{s.sensorID}}> {{s.sensorID}} </option>
-							{% endfor %}
-						</select>
-					</div>
-					<!-- Column 2: sensor 2 -->
-					<div class="col text-center align-self-center">
-						<button type="submit" class="btn btn-primary my-1"> Compare </button>
-						<!-- <input type="submit" value="Submit"> -->
-					</div>
-				</div>
-			</form>
-		</div>
-		<div class="compare" id="DHT22">
-			<form action="" method="POST">
-				{% csrf_token %}
-				<!-- Row 1: sensor selections  -->
-				<div class="row bg-danger">
-					<!-- Column 1: sensor 1 -->
-					<div class="col-md-4 bg-info align-self-center">
-						<!-- <h2> Select sensor 1 </h2> -->
-						<label for="sensor1"> Choose first sensor: </label>
-						<select name="sensor1" id="sensor1">
-							{% for s in DHTsensors %}
-							<option value={{s.sensorID}}> {{s.sensorID}} </option>
-							{% endfor %}
-						</select>
-					</div>
-					
-					<!-- Column 2: sensor 2 -->
-					<div class="col-md-4 bg-warning align-self-center">
-						<!-- <h2> Select sensor 2 </h2> -->
-						<label for="sensor2">Choose second sensor:</label>
-						<select name="sensor2" id="sensor2">
-							{% for s in DHTsensors %}
-							<option value={{s.sensorID}}> {{s.sensorID}} </option>
-							{% endfor %}
-						</select>
-					</div>
-					<!-- Column 2: sensor 2 -->
-					<div class="col text-center align-self-center">
-						<button type="submit" class="btn btn-primary my-1"> Compare </button>
-						<!-- <input type="submit" value="Submit"> -->
-					</div>
-				</div>
-			</form>
-		</div>
+<!-- Container 1: Selection Area -->
+<div class="container">
+	<!-- Row 1: Title -->
+	<div class="row" style="text-align: center;"> 
+		<h1> Comparing Sensors </h1>
 	</div>
 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#sType").on('change',function(){
+				$(".compare").hide();
+				$("#" + $(this).val()).fadeIn(200);
+			}).change();
+		});
+	</script>
+
+	<!-- Row 2: Type Selection -->
+	<div class="row my-3">
+		<form action="" method="POST">
+			{% csrf_token %}
+			<!-- Row 1: Type Selection  -->
+			<div class="row align-self-center">
+				<!-- Column 1: Type Selection -->
+				<div class="col-md-4 align-self-center">
+					<label for="sensor1"> Choose a type of sensor: </label>
+					<select name="sType" id="sType">
+						<option value="x"> Type... </option>
+						<option value="SDS011"> SDS011 </option>
+						<option value="BME280"> BME280 </option>
+						<option value="DHT22"> DHT22 </option>
+					</select>
+				</div>
+			</div>
+		</form>
+	</div> 
+
+	<!-- Row 3(1): sensor selection statement  -->
+	<div class="row compare" id="x">
+		<form action="" method="POST">
+			{% csrf_token %}
+				<h2> Please select a sensor type! </h2>
+		</form>
+	</div>
+
+	<!-- Row 3(2): sensor selection 1 SDS011 -->
+	<div class="row compare" id="SDS011">
+		<form action="" method="POST">
+			{% csrf_token %}
+			<div class="row">
+				<!-- Column 1: sensor 1 -->
+				<div class="col-md-4 align-self-center">
+					<label for="sensor1"> Choose first sensor: </label>
+					<select name="sensor1" id="sensor1">
+						{% for s in SDSsensors %}
+						<option value={{s.sensorID}}> {{s.sensorID}} </option>
+						{% endfor %}
+					</select>
+				</div>
+				<!-- Column 2: sensor 2 -->
+				<div class="col-md-4 align-self-center">
+					<!-- <h2> Select sensor 2 </h2> -->
+					<label for="sensor2">Choose second sensor:</label>
+					<select name="sensor2" id="sensor2">
+						{% for s in SDSsensors %}
+						<option value={{s.sensorID}}> {{s.sensorID}} </option>
+						{% endfor %}
+					</select>
+				</div>
+				<!-- Column 3: comparison button -->
+				<div class="col text-center align-self-center">
+					<button type="submit" class="btn btn-primary my-1"> Compare </button>
+					<!-- <input type="submit" value="Submit"> -->
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<!-- Row 3(3): sensor selection 2 BME280 -->
+	<div class="compare" id="BME280">
+		<form action="" method="POST">
+			{% csrf_token %}
+			<div class="row">
+				<!-- Column 1: sensor 1 -->
+				<div class="col-md-4 align-self-center">
+					<label for="sensor1"> Choose first sensor: </label>
+					<select name="sensor1" id="sensor1">
+						{% for s in BMEsensors %}
+						<option value={{s.sensorID}}> {{s.sensorID}} </option>
+						{% endfor %}
+					</select>
+				</div>
+				<!-- Column 2: sensor 2 -->
+				<div class="col-md-4 align-self-center">
+					<label for="sensor2">Choose second sensor:</label>
+					<select name="sensor2" id="sensor2">
+						{% for s in BMEsensors %}
+						<option value={{s.sensorID}}> {{s.sensorID}} </option>
+						{% endfor %}
+					</select>
+				</div>
+				<!-- Column 3: compa button -->
+				<div class="col text-center align-self-center">
+					<button type="submit" class="btn btn-primary my-1"> Compare </button>
+					<!-- <input type="submit" value="Submit"> -->
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<!-- Row 3(4): sensor selection 3 DHT22 -->
+	<div class="row compare" id="DHT22">
+		<form action="" method="POST">
+			{% csrf_token %}
+			<div class="row">
+				<!-- Column 1: sensor 1 -->
+				<div class="col-md-4 align-self-center">
+					<label for="sensor1"> Choose first sensor: </label>
+					<select name="sensor1" id="sensor1">
+						{% for s in DHTsensors %}
+						<option value={{s.sensorID}}> {{s.sensorID}} </option>
+						{% endfor %}
+					</select>
+				</div>
+				<!-- Column 2: sensor 2 -->
+				<div class="col-md-4 align-self-center">
+					<label for="sensor2">Choose second sensor:</label>
+					<select name="sensor2" id="sensor2">
+						{% for s in DHTsensors %}
+						<option value={{s.sensorID}}> {{s.sensorID}} </option>
+						{% endfor %}
+					</select>
+				</div>
+				<!-- Column 3: comparison button -->
+				<div class="col text-center align-self-center">
+					<button type="submit" class="btn btn-primary my-1"> Compare </button>
+					<!-- <input type="submit" value="Submit"> -->
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
 	
-	<!-- Container 2: table and graph --> 
-	<div class="container bg-dark my-3">
-		<div class="row bg-success">
-			<!-- Column 1: table -->
-			<div class="col-md-6 bg-warning mr-1 table-responsive"> 
-				{% if sList1 %}
-				<table class="table table-striped table-bordered table-hover align-middle caption-top w-100" style="text-align: center;">
-					<caption style="text-align:center; color: red;"> <b>Sensor 1 </b> </caption>
-					<thead class="table-danger">
-						<tr>
-							<th>ID</th>
-							<th>Location ID</th>
-							<th>Location</th>
-							<th>Details...</th>
-						</tr>
-					</thead>
+
+<!-- Container 2: Sensor location and information --> 
+<div class="container my-3">
+	<div class="row table-responsive"> 
+		<!-- Column 1: sensor 1 (table) -->
+		<div class="col-md-6 col-xs-6 col-sm-6 mr-1 table-responsive"> 
+			{% if sList1 %}
+			<table class="table table-striped table-bordered table-hover align-middle caption-top w-100" style="text-align: center;">
+				<caption style="text-align: center; color: red;"> <b> Sensor 1 </b> </caption>
+				<thead class="table-secondary">
 					<tr>
-						<td>{{sList1.sensorID}}</th>
-						<td>{{sList1.location_id}}</th>
-						<td><div id='map' style='width: 200px; height: 200px; '>
+						<th>ID</th>
+						<th>Location ID</th>
+						<th>Location</th>
+						<th>Details...</th>
+					</tr>
+				</thead>
+				<tr>
+					<td>{{sList1.sensorID}}</th>
+					<td>{{sList1.location_id}}</th>
+					<td class="col d-flex align-items-center justify-content-center"> 
+						<div id='map' style='width: 200px; height: 200px;' >
 							<script>
 								mapboxgl.accessToken = 'pk.eyJ1IjoieGVudGVycmEiLCJhIjoiY2w0NW4wOHBzMDA3NDNrczA5bHVwaHZqbyJ9.-vV70Us_kN66fPKzCGSLxg';
 								var map = new mapboxgl.Map({
@@ -203,273 +196,298 @@
 									.addTo(map);
 								}
 							</script>	
-						</div></td>
-						<td>
-							<form method="POST" action="/sensor/">
-								{% csrf_token %}
-								<button class="selectButton btn btn-primary" id="Selection" name="Selection" value={{ sList1.sensorID }} >More Details</button>
-							</form>
-						</td>	
-					</tr>
-				</table>
-			</div>
-			<div class="col-md-6 bg-warning mr-2 table-responsive"> 
-				<table class="table table-striped table-bordered table-hover align-middle caption-top w-100" style="text-align: center;">
-					<caption style="text-align:center; color: blue;"> <b>Sensor 2 </b> </caption>
-					<thead class="table-danger">
-						<tr>
-							<th>ID</th>
-							<th>Location ID</th>
-							<th>Location</th>
-							<th>Details...</th>
-						</tr>
-					</thead>
-					<tr>
-						<td>{{sList2.sensorID}}</th>
-						<td>{{sList2.location_id}}</th>
-						<td><div id='map2' style='width: 200px; height: 200px; '>
-							<script>
-							    mapboxgl.accessToken = 'pk.eyJ1IjoieGVudGVycmEiLCJhIjoiY2w0NW4wOHBzMDA3NDNrczA5bHVwaHZqbyJ9.-vV70Us_kN66fPKzCGSLxg';
-							    var map = new mapboxgl.Map({
-							    	container: 'map2',
-							    	style: 'mapbox://styles/mapbox/streets-v11',
-							    	center: [{{sList2.longitude}}, {{sList2.latitude}}],
-							    	zoom: 10,
-							    });
-							    var idList = {{idList2}};
-							    var longitudeList = {{longList2}};
-							    var latitudeList = {{latList2}};
-							    var listLength = {{lLength}};
-							    var idArray = JSON.parse("[" + idList + "]");
-							    var longArray = JSON.parse("[" + longitudeList + "]");
-							    var latArray = JSON.parse("[" + latitudeList + "]");
-							    for (let r=0; r<listLength; r++){								
-							        finalHTML = ""+{{sList2.longitude}}+","+{{sList2.latitude}}+""
-							        popup = new mapboxgl.Popup({ offset: 25 })
-							        .setHTML(finalHTML);
-							        marker = new mapboxgl.Marker()
-							        .setLngLat([longArray[r],latArray[r]])
-							        .setPopup(popup)
-							        .addTo(map);
-							    }
-							</script>	
-						</div></td>
-						<td>
-							<form method="POST" action="/sensor/">
-								{% csrf_token %}
-								<button class="selectButton btn btn-primary" id="Selection" name="Selection" value={{ sList2.sensorID }} >More Details</button>
-							</form>
-						</td>	
-					</tr>
-				</table>
-			{% else %}
-				<h2> Submit two sensors to see comparisons </h2>
-			{% endif %}
-			</div>
-			
+						</div>
+					</td>
+					<td>
+						<form method="POST" action="/sensor/">
+							{% csrf_token %}
+							<button class="selectButton btn btn-primary" id="Selection" name="Selection" value={{ sList1.sensorID }} >More Details</button>
+						</form>
+					</td>	
+				</tr>
+			</table>
 		</div>
+
+		<!-- Column 2: sensor 2 (table) -->
+		<div class="col-md-6 col-xs-6 col-sm-6 mr-2 table-responsive"> 
+			<table class="table table-striped table-bordered table-hover align-middle caption-top w-100" style="text-align: center;">
+				<caption style="text-align:center; color: blue;"> <b>Sensor 2 </b> </caption>
+				<thead class="table-secondary">
+					<tr>
+						<th>ID</th>
+						<th>Location ID</th>
+						<th>Location</th>
+						<th>Details...</th>
+					</tr>
+				</thead>
+				<tr>
+					<td>{{sList2.sensorID}}</th>
+					<td>{{sList2.location_id}}</th>
+					<td <td class="col d-flex align-items-center justify-content-center"> 
+						<div id='map2' style='width: 200px; height: 200px; '>
+							<script>
+								mapboxgl.accessToken = 'pk.eyJ1IjoieGVudGVycmEiLCJhIjoiY2w0NW4wOHBzMDA3NDNrczA5bHVwaHZqbyJ9.-vV70Us_kN66fPKzCGSLxg';
+								var map = new mapboxgl.Map({
+									container: 'map2',
+									style: 'mapbox://styles/mapbox/streets-v11',
+									center: [{{sList2.longitude}}, {{sList2.latitude}}],
+									zoom: 10,
+								});
+								var idList = {{idList2}};
+								var longitudeList = {{longList2}};
+								var latitudeList = {{latList2}};
+								var listLength = {{lLength}};
+								var idArray = JSON.parse("[" + idList + "]");
+								var longArray = JSON.parse("[" + longitudeList + "]");
+								var latArray = JSON.parse("[" + latitudeList + "]");
+								for (let r=0; r<listLength; r++){								
+									finalHTML = ""+{{sList2.longitude}}+","+{{sList2.latitude}}+""
+									popup = new mapboxgl.Popup({ offset: 25 })
+									.setHTML(finalHTML);
+									marker = new mapboxgl.Marker()
+									.setLngLat([longArray[r],latArray[r]])
+									.setPopup(popup)
+									.addTo(map);
+								}
+							</script>	
+						</div>
+					</td>
+					<td>
+						<form method="POST" action="/sensor/">
+							{% csrf_token %}
+							<button class="selectButton btn btn-primary" id="Selection" name="Selection" value={{ sList2.sensorID }} >More Details</button>
+						</form>
+					</td>	
+				</tr>
+			</table>
+		{% else %}
+			<h2> Submit two sensors to see comparisons </h2>
+		{% endif %}
+		</div>
+		
+	</div>
+</div>
+
+
+<!-- Container 3: charts -->
+<div class="container mb-3">
+
+	<!-- Charts SDS011 -->
+	{% if sType == "SDS011" %} 
+	<!-- Chart 1 -->
+	<div class="row justify-content-center" id="container">
+		<canvas id="line-chart"></canvas>
+	</div>
+	<!-- Chart 2 -->
+	<div class="row mt-3 justify-content-center" id="container">
+		<canvas id="line-chart2"></canvas>
 	</div>
 
-{% if sType == "SDS011" %}
-<div id="container" style="margin:0 auto; width:100%;">
-	<canvas id="line-chart"></canvas>
-</div>
-<div id="container" style="margin:0 auto; width:100%;">
-	<canvas id="line-chart2"></canvas>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
-<script>
-	var config = {
-		type: 'line',
-		data: {
-			datasets: [{
-				data: {{ p1List1|safe }},
-				borderColor: 'red',
-				backgroundColor: "rgba(0,0,0,0)",
-				label: 'Sensor 1 : P1'
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+	<script>
+		var config = {
+			type: 'line',
+			data: {
+				datasets: [{
+					data: {{ p1List1|safe }},
+					borderColor: 'red',
+					backgroundColor: "rgba(0,0,0,0)",
+					label: 'Sensor 1 : P1'
+				},
+				{
+					data: {{ p2List1|safe }},
+					borderColor: 'blue',
+					backgroundColor: "rgba(0,0,0,0)",
+					label: 'Sensor 1 : P2'
+				}],
+				labels: {{ labelList|safe }}
 			},
-			{
-				data: {{ p2List1|safe }},
-				borderColor: 'blue',
-				backgroundColor: "rgba(0,0,0,0)",
-				label: 'Sensor 1 : P2'
-			}],
-			labels: {{ labelList|safe }}
-		},
-		options: {
-			responsive: true
-		}
-	};
-	var config2 = {
-		type: 'line',
-		data: {
-			datasets: [{
-				data: {{ p1List2|safe }},
-				borderColor: 'red',
-				backgroundColor: "rgba(0,0,0,0)",
-				label: 'Sensor 2 : P1'
+			options: {
+				responsive: true
+			}
+		};
+		var config2 = {
+			type: 'line',
+			data: {
+				datasets: [{
+					data: {{ p1List2|safe }},
+					borderColor: 'red',
+					backgroundColor: "rgba(0,0,0,0)",
+					label: 'Sensor 2 : P1'
+				},
+				{
+					data: {{ p2List2|safe }},
+					borderColor: 'blue',
+					backgroundColor: "rgba(0,0,0,0)",
+					label: 'Sensor 2 : P2'
+				}],
+				labels: {{ labelList|safe }}
 			},
-			{
-				data: {{ p2List2|safe }},
-				borderColor: 'blue',
-				backgroundColor: "rgba(0,0,0,0)",
-				label: 'Sensor 2 : P2'
-			}],
-			labels: {{ labelList|safe }}
-		},
-		options: {
-			responsive: true
-		}
-	};
-	window.onload = function() {
-		var ctx = document.getElementById('line-chart').getContext('2d');
-		window.myLine = new Chart(ctx, config);
-		var ctx2 = document.getElementById('line-chart2').getContext('2d');
-		window.myLine2 = new Chart(ctx2, config2);				
-	};
-</script>
-{% elif sType == "BME280" %}
-<div id="container" style="margin:0 auto; width:80%;">
-	<canvas id="line-chart1"></canvas>
-</div>
-<div id="container2" style="margin:0 auto; width: 80%;">
-	<canvas id="line-chart2"></canvas>
-</div>
-<div id="container3" style="margin:0 auto; width: 80%;">
-	<canvas id="line-chart3"></canvas>
+			options: {
+				responsive: true
+			}
+		};
+		window.onload = function() {
+			var ctx = document.getElementById('line-chart').getContext('2d');
+			window.myLine = new Chart(ctx, config);
+			var ctx2 = document.getElementById('line-chart2').getContext('2d');
+			window.myLine2 = new Chart(ctx2, config2);				
+		};
+	</script>
+
+	<!-- Charts BME280 -->
+	{% elif sType == "BME280" %}
+	<!-- Chart 1 -->
+	<div class="row justify-content-center" id="container">
+		<canvas id="line-chart1"></canvas>
+	</div>
+	<!-- Chart 2 -->
+	<div class="row my-3 justify-content-center" id="container2">
+		<canvas id="line-chart2"></canvas>
+	</div>
+	<!-- Chart 3 -->
+	<div class="row justify-content-center" id="container3">
+		<canvas id="line-chart3"></canvas>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+	<script>
+		var config1 = {
+			type: 'line',
+			data: {
+				datasets: [{
+					data: {{ tempList1|safe }},
+					borderColor: 'red',
+					backgroundColor: "rgba(0,0,0,0)",
+					label: 'Sensor 1 : Temperature'
+				},{
+					data: {{ tempList2|safe }},
+					borderColor: 'blue',
+					backgroundColor: "rgba(0,0,0,0)",
+					label: 'Sensor 2 : Temperature'
+				}],
+				labels: {{ labelList|safe }}
+			},
+			options: {
+				responsive: true
+			}
+		};
+		var config2 = {
+			type: 'line',
+			data: {
+				datasets: [{
+					data: {{ humList1|safe }},
+					borderColor: 'red',
+					backgroundColor: "rgba(0,0,0,0)",
+					label: 'Sensor 1 : Humidity'
+				},{
+					data: {{ humList2|safe }},
+					borderColor: 'blue',
+					backgroundColor: "rgba(0,0,0,0)",
+					label: 'Sensor 2 : Humidity'
+				}],
+				labels: {{ labelList|safe }}
+			},
+			options: {
+				responsive: true
+			}
+		};
+		var config3 = {
+			type: 'line',
+			data: {
+				datasets: [{
+					data: {{ pressList1|safe }},
+					borderColor: 'red',
+					backgroundColor: "rgba(0,0,0,0)",
+					label: 'Sensor 1 : Pressure'
+				},{
+					data: {{ pressList2|safe }},
+					borderColor: 'blue',
+					backgroundColor: "rgba(0,0,0,0)",
+					label: 'Sensor 2 : Pressure'
+				}],
+				labels: {{ labelList|safe }}
+			},
+			options: {
+				responsive: true
+			}
+		};
+		window.onload = function() {
+			var ctx1 = document.getElementById('line-chart1').getContext('2d');
+			window.myLine1 = new Chart(ctx1, config1);	
+			var ctx2 = document.getElementById('line-chart2').getContext('2d');
+			window.myLine2 = new Chart(ctx2, config2);	
+			var ctx3 = document.getElementById('line-chart3').getContext('2d');
+			window.myLine3 = new Chart(ctx3, config3);	
+		};
+	</script>
+
+	<!-- Charts DHT22 -->
+	{% elif sType == "DHT22" %}
+	<!-- Chart 1 -->
+	<div class="row justify-content-center" id="container">
+		<canvas id="line-chart1"></canvas>
+	</div>
+	<!-- Chart 2 -->
+	<div class="row mt-3 justify-content-center" id="container2">
+		<canvas id="line-chart2"></canvas>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+	<script>
+		var config1 = {
+			type: 'line',
+			data: {
+				datasets: [{
+					data: {{ tempList1|safe }},
+					borderColor: 'red',
+					backgroundColor: "rgba(0,0,0,0)",
+					label: 'Sensor 1 : Temperature'
+				},{
+					data: {{ tempList2|safe }},
+					borderColor: 'blue',
+					backgroundColor: "rgba(0,0,0,0)",
+					label: 'Sensor 2 : Temperature'
+				}],
+				labels: {{ labelList|safe }}
+			},
+			options: {
+				responsive: true
+			}
+		};
+		var config2 = {
+			type: 'line',
+			data: {
+				datasets: [{
+					data: {{ humList1|safe }},
+					borderColor: 'red',
+					backgroundColor: "rgba(0,0,0,0)",
+					label: 'Sensor 1 : Humidity'
+				},{
+					data: {{ humList2|safe }},
+					borderColor: 'blue',
+					backgroundColor: "rgba(0,0,0,0)",
+					label: 'Sensor 2 : Humidity'
+				}],
+				labels: {{ labelList|safe }}
+			},
+			options: {
+				responsive: true
+			}
+		};
+
+		window.onload = function() {
+			var ctx1 = document.getElementById('line-chart1').getContext('2d');
+			window.myLine1 = new Chart(ctx1, config1);	
+			var ctx2 = document.getElementById('line-chart2').getContext('2d');
+			window.myLine2 = new Chart(ctx2, config2);	
+		};
+	</script>
+	{% else %}
+	<h1 style="margin:0 auto; text-align: center"> No comparison made </h1>
+	{% endif %}
+
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
-<script>
-	var config1 = {
-		type: 'line',
-		data: {
-			datasets: [{
-				data: {{ tempList1|safe }},
-				borderColor: 'red',
-				backgroundColor: "rgba(0,0,0,0)",
-				label: 'Sensor 1 : Temperature'
-			},{
-				data: {{ tempList2|safe }},
-				borderColor: 'blue',
-				backgroundColor: "rgba(0,0,0,0)",
-				label: 'Sensor 2 : Temperature'
-			}],
-			labels: {{ labelList|safe }}
-		},
-		options: {
-			responsive: true
-		}
-	};
-	var config2 = {
-		type: 'line',
-		data: {
-			datasets: [{
-				data: {{ humList1|safe }},
-				borderColor: 'red',
-				backgroundColor: "rgba(0,0,0,0)",
-				label: 'Sensor 1 : Humidity'
-			},{
-				data: {{ humList2|safe }},
-				borderColor: 'blue',
-				backgroundColor: "rgba(0,0,0,0)",
-				label: 'Sensor 2 : Humidity'
-			}],
-			labels: {{ labelList|safe }}
-		},
-		options: {
-			responsive: true
-		}
-	};
-	var config3 = {
-		type: 'line',
-		data: {
-			datasets: [{
-				data: {{ pressList1|safe }},
-				borderColor: 'red',
-				backgroundColor: "rgba(0,0,0,0)",
-				label: 'Sensor 1 : Pressure'
-			},{
-				data: {{ pressList2|safe }},
-				borderColor: 'blue',
-				backgroundColor: "rgba(0,0,0,0)",
-				label: 'Sensor 2 : Pressure'
-			}],
-			labels: {{ labelList|safe }}
-		},
-		options: {
-			responsive: true
-		}
-	};
-	window.onload = function() {
-		var ctx1 = document.getElementById('line-chart1').getContext('2d');
-		window.myLine1 = new Chart(ctx1, config1);	
-		var ctx2 = document.getElementById('line-chart2').getContext('2d');
-		window.myLine2 = new Chart(ctx2, config2);	
-		var ctx3 = document.getElementById('line-chart3').getContext('2d');
-		window.myLine3 = new Chart(ctx3, config3);	
-	};
-</script>
-{% elif sType == "DHT22" %}
-<div id="container" style="margin:0 auto; width:80%;">
-	<canvas id="line-chart1"></canvas>
-</div>
-<div id="container2" style="margin:0 auto; width: 80%;">
-	<canvas id="line-chart2"></canvas>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
-<script>
-	var config1 = {
-		type: 'line',
-		data: {
-			datasets: [{
-				data: {{ tempList1|safe }},
-				borderColor: 'red',
-				backgroundColor: "rgba(0,0,0,0)",
-				label: 'Sensor 1 : Temperature'
-			},{
-				data: {{ tempList2|safe }},
-				borderColor: 'blue',
-				backgroundColor: "rgba(0,0,0,0)",
-				label: 'Sensor 2 : Temperature'
-			}],
-			labels: {{ labelList|safe }}
-		},
-		options: {
-			responsive: true
-		}
-	};
-	var config2 = {
-		type: 'line',
-		data: {
-			datasets: [{
-				data: {{ humList1|safe }},
-				borderColor: 'red',
-				backgroundColor: "rgba(0,0,0,0)",
-				label: 'Sensor 1 : Humidity'
-			},{
-				data: {{ humList2|safe }},
-				borderColor: 'blue',
-				backgroundColor: "rgba(0,0,0,0)",
-				label: 'Sensor 2 : Humidity'
-			}],
-			labels: {{ labelList|safe }}
-		},
-		options: {
-			responsive: true
-		}
-	};
-
-	window.onload = function() {
-		var ctx1 = document.getElementById('line-chart1').getContext('2d');
-		window.myLine1 = new Chart(ctx1, config1);	
-		var ctx2 = document.getElementById('line-chart2').getContext('2d');
-		window.myLine2 = new Chart(ctx2, config2);	
-	};
-</script>
-{% else %}
-<h1 style="margin:0 auto; text-align: center">No comparison made</h1>
-{% endif %}
 
 {% endblock %}
