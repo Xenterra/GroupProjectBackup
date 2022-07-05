@@ -159,7 +159,16 @@
 				borderColor: 'gold',
 				backgroundColor: "rgba(0,0,0,0)",
 				label: 'P1'
-			},
+			}],
+			labels: {{ labelList|safe }}
+		},
+		options: {
+			responsive: true
+		}
+	};
+	var config2 = {
+		type: 'line',
+		data: {
 			{
 				data: {{ p2List|safe }},
 				borderColor: 'silver',
@@ -178,7 +187,7 @@
 	};
 	window.onload = function() {
 		var ctx = document.getElementById('line-chart2').getContext('2d');
-		window.myLine = new Chart(ctx, config);	
+		window.myLine = new Chart(ctx, config2);	
 	};
 </script>
 
