@@ -27,15 +27,19 @@ class Command(BaseCommand):
 
 		for newSensor in listOfSensorID:
 			arr = newSensor.split(',')
-			sList = sensorList.objects.create(
-				sensorID = arr[0],
-				sensorType = arr[1],
-				latitude  = arr[2],
-				longitude = arr[3],
-				location_id = arr[4],
-				)
-			sList.save()
-			print("Completed Row:",arr[0])
+			try:
+				sList = sensorList.objects.create(
+					sensorID = arr[0],
+					sensorType = arr[1],
+					latitude  = arr[2],
+					longitude = arr[3],
+					location_id = arr[4],
+					)
+				sList.save()
+				print("Completed Row:",arr[0])
+			except:
+  				print(arr[0],"This sensor exists")
+
 
 		listOfBME280Readings =[]
 		listOfSDS011Readings =[]
@@ -53,7 +57,7 @@ class Command(BaseCommand):
 				listOfDHT22Readings.append(""+y["sensor_id"]+","+shortDate+","+y["humidity"]+","+y["temperature"])
 			else:
 				print("Invalid Sensor Type")
-			print(y)
+			#print(y)
 
 		for a in listOfBME280Readings:
 			arr = a.split(',')
