@@ -26,3 +26,10 @@ Week 05
 14) 22-06-2022, Wed., mob programming, BDD testing setup 
 15) 23-06-2022, Thu., BDD scenarios (miro), BDD testing (Codio) 
 16) 24-06-2022, Fri., mob programming, redesigning sensor_detail page (sensor.html x 3 types of sensors) 
+
+Week 06 
+17) 27-06-2022, Mon., updating all pages, mainly removing background colour
+18) 29-06-2022, Wed., mob programming, inserting small maps in Sensor page and Comparisons page
+19) 30-06-2022, Thu., mob programming, pulling live data to the Sensor page
+20) 01-07-2022, Fri., updating all pages with Shi and Yang
+                      mob programming, getting historic data from Bruce's file 
