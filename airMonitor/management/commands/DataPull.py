@@ -67,7 +67,7 @@ class Command(BaseCommand):
 				pressure = arr[3],
 				temperature = arr[4],
 				)
-			#print("Completed BME280 Reading:",arr[0],arr[1])
+			print("Completed BME280 Reading:",arr[0],arr[1])
 		print("Completed BME280 Readings")
 
 		for b in listOfSDS011Readings:
@@ -78,7 +78,7 @@ class Command(BaseCommand):
 				P1  = arr[2],
 				P2 = arr[3],
 				)
-			#print("Completed SDS011 Reading:",arr[0],arr[1])
+			print("Completed SDS011 Reading:",arr[0],arr[1])
 		print("Completed SDS011 Readings")
 
 		for c in listOfDHT22Readings:
@@ -89,5 +89,10 @@ class Command(BaseCommand):
 				humidity  = arr[2],
 				temperature = arr[3],
 				)
+<<<<<<< HEAD
 			#print("Completed DHT22 Reading:",arr[0],arr[1])
 		print("Completed DHT22 Readings")
+=======
+			print("Completed DHT22 Reading:",arr[0],arr[1])
+		print("Completed DHT22 Readings")
+>>>>>>> 82289f73da80c51ebb31f4fe9e68f3cd7b89792e

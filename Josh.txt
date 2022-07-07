@@ -6,4 +6,3 @@ Comparisons Page Created.
 Scripts for the Map Created
 Chart.js Implemented
 Charts on both Sensor Details page and the Comparisons page
-GitActions
