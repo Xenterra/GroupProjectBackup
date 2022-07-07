@@ -2,6 +2,7 @@ import csv
 import os
 import requests
 import urllib, json
+import math
 from pathlib import Path
 from django.db import models
 from django.contrib.auth.models import User
@@ -40,59 +41,92 @@ class Command(BaseCommand):
 			except:
   				print(arr[0],"This sensor exists")
 
-		listOfBME280Readings =[]
-		listOfSDS011Readings =[]
-		listOfDHT22Readings =[]
-
 		for y in data:
+			newTemperature = 0.0
+			newHumidity = 0.0
+			newPressure = 0.0
+			newP1 = 0.0
+			newP2 = 0.0
 			if y["sensor_type"] == "BME280":
-				shortDate = y["timestamp"]+"-01:00"
-				listOfBME280Readings.append(""+y["sensor_id"]+","+shortDate+","+y["humidity"]+","+y["pressure"]+","+y["temperature"])
+				shortDate = y["timestamp"]+"-00:00"
+				try:
+					if math.isnan(y["humidity"]):
+						newHumidity = 100.0
+					else:
+						newHumidity = 0.0+float(y["humidity"])
+				except:
+					newHumidity = "100.0"
+				try:
+					if math.isnan(y["pressure"]):
+						newPressure = 0.0
+					else:
+						newPressure = 0.0+float(y["pressure"])
+				except:
+					newPressure = "0.0"
+				try:
+					if math.isnan(y["temperature"]):
+						newTemperature = 0.0
+					else:
+						newTemperature = 0.0+float(y["temperature"])
+				except:
+					newTemperature = "0.0"
+
+				sList = BME280Reading.objects.create(
+						sensorID = sensorList.objects.get(sensorID=y["sensor_id"]),
+						timestamp = shortDate,
+						humidity  = newHumidity,
+						pressure = newPressure,
+						temperature = newTemperature,
+						)
+				print("Completed BME280 Reading:",y["sensor_id"],shortDate)
+
 			elif y["sensor_type"] == "SDS011":
-				shortDate = y["timestamp"]+"-01:00"
-				listOfSDS011Readings.append(""+y["sensor_id"]+","+shortDate+","+y["P1"]+","+y["P2"])
+				shortDate = y["timestamp"]+"-00:00"				
+				try:
+					if math.isnan(y["P1"]):
+						newP1 = 0.0
+					else:
+						newP1 = 0.0+float(y["P1"])
+				except:
+					newP1 = "0.0"
+				try:
+					if math.isnan(y["P2"]):
+						newP2 = 0.0
+					else:
+						newP2 = 0.0+float(y["P2"])
+				except:
+					newP2 = "0.0"
+
+				sList = SDS011Reading.objects.create(
+						sensorID = sensorList.objects.get(sensorID=y["sensor_id"]),
+						timestamp = shortDate,
+						P1  = newP1,
+						P2 = newP2,
+						)
+				print("Completed SDS011 Reading:",y["sensor_id"],shortDate)
 			elif y["sensor_type"] == "DHT22":
-				shortDate = y["timestamp"]+"-01:00"
-				listOfDHT22Readings.append(""+y["sensor_id"]+","+shortDate+","+y["humidity"]+","+y["temperature"])
+				shortDate = y["timestamp"]+"-00:00"
+				try:
+					if math.isnan(y["humidity"]):
+						newHumidity = 100.0
+					else:
+						newHumidity = 0.0+float(y["humidity"])
+				except:
+					newHumidity = "100.0"
+				try:
+					if math.isnan(y["temperature"]):
+						newTemperature = 0.0
+					else:
+						newTemperature = 0.0+float(y["temperature"])
+				except:
+					newTemperature = "0.0"
+
+				sList = DHT22Reading.objects.create(
+						sensorID = sensorList.objects.get(sensorID=y["sensor_id"]),
+						timestamp = shortDate,
+						humidity  = newHumidity,
+						temperature = newTemperature,
+						)
+				print("Completed DHT22 Reading:",y["sensor_id"],shortDate)
 			else:
 				print("Invalid Sensor Type")
-			#print(y)
-
-		for a in listOfBME280Readings:
-			arr = a.split(',')
-			sList = BME280Reading.objects.create(
-				sensorID = sensorList.objects.get(sensorID=arr[0]),
-				timestamp = arr[1],
-				humidity  = arr[2],
-				pressure = arr[3],
-				temperature = arr[4],
-				)
-			print("Completed BME280 Reading:",arr[0],arr[1])
-		print("Completed BME280 Readings")
-
-		for b in listOfSDS011Readings:
-			arr = b.split(',')
-			sList = SDS011Reading.objects.create(
-				sensorID = sensorList.objects.get(sensorID=arr[0]),
-				timestamp = arr[1],
-				P1  = arr[2],
-				P2 = arr[3],
-				)
-			print("Completed SDS011 Reading:",arr[0],arr[1])
-		print("Completed SDS011 Readings")
-
-		for c in listOfDHT22Readings:
-			arr = c.split(',')
-			sList = DHT22Reading.objects.create(
-				sensorID = sensorList.objects.get(sensorID=arr[0]),
-				timestamp = arr[1],
-				humidity  = arr[2],
-				temperature = arr[3],
-				)
-<<<<<<< HEAD
-			#print("Completed DHT22 Reading:",arr[0],arr[1])
-		print("Completed DHT22 Readings")
-=======
-			print("Completed DHT22 Reading:",arr[0],arr[1])
-		print("Completed DHT22 Readings")
->>>>>>> 82289f73da80c51ebb31f4fe9e68f3cd7b89792e
