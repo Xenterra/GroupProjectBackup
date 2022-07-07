@@ -3,8 +3,8 @@ name: Daily Data Pull from JSON
 
 on:
   schedule:
-    # Runs "at hour 6, minute 10 every day"
-    - cron: '0 14 * * *'
+    # Runs "at hour 15, minute 15 every day"
+    - cron: '15 15 * * *'
     
 jobs:
   build:
