@@ -40,7 +40,6 @@ class Command(BaseCommand):
 			except:
   				print(arr[0],"This sensor exists")
 
-
 		listOfBME280Readings =[]
 		listOfSDS011Readings =[]
 		listOfDHT22Readings =[]
