@@ -1,14 +1,12 @@
 # .github/workflows/scheduled-builds.yml
 name: Daily Data Pull from JSON
 
+
 on:
-  push:
-    branches:
-      - master
-      
-  #schedule:
-    # Runs "at hour 15, minute 30 every day"
-    #- cron: '30 * * * *'
+  workflow_dispatch:   
+  schedule:
+    # Runs "at 06:15 UTC every day"
+    - cron: '15 6 * * *'
     
 jobs:
   build:
