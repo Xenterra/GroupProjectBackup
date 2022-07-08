@@ -162,7 +162,34 @@
 			labels: {{ labelList|safe }}
 		},
 		options: {
-			responsive: true
+			scales: {
+	    	  yAxes: [{
+	    	    ticks:{
+	    	      min : 0,
+	    	      fontColor : "#000",
+	    	      fontSize : 14
+	    	    },
+	    	    gridLines:{
+	    	      color: "#000",
+	    	      lineWidth:1,
+	    	      zeroLineColor :"#000",
+	    	      zeroLineWidth : 2
+	    	    },
+	    	  }],
+	    	  xAxes: [{
+	    	    ticks:{
+	    	      fontColor : "#000",
+	    	      fontSize : 14
+	    	    },
+	    	    gridLines:{
+	    	      color: "#0001",
+	    	    }
+	    	  }]
+	    	},
+			responsive:true,
+	    	chartArea: {
+        		backgroundColor: 'rgba(255, 255, 255, 0.5)'
+    		}
 		}
 	};
 	var config2 = {
@@ -177,9 +204,50 @@
 			labels: {{ labelList|safe }}
 		},
 		options: {
-			responsive: true
+			scales: {
+	    	  yAxes: [{
+	    	    ticks:{
+	    	      min : 0,
+	    	      fontColor : "#000",
+	    	      fontSize : 14
+	    	    },
+	    	    gridLines:{
+	    	      color: "#000",
+	    	      lineWidth:1,
+	    	      zeroLineColor :"#000",
+	    	      zeroLineWidth : 2
+	    	    },
+	    	  }],
+	    	  xAxes: [{
+	    	    ticks:{
+	    	      fontColor : "#000",
+	    	      fontSize : 14
+	    	    },
+	    	    gridLines:{
+	    	      color: "#0001",
+	    	    }
+	    	  }]
+	    	},
+			responsive:true,
+	    	chartArea: {
+        		backgroundColor: 'rgba(255, 255, 255, 0.5)'
+    		}
 		}
 	};
+
+	Chart.pluginService.register({
+        beforeDraw: function (chart, easing) {
+            if (chart.config.options.chartArea && chart.config.options.chartArea.backgroundColor) {
+                var ctx = chart.chart.ctx;
+                var chartArea = chart.chartArea;
+                ctx.save();
+                ctx.fillStyle = chart.config.options.chartArea.backgroundColor;
+                ctx.fillRect(chartArea.left, chartArea.top, chartArea.right - chartArea.left, chartArea.bottom - chartArea.top);
+                ctx.restore();
+            }
+        }
+    });
+
 	window.onload = function() {
 		var ctx = document.getElementById('line-chart').getContext('2d');
 		window.myLine = new Chart(ctx, config);	

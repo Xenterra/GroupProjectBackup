@@ -295,25 +295,52 @@
 					label: 'Sensor 1 : P1'
 				},
 				{
-					data: {{ p2List1|safe }},
+					data: {{ p1List2|safe }},
 					borderColor: 'blue',
 					backgroundColor: "rgba(0,0,0,0)",
-					label: 'Sensor 1 : P2'
+					label: 'Sensor 2 : P1'
 				}],
 				labels: {{ labelList|safe }}
 			},
 			options: {
-				responsive: true
-			}
+			scales: {
+	    	  yAxes: [{
+	    	    ticks:{
+	    	      min : 0,
+	    	      fontColor : "#000",
+	    	      fontSize : 14
+	    	    },
+	    	    gridLines:{
+	    	      color: "#000",
+	    	      lineWidth:1,
+	    	      zeroLineColor :"#000",
+	    	      zeroLineWidth : 2
+	    	    },
+	    	  }],
+	    	  xAxes: [{
+	    	    ticks:{
+	    	      fontColor : "#000",
+	    	      fontSize : 14
+	    	    },
+	    	    gridLines:{
+	    	      color: "#0001",
+	    	    }
+	    	  }]
+	    	},
+			responsive:true,
+	    	chartArea: {
+        		backgroundColor: 'rgba(255, 255, 255, 0.5)'
+    		}
+		}
 		};
 		var config2 = {
 			type: 'line',
 			data: {
 				datasets: [{
-					data: {{ p1List2|safe }},
+					data: {{ p2List1|safe }},
 					borderColor: 'red',
 					backgroundColor: "rgba(0,0,0,0)",
-					label: 'Sensor 2 : P1'
+					label: 'Sensor 1 : P2'
 				},
 				{
 					data: {{ p2List2|safe }},
@@ -324,9 +351,48 @@
 				labels: {{ labelList|safe }}
 			},
 			options: {
-				responsive: true
-			}
+			scales: {
+	    	  yAxes: [{
+	    	    ticks:{
+	    	      min : 0,
+	    	      fontColor : "#000",
+	    	      fontSize : 14
+	    	    },
+	    	    gridLines:{
+	    	      color: "#000",
+	    	      lineWidth:1,
+	    	      zeroLineColor :"#000",
+	    	      zeroLineWidth : 2
+	    	    },
+	    	  }],
+	    	  xAxes: [{
+	    	    ticks:{
+	    	      fontColor : "#000",
+	    	      fontSize : 14
+	    	    },
+	    	    gridLines:{
+	    	      color: "#0001",
+	    	    }
+	    	  }]
+	    	},
+			responsive:true,
+	    	chartArea: {
+        		backgroundColor: 'rgba(255, 255, 255, 0.5)'
+    		}
+		}
 		};
+		Chart.pluginService.register({
+    	    beforeDraw: function (chart, easing) {
+    	        if (chart.config.options.chartArea && chart.config.options.chartArea.backgroundColor) {
+    	            var ctx = chart.chart.ctx;
+    	            var chartArea = chart.chartArea;
+    	            ctx.save();
+    	            ctx.fillStyle = chart.config.options.chartArea.backgroundColor;
+    	            ctx.fillRect(chartArea.left, chartArea.top, chartArea.right - chartArea.left, chartArea.bottom - chartArea.top);
+    	            ctx.restore();
+    	        }
+    	    }
+    	});
 		window.onload = function() {
 			var ctx = document.getElementById('line-chart').getContext('2d');
 			window.myLine = new Chart(ctx, config);
@@ -369,8 +435,34 @@
 				labels: {{ labelList|safe }}
 			},
 			options: {
-				responsive: true
-			}
+			scales: {
+	    	  yAxes: [{
+	    	    ticks:{
+	    	      fontColor : "#000",
+	    	      fontSize : 14
+	    	    },
+	    	    gridLines:{
+	    	      color: "#000",
+	    	      lineWidth:1,
+	    	      zeroLineColor :"#000",
+	    	      zeroLineWidth : 2
+	    	    },
+	    	  }],
+	    	  xAxes: [{
+	    	    ticks:{
+	    	      fontColor : "#000",
+	    	      fontSize : 14
+	    	    },
+	    	    gridLines:{
+	    	      color: "#0001",
+	    	    }
+	    	  }]
+	    	},
+			responsive:true,
+	    	chartArea: {
+        		backgroundColor: 'rgba(255, 255, 255, 0.5)'
+    		}
+		}
 		};
 		var config2 = {
 			type: 'line',
@@ -389,8 +481,34 @@
 				labels: {{ labelList|safe }}
 			},
 			options: {
-				responsive: true
-			}
+			scales: {
+	    	  yAxes: [{
+	    	    ticks:{
+	    	      fontColor : "#000",
+	    	      fontSize : 14
+	    	    },
+	    	    gridLines:{
+	    	      color: "#000",
+	    	      lineWidth:1,
+	    	      zeroLineColor :"#000",
+	    	      zeroLineWidth : 2
+	    	    },
+	    	  }],
+	    	  xAxes: [{
+	    	    ticks:{
+	    	      fontColor : "#000",
+	    	      fontSize : 14
+	    	    },
+	    	    gridLines:{
+	    	      color: "#0001",
+	    	    }
+	    	  }]
+	    	},
+			responsive:true,
+	    	chartArea: {
+        		backgroundColor: 'rgba(255, 255, 255, 0.5)'
+    		}
+		}
 		};
 		var config3 = {
 			type: 'line',
@@ -409,9 +527,47 @@
 				labels: {{ labelList|safe }}
 			},
 			options: {
-				responsive: true
-			}
+			scales: {
+	    	  yAxes: [{
+	    	    ticks:{
+	    	      fontColor : "#000",
+	    	      fontSize : 14
+	    	    },
+	    	    gridLines:{
+	    	      color: "#000",
+	    	      lineWidth:1,
+	    	      zeroLineColor :"#000",
+	    	      zeroLineWidth : 2
+	    	    },
+	    	  }],
+	    	  xAxes: [{
+	    	    ticks:{
+	    	      fontColor : "#000",
+	    	      fontSize : 14
+	    	    },
+	    	    gridLines:{
+	    	      color: "#0001",
+	    	    }
+	    	  }]
+	    	},
+			responsive:true,
+	    	chartArea: {
+        		backgroundColor: 'rgba(255, 255, 255, 0.5)'
+    		}
+		}
 		};
+		Chart.pluginService.register({
+    	    beforeDraw: function (chart, easing) {
+    	        if (chart.config.options.chartArea && chart.config.options.chartArea.backgroundColor) {
+    	            var ctx = chart.chart.ctx;
+    	            var chartArea = chart.chartArea;
+    	            ctx.save();
+    	            ctx.fillStyle = chart.config.options.chartArea.backgroundColor;
+    	            ctx.fillRect(chartArea.left, chartArea.top, chartArea.right - chartArea.left, chartArea.bottom - chartArea.top);
+    	            ctx.restore();
+    	        }
+    	    }
+    	});
 		window.onload = function() {
 			var ctx1 = document.getElementById('line-chart1').getContext('2d');
 			window.myLine1 = new Chart(ctx1, config1);	
@@ -452,8 +608,34 @@
 				labels: {{ labelList|safe }}
 			},
 			options: {
-				responsive: true
-			}
+			scales: {
+	    	  yAxes: [{
+	    	    ticks:{
+	    	      fontColor : "#000",
+	    	      fontSize : 14
+	    	    },
+	    	    gridLines:{
+	    	      color: "#000",
+	    	      lineWidth:1,
+	    	      zeroLineColor :"#000",
+	    	      zeroLineWidth : 2
+	    	    },
+	    	  }],
+	    	  xAxes: [{
+	    	    ticks:{
+	    	      fontColor : "#000",
+	    	      fontSize : 14
+	    	    },
+	    	    gridLines:{
+	    	      color: "#0001",
+	    	    }
+	    	  }]
+	    	},
+			responsive:true,
+	    	chartArea: {
+        		backgroundColor: 'rgba(255, 255, 255, 0.5)'
+    		}
+		}
 		};
 		var config2 = {
 			type: 'line',
@@ -472,10 +654,47 @@
 				labels: {{ labelList|safe }}
 			},
 			options: {
-				responsive: true
-			}
+			scales: {
+	    	  yAxes: [{
+	    	    ticks:{
+	    	      fontColor : "#000",
+	    	      fontSize : 14
+	    	    },
+	    	    gridLines:{
+	    	      color: "#000",
+	    	      lineWidth:1,
+	    	      zeroLineColor :"#000",
+	    	      zeroLineWidth : 2
+	    	    },
+	    	  }],
+	    	  xAxes: [{
+	    	    ticks:{
+	    	      fontColor : "#000",
+	    	      fontSize : 14
+	    	    },
+	    	    gridLines:{
+	    	      color: "#0001",
+	    	    }
+	    	  }]
+	    	},
+			responsive:true,
+	    	chartArea: {
+        		backgroundColor: 'rgba(255, 255, 255, 0.5)'
+    		}
+		}
 		};
-
+		Chart.pluginService.register({
+    	    beforeDraw: function (chart, easing) {
+    	        if (chart.config.options.chartArea && chart.config.options.chartArea.backgroundColor) {
+    	            var ctx = chart.chart.ctx;
+    	            var chartArea = chart.chartArea;
+    	            ctx.save();
+    	            ctx.fillStyle = chart.config.options.chartArea.backgroundColor;
+    	            ctx.fillRect(chartArea.left, chartArea.top, chartArea.right - chartArea.left, chartArea.bottom - chartArea.top);
+    	            ctx.restore();
+    	        }
+    	    }
+    	});
 		window.onload = function() {
 			var ctx1 = document.getElementById('line-chart1').getContext('2d');
 			window.myLine1 = new Chart(ctx1, config1);	
