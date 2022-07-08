@@ -1,0 +1,23 @@
+body {
+    background-image: url('https://rohe.geenius.ee/app/uploads/sites/10/2021/03/70eac4a3e03bda83ed0cb41e0d86169d.jpg');
+    /* background-color: #cccccc; */
+    background-repeat:no-repeat;
+    background-size: 100% 100%;
+}
+
+.div1{
+    border-radius:20px; 
+    background-color: rgba(255,255,255,0.5); 
+    min-height: 30vh;"
+}
+
+.div3{
+    border-radius:20px; 
+    background-color: rgba(255,255,255,0.5); 
+    
+}
+
+div.ex3:hover, div.ex3:active {
+    background: rgb(185, 184, 184, 0.5);
+}
+

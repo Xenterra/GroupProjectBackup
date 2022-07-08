@@ -8,9 +8,16 @@
 
 <!-- Container 1: map -->
 <div class="container text-center">
+    <!-- Row 1: map title -->
     <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">  
-            <div id='map' style='width: 100%; height: 700px;'>
+        <h2 style="text-align:center; color: black;"> All Sensors on the Map </h2>
+    </div>
+
+    <!-- Row 2: map -->
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <!-- "center01" for centering the map horizontally and vertically-->
+            <div id='map' style='width: 100%; height: 700px;' class="center01"> 
                 <script>
                     mapboxgl.accessToken = 'pk.eyJ1IjoieGVudGVycmEiLCJhIjoiY2w0NW4wOHBzMDA3NDNrczA5bHVwaHZqbyJ9.-vV70Us_kN66fPKzCGSLxg';
 
@@ -52,6 +59,10 @@
             </div> 
         </div>
     </div>
+    
+    <!-- for margin between the map and the footer -->
+    <br>
+
 </div>
 
 <!-- Container 2: search and results 

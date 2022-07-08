@@ -14,9 +14,21 @@
 }
 
 body{
-    background-color:powderblue;
+    background-color:rgb(180, 255, 205);
+    /* background-image: linear-gradient(to bottom, green, rgb(174, 247, 78)); */
     text-align: center;
 }
+
+.center01 {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    /* border: 5px solid #FFFF00; */
+    padding: 10px;
+}
+
+
 /* Table fixed header and scrollable body */
 /* code from https://stackoverflow.com/questions/21168521/table-fixed-header-and-scrollable-body */
 .tableFixHead{
