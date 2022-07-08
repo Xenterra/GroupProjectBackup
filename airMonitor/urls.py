@@ -6,5 +6,6 @@ urlpatterns = [
 	path('sensor/', views.sensor, name='sensor'),
 	path('sensorListPage/', views.listPage, name='listPage'),
 	path('comparisons/', views.comparisons, name='comparisons'),
+	path('landing/', views.landing, name='landing'),
 
 ]

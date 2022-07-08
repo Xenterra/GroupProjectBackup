@@ -336,3 +336,6 @@ def comparisons(request):
 					"DHTsensors" : DHTsensors,
 				}
 	return render(request, 'airMonitor/comparisons.html', context)	
+
+def landing(request):
+	return render(request, 'airMonitor/landing.html')
