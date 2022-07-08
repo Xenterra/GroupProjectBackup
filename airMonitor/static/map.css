@@ -15,6 +15,7 @@
 
 body{
     background-color:powderblue;
+    text-align: center;
 }
 /* Table fixed header and scrollable body */
 /* code from https://stackoverflow.com/questions/21168521/table-fixed-header-and-scrollable-body */
@@ -38,4 +39,8 @@ th, td{
 }
 th{
     background:#eee;
+}
+.logo{
+    background-color: white;
+    padding:10px;
 }
