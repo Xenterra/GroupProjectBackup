@@ -1,6 +1,6 @@
 import requests
 import json
-from datetime import datetime
+from datetime import datetime, timedelta
 import pytz
 from django.shortcuts import  render, redirect
 from airMonitor.models import sensorList, BME280Reading, SDS011Reading, DHT22Reading
@@ -46,6 +46,14 @@ def sensor(request):
 	longList = []
 	latList  = []
 	idList = []
+	historyRange = [0,0,0,0,0,0,0]
+
+	now = datetime.now()
+	for x in range(7):
+		d = now - timedelta(days=x+2)
+		historyRange[x] = (str(d.strftime("%B %d, %Y")),int(d.strftime("%m")),int(d.strftime("%d")))
+
+
 	if request.method == "POST":
 		criteria = request.POST.get('Selection', '')
 		sType = sensorList.objects.filter(sensorID = criteria)
@@ -95,6 +103,7 @@ def sensor(request):
 							'sType' : sType[0],
 							'liveP1' : liveP1,
 							'liveP2' : liveP2,
+							'historyRange':historyRange,
 							'liveTimestamp':liveTimestamp,
 						}
 			return render(request, 'airMonitor/sensor_SDS.html', context)
@@ -122,6 +131,7 @@ def sensor(request):
 							'liveTemp': liveTemp,
 							'livePress': livePress,
 							'liveHumi': liveHumi,
+							'historyRange':historyRange,
 							'liveTimestamp':liveTimestamp,
 						}
 			return render(request, 'airMonitor/sensor_BME.html', context)
@@ -146,6 +156,7 @@ def sensor(request):
 							'lLength' : lLength,
 							'liveTemp': liveTemp,
 							'liveHumi': liveHumi,
+							'historyRange':historyRange,
 							'liveTimestamp':liveTimestamp,
 						}
 			return render(request, 'airMonitor/sensor_DHT.html', context)

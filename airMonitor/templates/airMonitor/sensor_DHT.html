@@ -17,6 +17,10 @@
 					<td>{{ sType.sensorID }}</td>
 				</tr>
 				<tr>
+					<th> Sensor Type </th>
+					<td>{{ sType.sensorType }}</td>
+				</tr>
+				<tr>
 					<th> Longitude </th>
 					<td> {{ sType.longitude }} </td>
 				</tr>
@@ -112,6 +116,66 @@
 
 <!-- Container 2(2): past data -->
 <div class="container my-3 display" id="Archive">
+	<div class="tab">
+			{% for date in historyRange %} 
+			<button class="tablinks" onclick="openCity(event, '{{date.0}}')" id="defaultOpen">{{date.0}}</button>
+			{% endfor %}
+	</div>
+	
+	{% for x in historyRange %} 
+	<div id='{{x.0}}' class="tabcontent">
+		<table class="table table-striped table-bordered table-hover align-middle caption-top w-100" style="text-align: center;">
+			<caption style="text-align:center; color: black;"> <h1>Sensor Data Table </h1> </caption>
+			<thead style="background-color: darkgreen; color: white;">
+				<tr>
+					<th> Timestamp </th>
+					<th> Humidity </th>
+					<th> Temperature </th>
+				</tr>
+			</thead>
+			<tbody> 
+				{% for sensor in results %} 
+				{% if sensor.timestamp.day == x.2 and sensor.timestamp.month == x.1 %}
+				<tr style="text-align: center;">
+					<td> {{ sensor.timestamp }} </td> 
+					<td> {{ sensor.humidity }} </td>
+					<td> {{ sensor.temperature}} </td>
+				</tr>
+				{% endif %}
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	{% endfor %}
+
+<script>
+	function openCity(evt, cityName) {
+	  var i, tabcontent, tablinks;
+	  tabcontent = document.getElementsByClassName("tabcontent");
+	  for (i = 0; i < tabcontent.length; i++) {
+	    tabcontent[i].style.display = "none";
+	  }
+	  tablinks = document.getElementsByClassName("tablinks");
+	  for (i = 0; i < tablinks.length; i++) {
+	    tablinks[i].className = tablinks[i].className.replace(" active", "");
+	  }
+	  document.getElementById(cityName).style.display = "block";
+	  evt.currentTarget.className += " active";
+	}
+
+	// Get the element with id="defaultOpen" and click on it
+	document.getElementById("defaultOpen").click();
+</script>
+	<div class="tab">
+		{% for date in historyRange %} 
+		<button class="tablinks" onclick="openCity(event, '{{date.0}}')" id="defaultOpen">{{date.0}}</button>
+		{% endfor %}
+	</div>
+	<br>
+</div>
+
+<!--
+<div class="container my-3 display" id="Archive">
 	<div class="row">
 		<div class="col table-responsive"> 
 			<table class="table table-striped table-bordered table-hover align-middle caption-top w-100" style="text-align: center;">
@@ -136,6 +200,7 @@
 		</div>
 	</div>
 </div>
+-->
 
 <!-- Container 2(3): Charts -->
 <div class="container my-3 display" id="Charts">
