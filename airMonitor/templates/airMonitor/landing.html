@@ -1,78 +1,211 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title> {% block title %} {% endblock %} </title>
+    <title> Air Monitor </title>
+    <link rel="stylesheet" href="">
 
     <!-- Latest compiled and minified CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- css and js links -->
-    <link rel="stylesheet" type="text/css" href="/static/landing.css">
+    
+    <style>
+        /* CSS code for dynamic background image from and based on https://codepen.io/vavik96/pen/vEdMXM */
+        /* @import url(https://fonts.googleapis.com/css?family=Oswald); */
 
-    <!-- Latest compiled JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        /* Cloud 1 */
+        @keyframes clouds-loop-1 {
+            to {
+                background-position: -1000px 0;
+            }
+        }
+        .clouds-1 {
+            background-image: url("https://s.cdpn.io/15514/clouds_2.png");
+            /* background-color: rgb(85, 162, 251); */
+            animation: clouds-loop-1 20s infinite linear;
+        }
+
+        /* Cloud 2 
+        @keyframes clouds-loop-2 {
+            to {
+                background-position: -1000px 0;
+            }
+        }
+        .clouds-2 {
+            background-image: url("https://s.cdpn.io/15514/clouds_1.png");
+            animation: clouds-loop-2 15s infinite linear;
+
+        }*/
+
+        /* Cloud 3 */
+        @keyframes clouds-loop-3 {
+            to {
+                background-position: -1579px 0;
+            }
+        }
+        .clouds-3 {
+            background-image: url("https://s.cdpn.io/15514/clouds_3.png");
+            animation: clouds-loop-3 17s infinite linear;
+        }
+
+        body {
+            /* background: url('https://c1.wallpaperflare.com/preview/725/423/706/sky-blue-blue-sky-background.jpg'); */
+            /* background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgb(85, 162, 251)), color-stop(100%, rgb(52, 144, 249))); 
+            background: -moz-linear-gradient(lightblue, rgb(85, 162, 251));
+            background: -webkit-linear-gradient(lightblue, rgb(85, 162, 251));*/
+            background: linear-gradient( rgb(59, 150, 253), lightblue); 
+            /* background-color: rgb(64, 178, 249); */
+            vertical-align: middle;
+            /* background-size: 100% 100%; */
+            background-attachment: fixed;  /* filling the whole page with colour */
+            word-wrap: break-word;
+            word-break: normal;
+        }
+
+        .clouds {
+            filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
+            opacity: 0.4;
+            pointer-events: none;
+            position: absolute;
+            overflow: hidden;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+        }
+
+        .clouds-1, .clouds-2, .clouds-3 {
+            background-repeat: repeat-x;
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            height: 500px;
+        }
+
+        /* greeting */
+        #greeting{
+            position: relative; 
+            margin-top: 100px; 
+            font-family: 'Brush Script MT', cursive; 
+            font-size: 70px;
+            color: blue;
+        }
+
+        /* For setting div */
+        #div_row_intro{
+            position: relative;
+            margin-top: 120px; 
+            height: 180px; 
+            border-radius: 20px;
+            /* text-align: center; */
+            background-color: rgba(87, 6, 248, 0.1);
+            overflow: hidden;
+            
+        }
+
+        .div_row_links{
+            position: relative;
+            height: 200px; 
+            border-radius: 20px;
+            /* text-align: center; */
+            /* margin: auto;  */
+            background-color: rgba(87, 6, 248, 0.1);
+            overflow: hidden;
+        }
+
+        /* hover: grow, color */
+        .grow { 
+            transition: transform .2s;
+            /* margin: 0 auto;  */
+        }
+
+        .grow:hover { 
+            transform: scale(1.1); 
+        }
+
+        .color:hover, .color:active {
+            background: rgba(6, 67, 252, 0.3);
+            color: lightblue;
+        }
+
+        .p_font{
+            font-size: 45px;
+            text-align: center; 
+        }
+
+    </style>
 
 </head>
 
-<body class="d-flex flex-column min-vh-100" >
-
-    <!-- Container 1: introduction -->
-    <div class="container my-5 w-100"> 
-        <div class="row mx-3 justify-content-center text-center div1"> 
-            <h2> introduction </h2>
-            <p> xxxxxxxxxxxxxxxx </p>
+<body>
+    
+    <!-- Container 1: Clouds -->
+    <div class="container-fluid">
+        <div class='clouds'>
+            <div class='clouds-1'></div>
+            <div class='clouds-2'></div>
+            <div class='clouds-3'></div>
         </div>
     </div>
 
-    <!-- Container 2: links --> 
-    <div class="container mb-5 w-100"> 
-        <div class="row justify-content-center text-center" style="min-height: 60vh;">
+    <div class="container" id="greeting"> 
+        <div class="row mx-1 justify-content-center text-center"> 
+            <p> Welcome </p>
+        </div>
+    </div>
 
+    <!-- Container 2: introdution -->
+    <div class="container justify-content-center">
+        <div class="row mx-1"> 
+            <div class="col-md-12 col-xs-12 col-sm-12 justify-content-center" id="div_row_intro">
+                <p class="p_font"> introduction </p> 
+                <p>  
+                    xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Container 3: links -->
+    <div class="container my-3 justify-content-center">
+        <div class="row">  
             <!-- Column 1: map -->
-            <div class="col-md-4 col-xs-4 col-sm-4">
-                <a class="nav-link text-dark" href="map/" name="homeLink">
-                    <div class="row mx-1 div3 ex3">
-                        <h2> map </h2>
-                        <p> xxxxxxxxxxxxxxxx </p>
-                        <img alt="GroupProjectBackup/airMonitor/static/mapbox-icon" 
-                        src="/static/mapbox-icon.png"/>
-                    </div>
-                </a>
-            </div>
- 
+            
+                <div class="col-md-4 col-xs-4 col-sm-4 my-2">
+                    <a class="nav-link text-dark" href="map/" name="homeLink">
+                        <div class="row div_row_links grow color">
+                            <p class="p_font"> sensor map </p> 
+                            <p> xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx </p>
+                        </div>
+                    </a>
+                </div> 
+                
+
             <!-- Column 2: sensor list -->
-            <div class="col-md-4 col-xs-4 col-sm-4">
+            <div class="col-md-4 col-xs-4 col-sm-4 my-2">
                 <a class="nav-link text-dark" href="/sensorListPage" name="listLink">
-                    <div class="row mx-1 div3 ex3" >
-                        <h2> sensor list </h2>
-                        <p> xxxxxxxxxxxxxxxx </p>
-                        <img src="/static/mapbox-icon.png" alt="image">  
+                    <div class="row div_row_links grow color">
+                        <p class="p_font"> sensor list </p> 
+                        <p> xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx </p>
                     </div>
                 </a>
-            </div>
+            </div> 
 
             <!-- Column 3: comparisons -->
-            <div class="col-md-4 col-xs-4 col-sm-4 ">
+            <div class="col-md-4 col-xs-4 col-sm-4 my-2">
                 <a class="nav-link text-dark" href="/comparisons" name="comparisonLink">
-                    <div class="row mx-1 div3 ex3">
-                        <h2> comparisons </h2>
-                        <p> xxxxxxxxxxxxxxxx </p>
-                        <img src="/static/mapbox-icon.png" alt="image">
+                    <div class="row div_row_links grow color">
+                        <p class="p_font"> comparison </p> 
+                        <p> xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx </p>
                     </div>
                 </a>
-            </div>
-            
+            </div> 
         </div>
-
     </div>
-
-    <footer class="mt-auto p-3 text-center text-white" style="background-color: black;"> 
-       @ ECHO 2022 
-    </footer>
-
-</body>
-
+    
+</body>  
 </html>
