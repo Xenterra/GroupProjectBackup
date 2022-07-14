@@ -118,8 +118,10 @@
 <div class="container my-3 display" id="Archive">
 	<div class="tab">
 			{% for date in historyRange %} 
-			<button class="tablinks" onclick="openCity(event, '{{date.0}}')" id="defaultOpen">{{date.0}}</button>
+			<button class="tablinks" onclick="openDate(event, '{{date.0}}')" id="defaultOpen">{{date.0}}</button>
 			{% endfor %}
+			<button class="tablinks" onclick="openDate(event, 'Past')">Past Data</button>
+
 	</div>
 	
 	{% for x in historyRange %} 
@@ -147,9 +149,29 @@
 		</table>
 	</div>
 	{% endfor %}
-
+	<div id='Past' class="tabcontent">
+		<table class="table table-striped table-bordered table-hover align-middle caption-top w-100" style="text-align: center;">
+			<caption style="text-align:center; color: black;"> <h1>Sensor Data Table </h1> </caption>
+			<thead style="background-color: darkgreen; color: white;">
+				<tr>
+					<th> Past Date </th>
+					<th> Average Humidity </th>
+					<th> Average Temperature </th>
+				</tr>
+			</thead>
+			<tbody> 
+				{% for sensor in results2 %} 
+				<tr style="text-align: center;">
+					<td> {{ sensor.pastDate.date }} </td> 
+					<td> {{ sensor.dailyAverageHumidity }} </td> 
+					<td> {{ sensor.dailyAverageTemperature }} </td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
 <script>
-	function openCity(evt, cityName) {
+	function openDate(evt, cityName) {
 	  var i, tabcontent, tablinks;
 	  tabcontent = document.getElementsByClassName("tabcontent");
 	  for (i = 0; i < tabcontent.length; i++) {
@@ -168,7 +190,7 @@
 </script>
 	<div class="tab">
 		{% for date in historyRange %} 
-		<button class="tablinks" onclick="openCity(event, '{{date.0}}')" id="defaultOpen">{{date.0}}</button>
+		<button class="tablinks" onclick="openDate(event, '{{date.0}}')" id="defaultOpen">{{date.0}}</button>
 		{% endfor %}
 	</div>
 	<br>

@@ -26,7 +26,8 @@ jobs:
         
     - name: Run app!
       run: python manage.py DataPull
-      
+      run: python manage.py OldData_Average
+
     - name: Git config
       run: |
         git config user.name "GitHub Actions"

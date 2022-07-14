@@ -16,6 +16,9 @@ class Command(BaseCommand):
 		#BME280Reading.objects.all().delete()
 		#SDS011Reading.objects.all().delete()
 		#DHT22Reading.objects.all().delete()
+		#PastBME280Readings.objects.all().delete()
+		#PastDHT22Readings.objects.all().delete()
+		#PastSDS011Readings.objects.all().delete()
 
 		json_url = requests.get("https://raw.githubusercontent.com/scharlau/Air_Aberdeen_Back_End/main/data/bq_data.json")
 		data = json_url.json()

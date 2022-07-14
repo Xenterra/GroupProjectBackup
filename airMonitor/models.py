@@ -49,3 +49,42 @@ class SDS011Reading(models.Model):
 		db_table = "SDS011Reading"
 		verbose_name = "SDS011"
 		verbose_name_plural = "SDS011s"
+
+
+
+class PastBME280Readings(models.Model):
+	uniqueID = models.IntegerField(primary_key=True)
+	sensorID = models.ForeignKey("sensorList", on_delete=models.CASCADE)
+	pastDate = models.DateTimeField()
+	dailyAverageHumidity = models.FloatField()
+	dailyAverageTemperature = models.FloatField()
+	dailyAveragePressure = models.FloatField()
+
+	class Meta:
+		db_table = "PastBME280Readings"
+		verbose_name = "PastBME280"
+		verbose_name_plural = "PastBME280s"
+
+class PastDHT22Readings(models.Model):
+	uniqueID = models.IntegerField(primary_key=True)
+	sensorID = models.ForeignKey("sensorList", on_delete=models.CASCADE)
+	pastDate = models.DateTimeField()
+	dailyAverageHumidity = models.FloatField()
+	dailyAverageTemperature = models.FloatField()
+
+	class Meta:
+		db_table = "PastDHT22Readings"
+		verbose_name = "PastDHT22"
+		verbose_name_plural = "PastDHT22s"
+
+class PastSDS011Readings(models.Model):
+	uniqueID = models.IntegerField(primary_key=True)
+	sensorID = models.ForeignKey("sensorList", on_delete=models.CASCADE)
+	pastDate = models.DateTimeField()
+	dailyAverageP1 = models.FloatField()
+	dailyAverageP2 = models.FloatField()
+
+	class Meta:
+		db_table = "PastSDS011Readings"
+		verbose_name = "PastSDS011"
+		verbose_name_plural = "PastSDS011s"

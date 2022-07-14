@@ -3,7 +3,7 @@ import json
 from datetime import datetime, timedelta
 import pytz
 from django.shortcuts import  render, redirect
-from airMonitor.models import sensorList, BME280Reading, SDS011Reading, DHT22Reading
+from airMonitor.models import sensorList, BME280Reading, SDS011Reading, DHT22Reading, PastBME280Readings, PastDHT22Readings, PastSDS011Readings
 # Create your views here.
 
 def index(request):
@@ -88,11 +88,13 @@ def sensor(request):
 			p2List = []
 			labelList = []
 			results = SDS011Reading.objects.filter(sensorID = criteria)
+			results2 = PastSDS011Readings.objects.filter(sensorID = criteria)
 			for x in results:
 				p1List.append(x.P1)
 				p2List.append(x.P2)
 				labelList.append((x.timestamp).strftime("%d/%m/%Y, %H:%M:%S"))
 			context = 	{	'results': results,
+							'results2': results2,
 							'p1List': p1List,
 							'p2List': p2List,
 							'labelList': labelList,
@@ -113,12 +115,14 @@ def sensor(request):
 			pressList = []
 			labelList = []
 			results = BME280Reading.objects.filter(sensorID = criteria)
+			results2 = PastBME280Readings.objects.filter(sensorID = criteria)
 			for x in results:
 				tempList.append(x.temperature)
 				humList.append(x.humidity)
 				pressList.append(x.pressure)
 				labelList.append((x.timestamp).strftime("%d/%m/%Y, %H:%M:%S"))
 			context = 	{	'results': results,
+							'results2': results2,
 							'humList': humList,
 							'tempList': tempList,
 							'pressList': pressList,
@@ -140,12 +144,14 @@ def sensor(request):
 			humList = []
 			labelList = []
 			results = DHT22Reading.objects.filter(sensorID = criteria )
+			results2 = PastDHT22Readings.objects.filter(sensorID = criteria)
 			for x in results:
 				tempList.append(x.temperature)
 				humList.append(x.humidity)
 				labelList.append((x.timestamp).strftime("%d/%m/%Y, %H:%M:%S"))
 			
 			context = 	{	'results' : results,
+							'results2': results2,
 							'humList' : humList,
 							'tempList' : tempList,
 							'labelList' : labelList,
