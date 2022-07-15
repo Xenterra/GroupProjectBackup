@@ -24,8 +24,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         
-    - name: Run app!
+    - name: Pull New Data!
       run: python manage.py DataPull
+      
+    - name: Clear Old Data 
       run: python manage.py OldData_Average
 
     - name: Git config
