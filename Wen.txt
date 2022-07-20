@@ -33,3 +33,17 @@ Week 06
 19) 30-06-2022, Thu., mob programming, pulling live data to the Sensor page
 20) 01-07-2022, Fri., updating all pages with Shi and Yang
                       mob programming, getting historic data from Bruce's file 
+
+Week 07 
+21) 06-07-2022, Wed., mob programming, automation setting
+22) 07-07-2022, Thu., mob programming, automation fixed 
+23) 08-07-2022, Fri., mob programming, landing page design 
+
+Week 08 
+24) 12-07-2022, Tue., mob programming, pagination (sensor.html) 
+25) 13-07-2022, Wed., discussing the time to meet in person on Friday
+26) 14-07-2022, Thu., mob programming, getting average past data (sensor.html) 
+27) 15-07-2022, Fri., in-person meeting for final report (planning)
+
+Week 09 
+28) 19-07-2022, Tue., working on reports (reading reports and searching for academic articles) 
