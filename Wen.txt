@@ -1,49 +1,52 @@
 Week 01 
 (mainly planning) 
-01) 23~24-05-2022, Mon.~Tue., planning (miro) 
-02) 25-05-2022, Wed., planning (miro), mob programming (building app "airMonitor" on Codio) 
-03) 26~27-05-2022, Thu.~Fri., planning (miro) ??, mob programming (Heroku deployment) ?? 
+01) 23-24/05/2022, Mon.~Tue., planning (miro) 
+02) 25/05/2022, Wed., planning (miro), mob programming (building app "airMonitor" on Codio) 
+03) 26-27/05/2022, Thu.~Fri., planning (miro) ??, mob programming (Heroku deployment) ?? 
 
 Week 02
-04) 31-05-2022, Tue., mob programming (setting pages?? on Codio) 
-05) 01-06-2022, Wed., pair programming with Serwa, map page design (index.html)
-06) 02-06-2022, Thu., pair programming with Serwa, map page design (index.html)
-07) 03-06-2022, Fri., pair programming with Serwa, map page design (index.html) 
+04) 31/05/2022, Tue., mob programming (setting pages?? on Codio) 
+05) 01/06/2022, Wed., pair programming with Serwa, map page design (index.html)
+06) 02/06/2022, Thu., pair programming with Serwa, map page design (index.html)
+07) 03/06/2022, Fri., pair programming with Serwa, map page design (index.html) 
 
 Week 03 
 (mainly waiting for data + writing individual report) 
-08) 08-06-2022, Wed., mob programming, insert a map on index.html
-09) 10-06-2022, Fri., programming, map page and sensor_list page design (index.html, sensorListPage.html)
+08) 08/06/2022, Wed., mob programming, insert a map on index.html
+09) 10/06/2022, Fri., programming, map page and sensor_list page design (index.html, sensorListPage.html)
 
 Week 04
-10) 14-06-2022, Tue., mob programming, get data from .json provided by Bruce (project tutor)
-11) 15-06-2022, Wed., pair programming with Serwa, comparisons page design (comparisons.html),
+10) 14/06/2022, Tue., mob programming, get data from .json provided by Bruce (project tutor)
+11) 15/06/2022, Wed., pair programming with Serwa, comparisons page design (comparisons.html),
                 updating map page and sensor_list page (index.html, sensorListPage.html)
-12) 16-06-2022, Thu., discussion with Serwa, map page and comparisons page (index.html, comparisons.html) 
-13) 17-06-2022, Fri., mob programming, inserting charts to sensor_detail page and comparisons page (sensor.html x 3 types of sensors, comparisons.html) 
+12) 16/06/2022, Thu., discussion with Serwa, map page and comparisons page (index.html, comparisons.html) 
+13) 17/06/2022, Fri., mob programming, inserting charts to sensor_detail page and comparisons page (sensor.html x 3 types of sensors, comparisons.html) 
 
 Week 05
-14) 22-06-2022, Wed., mob programming, BDD testing setup 
-15) 23-06-2022, Thu., BDD scenarios (miro), BDD testing (Codio) 
-16) 24-06-2022, Fri., mob programming, redesigning sensor_detail page (sensor.html x 3 types of sensors) 
+14) 22/06/2022, Wed., mob programming, BDD testing setup 
+15) 23/06/2022, Thu., BDD scenarios (miro), BDD testing (Codio) 
+16) 24/06/2022, Fri., mob programming, redesigning sensor_detail page (sensor.html x 3 types of sensors) 
 
 Week 06 
-17) 27-06-2022, Mon., updating all pages, mainly removing background colour
-18) 29-06-2022, Wed., mob programming, inserting small maps in Sensor page and Comparisons page
-19) 30-06-2022, Thu., mob programming, pulling live data to the Sensor page
-20) 01-07-2022, Fri., updating all pages with Shi and Yang
+17) 27/06/2022, Mon., updating all pages, mainly removing background colour
+18) 29/06/2022, Wed., mob programming, inserting small maps in Sensor page and Comparisons page
+19) 30/06/2022, Thu., mob programming, pulling live data to the Sensor page
+20) 01/07/2022, Fri., updating all pages with Shi and Yang
                       mob programming, getting historic data from Bruce's file 
 
 Week 07 
-21) 06-07-2022, Wed., mob programming, automation setting
-22) 07-07-2022, Thu., mob programming, automation fixed 
-23) 08-07-2022, Fri., mob programming, landing page design 
+21) 06/07/2022, Wed., mob programming, automation setting
+22) 07/07/2022, Thu., mob programming, automation fixed 
+23) 08/07/2022, Fri., mob programming, landing page design 
 
 Week 08 
-24) 12-07-2022, Tue., mob programming, pagination (sensor.html) 
-25) 13-07-2022, Wed., discussing the time to meet in person on Friday
-26) 14-07-2022, Thu., mob programming, getting average past data (sensor.html) 
-27) 15-07-2022, Fri., in-person meeting for final report (planning)
+24) 12/07/2022, Tue., mob programming, pagination (sensor.html) 
+25) 13/07/2022, Wed., discussing the time to meet in person on Friday
+26) 14/07/2022, Thu., mob programming, getting average past data (sensor.html) 
+27) 15/07/2022, Fri., in-person meeting for final report (planning)
 
 Week 09 
-28) 19-07-2022, Tue., working on reports (reading reports and searching for academic articles) 
+28) 19-22/07/2022, Tue.-Fri., working on reports 
+
+Week 10 
+29) 27/07/2022, Wed., text on the landing page (landing.html), working with Serwa and Tongwei
