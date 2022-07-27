@@ -28,31 +28,12 @@ body{
     padding: 10px;
 }
 
-
-/* Table fixed header and scrollable body */
-/* code from https://stackoverflow.com/questions/21168521/table-fixed-header-and-scrollable-body */
-.tableFixHead{
-    overflow: auto; 
-    height: 235px; 
-}
-.tableFixHead, thead, th {
-    position: sticky; 
-    top: 0; 
-    z-index: 1; 
-}
-/* Just common table stuff. Really. */
-table{
-    border-collapse: collapse; 
-    width: 100%;
-}
-th, td{
-    padding: 8px 16px;
-    background:#eee;
-}
-th{
-    background:#eee;
-}
 .logo{
     background-color: white;
     padding:10px;
+}
+
+.links:hover, .links:active {
+    background: rgba(224, 224, 224, 0.3);
+    /* color: rgb(218, 248, 218); */
 }

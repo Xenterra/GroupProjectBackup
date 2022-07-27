@@ -9,134 +9,7 @@
 
     <!-- Latest compiled and minified CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    
-    <style>
-        /* CSS code for dynamic background image from and based on https://codepen.io/vavik96/pen/vEdMXM */
-        /* @import url(https://fonts.googleapis.com/css?family=Oswald); */
-
-        /* Cloud 1 */
-        @keyframes clouds-loop-1 {
-            to {
-                background-position: -1000px 0;
-            }
-        }
-        .clouds-1 {
-            background-image: url("https://s.cdpn.io/15514/clouds_2.png");
-            /* background-color: rgb(85, 162, 251); */
-            animation: clouds-loop-1 20s infinite linear;
-        }
-
-        /* Cloud 2 
-        @keyframes clouds-loop-2 {
-            to {
-                background-position: -1000px 0;
-            }
-        }
-        .clouds-2 {
-            background-image: url("https://s.cdpn.io/15514/clouds_1.png");
-            animation: clouds-loop-2 15s infinite linear;
-
-        }*/
-
-        /* Cloud 3 */
-        @keyframes clouds-loop-3 {
-            to {
-                background-position: -1579px 0;
-            }
-        }
-        .clouds-3 {
-            background-image: url("https://s.cdpn.io/15514/clouds_3.png");
-            animation: clouds-loop-3 17s infinite linear;
-        }
-
-        body {
-            /* background: url('https://c1.wallpaperflare.com/preview/725/423/706/sky-blue-blue-sky-background.jpg'); */
-            /* background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgb(85, 162, 251)), color-stop(100%, rgb(52, 144, 249))); 
-            background: -moz-linear-gradient(lightblue, rgb(85, 162, 251));
-            background: -webkit-linear-gradient(lightblue, rgb(85, 162, 251));*/
-            background: linear-gradient( rgb(59, 150, 253), lightblue); 
-            /* background-color: rgb(64, 178, 249); */
-            vertical-align: middle;
-            /* background-size: 100% 100%; */
-            background-attachment: fixed;  /* filling the whole page with colour */
-            word-wrap: break-word;
-            word-break: normal;
-        }
-
-        .clouds {
-            filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
-            opacity: 0.4;
-            pointer-events: none;
-            position: absolute;
-            overflow: hidden;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 100%;
-        }
-
-        .clouds-1, .clouds-2, .clouds-3 {
-            background-repeat: repeat-x;
-            position: absolute;
-            top: 0;
-            right: 0;
-            left: 0;
-            height: 500px;
-        }
-
-        /* greeting */
-        #greeting{
-            position: relative; 
-            margin-top: 100px; 
-            font-family: 'Brush Script MT', cursive; 
-            font-size: 70px;
-            color: blue;
-        }
-
-        /* For setting div */
-        #div_row_intro{
-            position: relative;
-            margin-top: 120px; 
-            height: 180px; 
-            border-radius: 20px;
-            /* text-align: center; */
-            background-color: rgba(87, 6, 248, 0.1);
-            overflow: hidden;
-            
-        }
-
-        .div_row_links{
-            position: relative;
-            height: 200px; 
-            border-radius: 20px;
-            /* text-align: center; */
-            /* margin: auto;  */
-            background-color: rgba(87, 6, 248, 0.1);
-            overflow: hidden;
-        }
-
-        /* hover: grow, color */
-        .grow { 
-            transition: transform .2s;
-            /* margin: 0 auto;  */
-        }
-
-        .grow:hover { 
-            transform: scale(1.1); 
-        }
-
-        .color:hover, .color:active {
-            background: rgba(6, 67, 252, 0.3);
-            color: lightblue;
-        }
-
-        .p_font{
-            font-size: 45px;
-            text-align: center; 
-        }
-
-    </style>
+    <link rel="stylesheet" type="text/css" href="/static/landing.css">
 
 </head>
 
@@ -158,12 +31,17 @@
     </div>
 
     <!-- Container 2: introdution -->
-    <div class="container justify-content-center">
-        <div class="row mx-1"> 
+    <div class="container justify-content-center col-container">
+        <div class="row"> 
             <div class="col-md-12 col-xs-12 col-sm-12 justify-content-center" id="div_row_intro">
-                <p class="p_font"> introduction </p> 
-                <p>  
-                    xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                <h1 style="text-align: center;"> Introduction </h1> 
+                <p style="text-align:center; font-size: 20px;"> 
+                    The purpose of the websites is to help users have access to live and historical data of air quality monitoring sensors in Aberdeen. 
+                    The functionalities include: <br>
+                    - Access to various sensors location on a map <br>     
+                    - Access to individual sensor details <br> 
+                    - Access to live data, Past data and Data charts <br>  
+                    - The ability to compare different sensors <br>
                 </p>
             </div>
         </div>
@@ -171,37 +49,37 @@
 
 
     <!-- Container 3: links -->
-    <div class="container my-3 justify-content-center">
+    <div class="container my-3 justify-content-center col-container">
         <div class="row">  
             <!-- Column 1: map -->
             
-                <div class="col-md-4 col-xs-4 col-sm-4 my-2">
-                    <a class="nav-link text-dark" href="map/" name="homeLink">
-                        <div class="row div_row_links grow color">
-                            <p class="p_font"> sensor map </p> 
-                            <p> xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx </p>
-                        </div>
-                    </a>
-                </div> 
+            <div class="col-md-4 col-xs-4 col-sm-4 my-2 me-2 cols div_row_links grow color">
+                <a class="nav-link text-dark" href="map/" name="homeLink">
+                    <h1 style="text-align: center;"> Map </h1> 
+                    <p class="p_font" style="font-size: 20px;"> The page displays a map showing the location of each air monitoring sensor in Aberdeen. 
+                        <strong style="color: red;"> Click </strong> to access the map page. 
+                    </p>
+                </a>
+            </div> 
                 
 
             <!-- Column 2: sensor list -->
-            <div class="col-md-4 col-xs-4 col-sm-4 my-2">
+            <div class="col-md-4 col-xs-4 col-sm-4 my-2 me-2 cols div_row_links grow color">
                 <a class="nav-link text-dark" href="/sensorListPage" name="listLink">
-                    <div class="row div_row_links grow color">
-                        <p class="p_font"> sensor list </p> 
-                        <p> xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx </p>
-                    </div>
+                    <h1 style="text-align: center;"> Sensor List </h1>
+                    <p class="p_font" style="font-size: 20px;"> The page shows a list of all air monitoring sensors with their details.
+                        <strong style="color: red;"> Click </strong> to visit the sensor list page.
+                    </p>
                 </a>
             </div> 
 
             <!-- Column 3: comparisons -->
-            <div class="col-md-4 col-xs-4 col-sm-4 my-2">
+            <div class="col-md-4 col-xs-4 col-sm-4 my-2 cols div_row_links grow color">
                 <a class="nav-link text-dark" href="/comparisons" name="comparisonLink">
-                    <div class="row div_row_links grow color">
-                        <p class="p_font"> comparison </p> 
-                        <p> xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx </p>
-                    </div>
+                    <h1 style="text-align: center;"> Comparisons </h1>
+                    <p class="p_font" style="font-size: 20px;"> Compare and analyse historical data in data charts of different sensors. 
+                        <strong style="color: red;"> Click </strong> to go to the comparisons page.
+                    </p>
                 </a>
             </div> 
         </div>
