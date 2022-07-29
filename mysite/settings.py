@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-y4lzu*bt-s6#$p)b#w!40e$4@(obd6bc53xst#05hn@=14xj4_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*', 'echo-air-sensor.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['*', 'echo-air-sensor.herokuapp.com', 'localhost', 'rapidelectra-heliumspider-2500.codio-box.uk']
 
 
 # Application definition

@@ -46,6 +46,7 @@ def sensor(request):
 	longList = []
 	latList  = []
 	idList = []
+	liveList=[]
 	historyRange = [0,0,0,0,0,0,0]
 
 	now = datetime.now()
@@ -67,13 +68,15 @@ def sensor(request):
 		targetLat = sType[0].latitude
 		url = "https://community-open-weather-map.p.rapidapi.com/weather"
 		querystring = {"q":"Aberdeen","lat":targetLat,"lon":targetLong,"lang":"null","units":"metric"}
+
 		headers = {
 			"X-RapidAPI-Key": "47079ababdmshc4905f943207bedp19acf7jsn5bcb9cf62b22",
 			"X-RapidAPI-Host": "community-open-weather-map.p.rapidapi.com"
 		}
+		
 		response = requests.request("GET", url, headers=headers, params=querystring)
-		rawLiveJSON=response.text
-		liveJSON	= json.loads(rawLiveJSON)
+		rawLiveJSON =response.text
+		liveJSON = json.loads(rawLiveJSON)
 
 		liveTemp	= liveJSON["main"]["temp"]
 		livePress	= liveJSON["main"]["pressure"]
@@ -82,6 +85,10 @@ def sensor(request):
 		liveP2		= liveJSON["wind"]["speed"]+1
 		now = datetime.now(pytz.timezone('Europe/London'))
 		liveTimestamp = now.strftime("%d/%m/%Y %H:%M:%S")
+
+		#for x in liveJSON:
+		#	liveList += x
+		#print(liveList)
 
 		if sType[0].sensorType == "SDS011":
 			p1List = []
