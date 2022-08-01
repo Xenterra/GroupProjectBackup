@@ -66,25 +66,29 @@ def sensor(request):
 
 		targetLong = sType[0].longitude
 		targetLat = sType[0].latitude
-		url = "https://community-open-weather-map.p.rapidapi.com/weather"
-		querystring = {"q":"Aberdeen","lat":targetLat,"lon":targetLong,"lang":"null","units":"metric"}
+		url = "https://weatherapi-com.p.rapidapi.com/current.json"
+
+		querystring = {"q":"57.106,-2.088"}
 
 		headers = {
 			"X-RapidAPI-Key": "47079ababdmshc4905f943207bedp19acf7jsn5bcb9cf62b22",
-			"X-RapidAPI-Host": "community-open-weather-map.p.rapidapi.com"
+			"X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com"
 		}
-		
+
 		response = requests.request("GET", url, headers=headers, params=querystring)
 		rawLiveJSON =response.text
 		liveJSON = json.loads(rawLiveJSON)
 
-		liveTemp	= liveJSON["main"]["temp"]
-		livePress	= liveJSON["main"]["pressure"]
-		liveHumi	= liveJSON["main"]["humidity"]
-		liveP1		= liveJSON["wind"]["speed"]
-		liveP2		= liveJSON["wind"]["speed"]+1
+		liveTemp	= liveJSON["current"]["temp_c"]
+		livePress	= liveJSON["current"]["pressure_mb"]
+		liveHumi	= liveJSON["current"]["humidity"]
+		liveP1		= liveJSON["current"]["wind_mph"]/2
+		liveP2		= (liveJSON["current"]["wind_mph"]+1)/2
 		now = datetime.now(pytz.timezone('Europe/London'))
 		liveTimestamp = now.strftime("%d/%m/%Y %H:%M:%S")
+
+		currentWeather = ""
+		weatherImage = ""
 
 		#for x in liveJSON:
 		#	liveList += x
