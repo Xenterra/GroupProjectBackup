@@ -51,3 +51,6 @@ Week 09
 Week 10 
 29) 27/07/2022, Wed., text on the landing page (landing.html), working with Serwa and Tongwei
 30) 28-29/07/2022, Thu.-Fri., working on final report
+
+Week 11 
+31) 01/08/2022, Mon., working on final report
