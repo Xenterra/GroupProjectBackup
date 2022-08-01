@@ -3,8 +3,21 @@
 {% block title %} SDS011 Sensor {% endblock %}
 
 {% block content %}
-<h1 name="SDSdetailsPage"></h1>
+<style>
+.arrow {
+  border: solid black;
+  border-width: 0 8px 8px 0;
+  display: inline-block;
+  padding: 5px;
+}
 
+.angle {
+  transform: rotate({{windAngle}}deg);
+  -webkit-transform: rotate({{windAngle}}deg);
+}
+</style>
+
+<h1 name="SDSdetailsPage"></h1>
 <!-- Container 1: Sensor location and information -->
 <div class="container"> 
 	<!-- Row 1: sensor information (table) -->
@@ -29,8 +42,8 @@
 					<td> {{ sType.latitude }} </td>
 				</tr>
 				<tr>
-					<th> Location ID </th>
-					<td> {{ sType.location_id }} </td>
+					<th> Location </th>
+					<td> {{ fullLocation }} </td>
 				</tr>
 				<tr>
 					<th> Map Location: </th>
@@ -94,8 +107,22 @@
 <div class="container my-3 display" id="Live">
 	<div class="row">
 		<div class="col table-responsive"> 
+			<caption style="text-align:center; color: black;"> <h1>Current Weather</h1></caption>
+			<table style="text-align: center;">
+				<tr style="text-align: center;">
+					<td rowspan="3"> {{currentWeather}} </td> 
+					<td rowspan="3"><img src={{weatherImage}} alt="Logo" style="width:150px;"></td>
+					<td width="250px"> Wind Speed: {{windSpeed}}kph </td>
+					<td width="250px"> Precipitation:{{precipitation}}mm</td>
+				</tr>
+				<tr> 
+					<td><p><i class="arrow angle"></i></p> </td>
+				</tr>
+				<tr> 
+					<td>Wind Direction: {{windDirection}} </td>
+				</tr>
+			</table>
 			<table class="table table-striped table-bordered table-hover align-middle caption-top w-100" style="text-align: center;">
-				<caption style="text-align:center; color: black;"> <h1>Current Weather</h1></caption>
 				<thead style="background-color: darkgreen; color: white;">
 					<tr>
 						<th> Timestamp </th>
@@ -111,6 +138,7 @@
 					</tr>
 				</tbody>
 			</table>
+			
 		</div>
 	</div>
 </div>

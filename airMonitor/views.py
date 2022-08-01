@@ -79,6 +79,8 @@ def sensor(request):
 		rawLiveJSON =response.text
 		liveJSON = json.loads(rawLiveJSON)
 
+		#print(liveJSON)
+
 		liveTemp	= liveJSON["current"]["temp_c"]
 		livePress	= liveJSON["current"]["pressure_mb"]
 		liveHumi	= liveJSON["current"]["humidity"]
@@ -86,9 +88,14 @@ def sensor(request):
 		liveP2		= (liveJSON["current"]["wind_mph"]+1)/2
 		now = datetime.now(pytz.timezone('Europe/London'))
 		liveTimestamp = now.strftime("%d/%m/%Y %H:%M:%S")
-
-		currentWeather = ""
-		weatherImage = ""
+		
+		fullLocation = ""+str(liveJSON["location"]["name"])+", "+str(liveJSON["location"]["region"])+", "+str(liveJSON["location"]["country"])+""
+		currentWeather = liveJSON["current"]["condition"]["text"]
+		weatherImage = liveJSON["current"]["condition"]["icon"]
+		windSpeed 		= liveJSON["current"]["wind_kph"]
+		windDirection = liveJSON["current"]["wind_dir"]
+		windAngle = 225+int(liveJSON["current"]["wind_degree"])
+		precipitation = liveJSON["current"]["precip_mm"]
 
 		#for x in liveJSON:
 		#	liveList += x
@@ -118,6 +125,13 @@ def sensor(request):
 							'liveP2' : liveP2,
 							'historyRange':historyRange,
 							'liveTimestamp':liveTimestamp,
+							'currentWeather' : currentWeather,
+							'weatherImage' : weatherImage,
+							'windSpeed':windSpeed,
+							'windDirection':windDirection,
+							'precipitation':precipitation,
+							'fullLocation':fullLocation,
+							'windAngle':windAngle,
 						}
 			return render(request, 'airMonitor/sensor_SDS.html', context)
 		elif sType[0].sensorType == "BME280":
@@ -148,6 +162,15 @@ def sensor(request):
 							'liveHumi': liveHumi,
 							'historyRange':historyRange,
 							'liveTimestamp':liveTimestamp,
+							'historyRange':historyRange,
+							'liveTimestamp':liveTimestamp,
+							'currentWeather' : currentWeather,
+							'weatherImage' : weatherImage,
+							'windSpeed':windSpeed,
+							'windDirection':windDirection,
+							'precipitation':precipitation,
+							'fullLocation':fullLocation,
+							'windAngle':windAngle,
 						}
 			return render(request, 'airMonitor/sensor_BME.html', context)
 		elif sType[0].sensorType == "DHT22":
@@ -175,6 +198,13 @@ def sensor(request):
 							'liveHumi': liveHumi,
 							'historyRange':historyRange,
 							'liveTimestamp':liveTimestamp,
+							'currentWeather' : currentWeather,
+							'weatherImage' : weatherImage,
+							'windSpeed':windSpeed,
+							'windDirection':windDirection,
+							'precipitation':precipitation,
+							'fullLocation':fullLocation,
+							'windAngle':windAngle,
 						}
 			return render(request, 'airMonitor/sensor_DHT.html', context)
 		else:
