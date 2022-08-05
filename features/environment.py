@@ -27,7 +27,7 @@ chrome_options.add_argument("--proxy-bypass-list=*")
 class BaseTestCase(LiveServerTestCase):
 	@classmethod
 	def setUpClass(cls):
-		sensorList.objects.create(sensorID="134256724", longitude="-1", latitude="1", sensorType="BME280", location_id = "1234").save()
+		sensorList.objects.create(sensorID="134256724", longitude="57.1499", latitude="-2.0938", sensorType="BME280", location_id = "1234").save()
 		BME280Reading.objects.create(uniqueID=1, sensorID=sensorList.objects.get(sensorID=134256724),  timestamp="2021-01-01T00:00:01", humidity=100.0, temperature = 13.87, pressure= 100401.97).save()
 		super(BaseTestCase, cls).setUpClass()
  	 	 

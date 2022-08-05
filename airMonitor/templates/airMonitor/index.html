@@ -47,13 +47,13 @@
                         sensorHTML1 = '<h2>'.concat(sensorHTML)
                         
                         finalHTML = sensorHTML.concat(textHTML2)
-
                         popup = new mapboxgl.Popup({ offset: 25 })
                         .setHTML(finalHTML);
                         marker = new mapboxgl.Marker()
                         .setLngLat([longArray[r],latArray[r]])
-                        .setPopup(popup)
-                        .addTo(map);
+                        .setPopup(popup);
+                        //marker.set("name", r);
+                        marker.addTo(map);
                     }
                 </script>	
             </div> 

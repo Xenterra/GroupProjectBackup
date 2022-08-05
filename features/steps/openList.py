@@ -3,6 +3,7 @@ from urllib.parse import urljoin, urlparse
 from behave import given, when, then, model
 from django.conf import settings
 from django.shortcuts import resolve_url
+from selenium.webdriver.common.by import By
 
 # Scenario 1: Get a list of all sensors in the system
 @given(u'we want to view the list of sensors')
@@ -21,7 +22,7 @@ def list_page_opens(context):
 	assert 'listPage' in context.browser.page_source 
 
 
-# Scenario 2: Get details of one sensor 
+# Scenario 2: Get details of one sensor
 @given(u'I want to find out more details of one sensor in the system')
 def user_on_index_page(context):
 	base_url = urllib.request.url2pathname(context.test_case.live_server_url)

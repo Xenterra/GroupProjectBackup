@@ -18,7 +18,6 @@ def index(request):
 			longList.append(x.longitude)
 			latList.append(x.latitude)
 		lLength = len(idList)
-
 		context = 	{	'sensors'	: sensors,
 						'idList' 	: idList,
 						'longList'	: longList,
@@ -33,7 +32,6 @@ def index(request):
 		longList.append(x.longitude)
 		latList.append(x.latitude)
 	lLength = len(idList)
-
 	context = 	{	'results'	: results,
 					'idList' 	: idList,
 					'longList'	: longList,
@@ -68,7 +66,7 @@ def sensor(request):
 		targetLat = sType[0].latitude
 		url = "https://weatherapi-com.p.rapidapi.com/current.json"
 
-		querystring = {"q":"57.106,-2.088"}
+		querystring = {"q":str(targetLat)+","+str(targetLong)}
 
 		headers = {
 			"X-RapidAPI-Key": "47079ababdmshc4905f943207bedp19acf7jsn5bcb9cf62b22",
