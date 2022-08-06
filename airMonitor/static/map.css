@@ -13,27 +13,29 @@
     color: black;
 }
 
+/* for all the web pages */
 body{
-    background-color:rgb(180, 255, 205);
-    /* background-image: linear-gradient(to bottom, green, rgb(174, 247, 78)); */
+    background-color:rgb(196, 250, 214);
     text-align: center;
 }
 
+/* for centering the map horizontally and vertically on the map page */
 .center01 {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    /* border: 5px solid #FFFF00; */
     padding: 10px;
 }
 
+/* for logo on the base.html */
 .logo{
     background-color: white;
     padding:10px;
 }
 
+/* for links in the navigation bar on base.html */
 .links:hover, .links:active {
-    background: rgba(224, 224, 224, 0.3);
-    /* color: rgb(218, 248, 218); */
+    background: rgba(224, 224, 224, 0.3); 
 }
+

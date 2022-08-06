@@ -3,11 +3,12 @@
 {% block title %} Air Monitor {% endblock %}
 
 {% block content %}
+
 <h1 name="homePage"></h1>
-<!-- container(s) -->
 
 <!-- Container 1: map -->
 <div class="container text-center">
+    
     <!-- Row 1: map title -->
     <div class="row">
         <h2 style="text-align:center; color: black;"> All Sensors on the Map </h2>
@@ -16,7 +17,6 @@
     <!-- Row 2: map -->
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
-            <!-- "center01" for centering the map horizontally and vertically-->
             <div id='map' style='width: 100%; height: 700px;' class="center01"> 
                 <script>
                     mapboxgl.accessToken = 'pk.eyJ1IjoieGVudGVycmEiLCJhIjoiY2w0NW4wOHBzMDA3NDNrczA5bHVwaHZqbyJ9.-vV70Us_kN66fPKzCGSLxg';
@@ -60,79 +60,9 @@
         </div>
     </div>
     
-    <!-- for margin between the map and the footer -->
+    <!-- margin between the map and the footer -->
     <br>
 
 </div>
-
-<!-- Container 2: search and results 
-<div class="container my-3">
-    <div class="row"> 
-        
-        <div class="col-md-3" style="text-align: center;"> 
-            <form action="" method="post">
-                {% csrf_token %}
-                
-                <div class="row">
-                    <h4> Quick Search </h4>
-                </div>
-                
-                <div class="row">
-                    <div class="col-md-4">
-                        <label for="sID_1" class="col-form-label"> Sensor ID: </label>
-                    </div>
-                    <div class="col-md-4 align-self-center">
-                        <input type="text" name="sensorID" placeholder="Sensor ID" class="w-100" required>
-                    </div>
-                    <div class="col">
-                        <button type="submit" class="btn btn-primary"> Search </button>
-                    </div>
-                </div>
-            </form> 
-        </div>
-
-        
-        <div class="col" style="text-align: center;">
-            
-            <div class="row" >
-                <h4> Search Results </h4>
-            </div>
-            
-            <div class="row"> 
-                {% if sensors %}
-                <table class="table table-striped table-hover align-middle caption-top">
-                    
-                    <thead class="table-secondary">
-                        <tr>
-                            <th> Sensor ID </th>
-                            <th> Longitude </th>
-                            <th> Latitude </th>
-                            <th> Install Date </th>
-                            <th> Details </th>
-                        </tr>
-                    </thead>
-                    <tbody> 
-                        {% for result in sensors %}
-                        <tr style="text-align: center;"> 
-                            <td> <b>{{result.sensorID}}</b> </td> 
-                            <td> {{result.longitude}} </td> 
-                            <td> {{result.latitude}} </td> 
-                            <td> {{result.installDate}} </td>
-                            <td>
-                                <form method="POST" action="/sensor/">
-                                    {% csrf_token %}
-                                    <button class="selectButton btn btn-primary" id="Selection" name="Selection" value={{ result.sensorID }} >More Details</button>
-                                </form>
-                            </td>	
-                        </tr>
-                        {% endfor %} 
-                    </tbody>
-                </table>
-                {% endif %}
-            </div>
-        </div>
-    </div> 
-</div> -->
-
 
 {% endblock %}
