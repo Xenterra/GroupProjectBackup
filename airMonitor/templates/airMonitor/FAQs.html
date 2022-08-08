@@ -1,0 +1,180 @@
+{% extends 'base.html' %} 
+
+{% block title %} Sensor List {% endblock %}
+
+{% block content %}
+<h1 name="FAQs"></h1>
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/FAQs.css">
+</head>
+
+<div class="container-fluid bg-white">
+	<div class="row py-2">
+		<div class="col-lg-9 mx-auto text-white text-center">
+			 <h1 class="display-4 text-dark">FAQ</h1>
+		</div>
+	</div>
+  <!-- accordion -->
+    <div class="row">
+		<div class="col-lg-9 mx-auto">
+			<div class="accordion" id="accordion">
+	  <!-- accordion-itemQ1 -->
+	  <div class="accordion-item">
+		  <h6 class="accordion-header" id="headingQ1">
+			  <button class="accordion-button text-dark text-uppercase " type="button" data-bs-toggle="collapse" data-bs-target="#collapseQ1" aria-expanded="true" aria-controls="collapseQ1">
+        <span class="span">Q. </span> What is the purpose of the website? 
+      </button>
+      </H6>
+      <div id="collapseQ1" class="accordion-collapse collapse show" aria-labelledby="headingQ1" data-bs-parent="#accordion">
+      <div class="accordion-body">
+            <P style="text-align:left">  The purpose of the websites is to help users access historical data of air quality monitoring sensors and analytics in the form of Data charts in Aberdeen to see trends.<br> The historical data is retrieved from an existing application which collects air monitoring sensor details. 
+			</P>
+	  </div>
+    </div>
+    </div>
+	<!-- accordion-itemQ2 -->
+  <div class="accordion-item">
+    <h6 class="accordion-header" id="headingQ2">
+      <button class="accordion-button collapsed text-dark text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#collapseQ2" aria-expanded="false" aria-controls="collapseQ2">
+        <span class="span">Q. </span>Which user group is this website of benefit to? 
+      </button>
+    </h6>
+    <div id="collapseQ2" class="accordion-collapse collapse" aria-labelledby="headingQ2" data-bs-parent="#accordion">
+      <div class="accordion-body">
+       <P style="text-align:left">  
+		   The website will be of importance to the following group
+		   <ul style="text-align:left">
+			   <li>Students who need data on air quality</li>
+			   <li>Scientist who needs data on air quality</li>
+			   <li>Asthmatic patients</li>
+		   </ul>
+		</P>
+      </div>
+    </div>
+  </div>
+  <!-- accordion-itemQ3 -->
+  <div class="accordion-item">
+    <h6 class="accordion-header" id="headingQ3">
+      <button class="accordion-button collapsed text-dark text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#collapseQ3" aria-expanded="false" aria-controls="collapseQ3">
+        <span class="span">Q. </span>Does the website require user sign up or provision of user details?  
+      </button>
+    </h2>
+    <div id="collapseQ3" class="accordion-collapse collapse" aria-labelledby="headingQ3" data-bs-parent="#accordion">
+      <div class="accordion-body">
+		  <P style="text-align:left">  
+			No <br>
+            The website does not require users to sign up or provide any user details
+
+			</P>
+      </div>
+    </div>
+  </div>
+  <!-- accordion-itemQ4 -->
+  <div class="accordion-item">
+    <h6 class="accordion-header" id="headingQ4">
+      <button class="accordion-button collapsed text-dark text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#collapseQ4" aria-expanded="false" aria-controls="collapseQ4">
+        <span class="span">Q. </span>What can I do on the website?  
+      </button>
+    </h6>
+  <div id="collapseQ4" class="accordion-collapse collapse" aria-labelledby="headingQ4" data-bs-parent="#accordion">
+      <div class="accordion-body">
+		    <P class="accordianbodyP">  The following are the main functionalities of the website
+	       <ul class="ul"> 
+			    <li> Access to various sensors location on a map.</li>
+			    <li> Access to individual sensor details.</li>
+	        <li> Access to live data, Past data and Data charts.</li>
+	        <li> The ability to compare different air monitoring sensors. </li>
+	       </ul> 
+        </p>
+      </div>
+  </div>
+  </div>
+  <!-- accordion-itemQ5 -->
+  <div class="accordion-item">
+    <h6 class="accordion-header" id="headingQ5">
+      <button class="accordion-button collapsed text-dark text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#collapseQ5" aria-expanded="false" aria-controls="collapseQ5">
+        <span class="span">Q. </span>What are the types of air monitoring Sensors?   
+      </button>
+    </h6>
+  <div id="collapseQ5" class="accordion-collapse collapse" aria-labelledby="headingQ5" data-bs-parent="#accordion">
+      <div class="accordion-body">
+        <Strong> Types of sensors </Strong> 
+        <p class="accordianbodyP">There are three types of sensors, and they include: 
+         <ol class="ul">
+         <li><strong>BME80 temperature and humidity sensor </strong></li> 
+          <p>The BME80 collects the following data on air quality :<br>
+           Pressure <br>Humidity <br>Temperature <br></p>
+         <li><strong> SDS011 laser based particulate sensor </strong></li>
+            <p>The SDS011 collects the following data on air quality :<br>
+              P1 <br>
+              p2 <br></p> 
+          <li><strong> DHT22 temperature and humidity sensor </strong></li>
+
+            <p>The DHT collects the following data on air quality <br>
+            Humidity <br> Temperature </p>
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- accordion-itemQ6 -->
+  <div class="accordion-item">
+    <h6 class="accordion-header" id="headingQ6">
+      <button class="accordion-button collapsed text-dark text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#collapseQ6" aria-expanded="false" aria-controls="collapseQ6">
+        <span class="span">Q. </span>How do I compare different Sensor details?    
+      </button>
+    </h6>
+  <div id="collapseQ6" class="accordion-collapse collapse" aria-labelledby="headingQ6" data-bs-parent="#accordion">
+      <div class="accordion-body">
+      </div>
+    </div>
+  </div>
+
+  <!-- accordion-itemQ8 -->
+  <div class="accordion-item">
+    <h6 class="accordion-header" id="headingQ8">
+      <button class="accordion-button collapsed text-dark text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#collapseQ8" aria-expanded="false" aria-controls="collapseQ8">
+        <span class="span">Q. </span>Can I compare details of more the two Sensors at the same time?   
+      </button>
+    </h6>
+  <div id="collapseQ8" class="accordion-collapse collapse" aria-labelledby="headingQ8" data-bs-parent="#accordion">
+      <div class="accordion-body">
+      </div>
+    </div>
+  </div>
+<!-- accordion-itemQ9 -->
+  <div class="accordion-item">
+    <h6 class="accordion-header" id="headingQ9">
+      <button class="accordion-button collapsed text-dark text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#collapseQ9" aria-expanded="false" aria-controls="collapseQ9">
+        <span class="span">Q. </span>Are the sensors displayed in only Aberdeen City?     
+      </button>
+    </h6>
+  <div id="collapseQ9" class="accordion-collapse collapse" aria-labelledby="headingQ9" data-bs-parent="#accordion">
+      <div class="accordion-body">
+      </div>
+    </div>
+  </div>
+  
+  <!-- accordion-itemQ10 -->
+  <div class="accordion-item">
+    <h6 class="accordion-header" id="headingQ10">
+      <button class="accordion-button collapsed text-dark text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#collapseQ10" aria-expanded="false" aria-controls="collapseQ10">
+        <span class="span">Q. </span>Can have access to the historical data? 
+      </button>
+    </h6>
+  <div id="collapseQ10" class="accordion-collapse collapse" aria-labelledby="headingQ10" data-bs-parent="#accordion">
+      <div class="accordion-body">
+      </div>
+    </div>
+  </div>
+
+
+</div>
+</div>
+</div>
+
+
+
+</div>
+<br>
+<br>
+{% endblock %} 
