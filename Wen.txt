@@ -58,3 +58,4 @@ Week 11
 33) 04/08/2022, Thu., working together on "Results" of the final report 
 34) 05/08/2022, Fri., working together on "Evaluation" and "Future Developments" of the final report 
 35) 06/08/2022, Sat., commenting the code in .html and .css files, and making a few changes on Comparisons page 
+
