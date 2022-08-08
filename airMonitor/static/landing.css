@@ -1,5 +1,4 @@
-/* CSS code for dynamic background image from and based on https://codepen.io/vavik96/pen/vEdMXM */
-/* @import url(https://fonts.googleapis.com/css?family=Oswald); */
+/* CSS code for dynamic background image is from and based on https://codepen.io/vavik96/pen/vEdMXM */
 
 /* Cloud 1 */
 @keyframes clouds-loop-1 {
@@ -8,22 +7,10 @@
     }
 }
 .clouds-1 {
-    background-image: url("https://s.cdpn.io/15514/clouds_2.png");
-    /* background-color: rgb(85, 162, 251); */
+    background-image: url("/static/clouds_2.webp");
+    /* background image from https://s.cdpn.io/15514/clouds_2.png */
     animation: clouds-loop-1 20s infinite linear;
 }
-
-/* Cloud 2 
-@keyframes clouds-loop-2 {
-    to {
-        background-position: -1000px 0;
-    }
-}
-.clouds-2 {
-    background-image: url("https://s.cdpn.io/15514/clouds_1.png");
-    animation: clouds-loop-2 15s infinite linear;
-
-}*/
 
 /* Cloud 3 */
 @keyframes clouds-loop-3 {
@@ -32,19 +19,14 @@
     }
 }
 .clouds-3 {
-    background-image: url("https://s.cdpn.io/15514/clouds_3.png");
+    background-image: url("/static/clouds_3.webp");
+    /* background image from https://s.cdpn.io/15514/clouds_3.png */
     animation: clouds-loop-3 17s infinite linear;
 }
 
 body {
-    /* background: url('https://c1.wallpaperflare.com/preview/725/423/706/sky-blue-blue-sky-background.jpg'); */
-    /* background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgb(85, 162, 251)), color-stop(100%, rgb(52, 144, 249))); 
-    background: -moz-linear-gradient(lightblue, rgb(85, 162, 251));
-    background: -webkit-linear-gradient(lightblue, rgb(85, 162, 251));*/
     background: linear-gradient( rgb(59, 150, 253), lightblue); 
-    /* background-color: rgb(64, 178, 249); */
     vertical-align: middle;
-    /* background-size: 100% 100%; */
     background-attachment: fixed;  /* filling the whole page with colour */
     word-wrap: break-word;
     word-break: normal;
@@ -62,7 +44,7 @@ body {
     height: 100%;
 }
 
-.clouds-1, .clouds-2, .clouds-3 {
+.clouds-1, .clouds-3 {
     background-repeat: repeat-x;
     position: absolute;
     top: 0;
@@ -80,56 +62,49 @@ body {
     color: blue;
 }
 
-/* For setting div */
+/* div: introduction */
 #div_row_intro{
     position: relative;
     margin-top: 120px; 
-    /* height: 250px;  */
     border-radius: 20px;
-    /* text-align: center; */
-    background-color: rgba(87, 6, 248, 0.1);
-    /* overflow: hidden; */
-    
+    background-color: rgba(87, 6, 248, 0.1);  
 }
 
+/* divs: map, sensor list, comparisons */
 .div_row_links{
     position: relative;
-    /* height: 550px; */
     border-radius: 20px;
-    /* text-align: center; */
-    /* margin: auto;  */
     background-color: rgba(87, 6, 248, 0.1);
-    /* overflow: hidden; */
 }
 
 /* hover: grow, color */
 .grow { 
     transition: transform .2s;
-    /* margin: 0 auto;  */
 }
 
 .grow:hover { 
     transform: scale(1.1); 
 }
 
-.color:hover, .color:active {
+.color:hover{
     background: rgba(6, 67, 252, 0.3);
     color: lightblue;
 }
 
+/* description for introduction, map, sensor list, comparisons */
 .p_font{
     font-size: 20px;
-    /* text-align: center; */
 } 
 
+/* for creating columns with equal height  */
 /* code from https://www.w3schools.com/howto/howto_css_equal_height.asp */
 .col-container {
-  display: flex;
-  width: 100%;
+    display: flex;
+    width: 100%;
 }
 
 .cols {
-  flex: 1;
-  padding: 16px;
+    flex: 1;
+    padding: 16px;
 }
 

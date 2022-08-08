@@ -32,7 +32,7 @@ Week 06
 18) 29/06/2022, Wed., mob programming, inserting small maps in Sensor page and Comparisons page
 19) 30/06/2022, Thu., mob programming, pulling live data to the Sensor page
 20) 01/07/2022, Fri., updating all pages with Shi and Yang
-                      mob programming, getting historical data from Bruce's file 
+                      mob programming, getting historic data from Bruce's file 
 
 Week 07 
 21) 06/07/2022, Wed., mob programming, automation setting
@@ -46,7 +46,7 @@ Week 08
 27) 15/07/2022, Fri., in-person meeting for final report (planning)
 
 Week 09 
-28) 19-22/07/2022, Tue.-Fri., working on final report
+28) 19-22/07/2022, Tue.-Fri., working on reports 
 
 Week 10 
 29) 27/07/2022, Wed., text on the landing page (landing.html), working with Serwa and Tongwei
@@ -58,3 +58,4 @@ Week 11
 33) 04/08/2022, Thu., working together on "Results" of the final report 
 34) 05/08/2022, Fri., working together on "Evaluation" and "Future Developments" of the final report 
 35) 06/08/2022, Sat., commenting the code in .html and .css files, and making a few changes on Comparisons page 
+

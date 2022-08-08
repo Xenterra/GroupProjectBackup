@@ -4,28 +4,36 @@ from datetime import datetime, timedelta
 import pytz
 from django.shortcuts import  render, redirect
 from airMonitor.models import sensorList, BME280Reading, SDS011Reading, DHT22Reading, PastBME280Readings, PastDHT22Readings, PastSDS011Readings
+
 # Create your views here.
 
+
+# landing page 
+def landing(request):
+	return render(request, 'airMonitor/landing.html')
+
+
+# map page 
 def index(request):
 	longList = []
 	latList  = []
 	idList = []
-	if request.method == "POST" and 'sensorID' in request.POST:
-		sID = request.POST.get('sensorID', '')
-		sensors = sensorList.objects.filter(sensorID = sID) 
-		for x in sensors:
-			idList.append(x.sensorID)
-			longList.append(x.longitude)
-			latList.append(x.latitude)
-		lLength = len(idList)
-		context = 	{	'sensors'	: sensors,
-						'idList' 	: idList,
-						'longList'	: longList,
-						'latList'	: latList,
-						'lLength'	: lLength,
-				  	}
-		return render(request, 'airMonitor/index.html', context)
-
+	# Search bar 
+	# if request.method == "POST" and 'sensorID' in request.POST:
+	# 	sID = request.POST.get('sensorID', '')
+	# 	sensors = sensorList.objects.filter(sensorID = sID) 
+	# 	for x in sensors:
+	# 		idList.append(x.sensorID)
+	# 		longList.append(x.longitude)
+	# 		latList.append(x.latitude)
+	# 	lLength = len(idList)
+	# 	context = 	{	'sensors'	: sensors,
+	# 					'idList' 	: idList,
+	# 					'longList'	: longList,
+	# 					'latList'	: latList,
+	# 					'lLength'	: lLength,
+	# 			  	}
+	# 	return render(request, 'airMonitor/index.html', context)
 	results = sensorList.objects.all()
 	for x in results:
 		idList.append(x.sensorID)
@@ -40,6 +48,8 @@ def index(request):
 			  	}
 	return render(request, 'airMonitor/index.html', context)
 
+
+# sensor page: sensor_BME, sensor_DHT, sensor_SDS 
 def sensor(request):
 	longList = []
 	latList  = []
@@ -99,6 +109,7 @@ def sensor(request):
 		#	liveList += x
 		#print(liveList)
 
+		# sensor type: SDS011
 		if sType[0].sensorType == "SDS011":
 			p1List = []
 			p2List = []
@@ -132,6 +143,8 @@ def sensor(request):
 							'windAngle':windAngle,
 						}
 			return render(request, 'airMonitor/sensor_SDS.html', context)
+
+		# sensor type: BME280
 		elif sType[0].sensorType == "BME280":
 			tempList = []
 			humList = []
@@ -171,6 +184,8 @@ def sensor(request):
 							'windAngle':windAngle,
 						}
 			return render(request, 'airMonitor/sensor_BME.html', context)
+
+		# sensor type: DHT22
 		elif sType[0].sensorType == "DHT22":
 			tempList = []
 			humList = []
@@ -212,6 +227,8 @@ def sensor(request):
 	sensors = BME280Reading.objects.filter(humidity=90)
 	return render(request, 'airMonitor/sensor.html', {'results' : sensors})
 
+
+# sensor list page 
 def listPage(request):
 	if request.method == "POST" and 'criteria' in request.POST:
 		criteria = request.POST.get('criteria', '')
@@ -219,13 +236,13 @@ def listPage(request):
 		if criteria == '':
 			sensors = sensorList.objects.all()
 		elif searchType == "sensorID":
-			sensors = sensorList.objects.filter(sensorID = criteria) 
+			sensors = sensorList.objects.filter(sensorID__icontains = criteria) 
 		elif searchType == "longitude":
-			sensors = sensorList.objects.filter(longitude = criteria) 
+			sensors = sensorList.objects.filter(longitude__icontains = criteria) 
 		elif searchType == "latitude":
-			sensors = sensorList.objects.filter(latitude = criteria) 
-		elif searchType == "installDate":
-			sensors = sensorList.objects.filter(installDate = criteria) 
+			sensors = sensorList.objects.filter(latitude__icontains = criteria) 
+		# elif searchType == "installDate":
+		# 	sensors = sensorList.objects.filter(installDate = criteria) 
 		else:
 			sensors = sensorList.objects.all()
 
@@ -233,6 +250,8 @@ def listPage(request):
 	sensors = sensorList.objects.all()
 	return render(request, 'airMonitor/sensorListPage.html', {'sensors' : sensors})
 
+
+# comparisons page 
 def comparisons(request):
 	longList = []
 	latList  = []
