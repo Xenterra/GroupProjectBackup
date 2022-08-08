@@ -395,3 +395,9 @@ def comparisons(request):
 
 def landing(request):
 	return render(request, 'airMonitor/landing.html')
+
+def User_guide(request):
+	return render(request, 'airMonitor/User_guide.html')
+
+def FAQs(request):
+	return render(request, 'airMonitor/FAQs.html')
