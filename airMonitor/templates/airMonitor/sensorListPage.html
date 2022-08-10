@@ -10,32 +10,46 @@
 <div class="container my-3">
 	<div class="row">
 		<!-- search bar -->
-		<form action="/sensorListPage/" method="POST" class="form-inline align-middle mx-auto w-auto"> 
+		<form action="/sensorListPage/" method="POST" class="form-inline mx-auto"> 
 			{% csrf_token %}
 			<div class="row"> 
 
 				<!-- text -->
-				<div class="col-md-4 col-sm-4 col-xs-4 col-form-label">
+				<div class="col-md-3 col-sm-3 col-xs-3 col-form-label">
 					<label> Search for a sensor by its: </label>
 				</div>
 
 				<!-- search selection: radios -->
-				<div class="col-md-5 col-sm-5 col-xs-5 col-form-label text-center"> 
-					<input type="radio" id="sensorID" name="searchType" value="sensorID" checked>
-					<label for="sensorID" class="form-check-label"> SensorID </label>
+				<div class="col-md-4 col-sm-4 col-xs-4 col-form-label"> 
+					
+					<!-- putting radio button inside the "label" is for both of them always being together (in the samw line) -->
+					<label for="sensorID" class="form-check-label" style="margin-right: 30px;"> 
+						<input type="radio" id="sensorID" name="searchType" value="sensorID" checked> 
+						SensorID 
+					</label>
 
-					<input type="radio" id="longitude" name="searchType" value="longitude">
-					<label for="longitude"> Longitude </label>
+					<label for="longitude" style="margin-right: 30px;"> 
+						<input type="radio" id="longitude" name="searchType" value="longitude">
+						Longitude 
+					</label>
 
-					<input type="radio" id="latitude" name="searchType" value="latitude">
-					<label for="latitude"> Latitude </label>
+					<label for="latitude" style="margin-right: 30px;"> 
+						<input type="radio" id="latitude" name="searchType" value="latitude"> 
+						Latitude 
+					</label>
+
 				</div>
 
 				<!-- input -->
 				<div class="col-md-3 col-sm-3 col-xs-3 align-self-center">
 					<!-- if enter character, error occurs -->
-					<input type="text" name="criteria" placeholder="Enter search..." style="width: 90%;">
-				</div>
+					<input type="text" name="criteria" placeholder="Enter search..." style="width: 100%;">
+				</div> 
+
+				<!-- button -->
+				<div class="col-md-2 col-sm-2 col-xs-2 align-self-center">
+                    <button type="submit" class="btn btn-success"> Search </button>
+				</div> 
 
 			</div>
 		</form>
