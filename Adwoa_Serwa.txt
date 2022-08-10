@@ -1,0 +1,62 @@
+Week 01 
+( planning) 
+ 23-24/05/2022, Mon.~Tue., planning (miro) 
+ 25/05/2022, Wed., planning (miro), mob programming  
+ 26-27/05/2022, Thu.~Fri., planning (miro), mob programming 
+
+Week 02
+ 31/05/2022, Tue., mob programming  
+ 01/06/2022, Wed., pair programming with Wen, map page design (index.html)
+ 02/06/2022, Thu., pair programming with Wen, map page design (index.html)
+ 03/06/2022, Fri., pair programming with Wen, map page design (index.html) 
+
+Week 03 
+(mainly waiting for data + writing individual report) 
+ 08/06/2022, Wed., mob programming, insert a map on index.html
+10/06/2022, Fri., programming, map page and sensor_list page design (index.html, sensorListPage.html)
+
+Week 04
+ 14/06/2022, Tue., mob programming, get data from .json provided by Bruce (project tutor)
+ 15/06/2022, Wed., pair programming with Wen, comparisons page design (comparisons.html),
+                updating map page and sensor_list page (index.html, sensorListPage.html)
+16/06/2022, Thu., discussion with Wen, map page and comparisons page (index.html, comparisons.html) 
+ 17/06/2022, Fri., mob programming, inserting charts to sensor_detail page and comparisons page (sensor.html x 3 types of sensors, comparisons.html) 
+
+Week 05
+ 22/06/2022, Wed., mob programming, BDD testing setup 
+ 23/06/2022, Thu., BDD scenarios (miro), BDD testing (Codio) 
+ 24/06/2022, Fri., mob programming, redesigning sensor_detail page (sensor.html x 3 types of sensors) 
+
+Week 06 
+ 29/06/2022, Wed., mob programming, inserting small maps in Sensor page and Comparisons page
+ 30/06/2022, Thu., mob programming, pulling live data to the Sensor page
+
+                      mob programming, getting historic data from Bruce's file 
+
+Week 07 
+ 06/07/2022, Wed., mob programming, automation setting
+ 07/07/2022, Thu., mob programming, automation fixed 
+ 08/07/2022, Fri., mob programming, landing page design 
+                   added favicon and logo
+                   added a backgroundhover on main menus
+
+
+Week 08 
+ 12/07/2022, Tue., mob programming, pagination (sensor.html) 
+ 13/07/2022, Wed., discussing the time to meet in person on Friday
+ 14/07/2022, Thu., mob programming, getting average past data (sensor.html) 
+15/07/2022, Fri., in-person meeting for final report (planning)
+
+Week 09 
+ 19-22/07/2022, Tue.-Fri., working on reports 
+
+Week 10 
+ 27/07/2022, Wed., adding text on the landing page (landing.html), worked with Wen and Tongwei
+ 28-29/07/2022, Thu.-Fri., working on final report
+
+Week 11 
+ 01/08/2022, Mon., worked together on final report 
+ 03/08/2022, Wed., worked together on "Literature Review" of final report 
+ 04/08/2022, Thu., worked together on "Results" of the final report 
+ 05/08/2022, Fri., worked together on "Evaluation" and "Future Developments" of the final report 
+ 06/08/2022, Sat., worked on the FAQS and userguide page.
