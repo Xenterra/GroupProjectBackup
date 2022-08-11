@@ -4,11 +4,44 @@
 
 {% block content %}
 <h1 name="User_guide"></h1>
+<!-- icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- button style -->
+<style>
+.btn {
+  background-color: green;
+  border: 2px;
+  color: white;
+  padding: 12px 30px;
+  cursor: pointer;
+  font-size: 30px;
+}
 
-<!-- Container 1: search bar -->
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: lightgreen;
+}
+</style>
+<!-- Container-->
 <div class="container">
 	<div class="row">
-		guide
+		<div>
+			
+             <a href = "/airMonitor/User_guide/User_manualPDF.pdf" download = "file">
+             <br>
+             download
+             <button class="btn" style="width:100%"><i class="fa fa-download"></i> Download</button>
+             
+             </a>
+             <a href = "/airMonitor/User_guide/User_manual.docx" >  
+             <b> download </b>  
+             </a> 
+
+             <Center>
+             <h1>Download File using Django</h1>
+              <a href="{% url 'User_guide' filename='User_manual.pdf' %}"><button class="btn" style="width:100%"><i class="fa fa-download"></i> Download PDF</button></a>
+            </center> 
+		</div>
 	</div>
 </div>
 

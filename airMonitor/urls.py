@@ -9,4 +9,9 @@ urlpatterns = [
 	path('comparisons/', views.comparisons, name='comparisons'),
 	path('User_guide/', views.User_guide, name='User_guide'),
 	path('FAQs/', views.FAQs, name='FAQs'),
+
+    #path('download/', views3.download_file),
+    #path('downloadpdf/', views2.download_pdf_file, name='download_pdf_file'),
+    #path('downloadpdf//', views2.download_pdf_file, name='download_pdf_file'),
+
 ]
