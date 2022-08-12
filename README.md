@@ -28,7 +28,7 @@ The most important of these libraries are the following and are all installed by
   - ***NOTE: there may be outdated libraries listed in this file, your compiler should inform you of these errors.*** 
 - **python3 manage.py runserver 0.0.0.0:2500**                 | *Use this when the virtual environment is active to run the server on your localhost* ***port 2500*** 
   - ***This program is designed to run in Chrome. Open a browser tab and enter '0.0.0.0:2500' in the top bar to see the web app***
-  - ***You can change the port to whatever number you need***
+  - *You can change the port to whatever number you need*
 
 ## Deploying the application
 Below are the steps to deploy the web app to Heroku. 
@@ -38,7 +38,7 @@ Below are the steps to deploy the web app to Heroku.
 - **heroku login -i**                                    | *Here you will be able to login to Heroku and access apps with your account* 
   - ***HOWEVER, this may act differently on some compilers***
 - **heroku create -a <app name on Heroku>**              | *If this is a new app on Heroku, you will need to create one*
-- **heroku git:remote -a <app name on Heroku>**	         | *Used to set up a connection between git and an existing Heroku app*
+- **heroku git:remote -a <app name on Heroku>**	         | *Used to set up a connection between Git and an existing Heroku app*
 - **heroku config:set DISABLE_COLLECTSTATIC=0**          | *Using either 0 or 1 to turn the function on or off for static integration, e.g. for image upload*
 - **git push heroku master**                             | *This is the command used to push changes through Git and into Heroku.* 
   - ***Only use after the push git command***
@@ -58,7 +58,9 @@ In you compiler's Terminal type the command '**behave**' and the system should a
   - ***WARNING: At the time of writing this manual this test is broken and cannot succeed***
 
 ## Running the application
-- **python3 manage.py DataPull**
+For the management of this system, there are 4 commands that all do the same thing. 
+Most of them are old iterations that are kept in for troubleshooting issues. 'DataPull.py' is the most up-to-date one.
+- **python3 manage.py DataPull** | *This is the only command of note, it is used to pull the data from the target source.*
 
 ### Important Commands
 - **pip freeze > requirements.text**   | *This command will create the txt file that records pip module versions, mainly for Heroku.*
@@ -72,6 +74,14 @@ In you compiler's Terminal type the command '**behave**' and the system should a
 - **git push origin master**  | *push your changes to the master branch of the repository*
 - **git pull origin master**  | *pulls any changes from the repository from GitHub ! DO THIS BEFORE EDITING ON YOUR DEVICE*
 
+## Additional Requirements
+In the file: **/airMonitor/views.py**; there are some lines that will need to adjusted to change the current API connections:
+ - 81 - This line handles the URL of the target API and may need to change if the API ceases function, or needs updated.
+ - 86 & 87 - Likewise, these are the 'Key' and 'Host Address' of the API and will need to change to match the above URL.
+
+Similarly, in the file: /airMonitor/management/commands/DataPull.py;
+- 23 - This line contains the URL of the 'Data Source JSON' file and will need to be adjusted to match your personal requirements.
+ 
 ## Team Members
   - Joshua Drage - 52102761
   - Adwoa Serwa Addai - 52105349
@@ -79,6 +89,14 @@ In you compiler's Terminal type the command '**behave**' and the system should a
   - Wen FANG - 50078152
   - Yunhao Yang - 52104330
 
-
 ## Future Goals
- Add something about what the application will do when more complete
+ ### Bug Fixes
+ - Repair Test 4 functionality
+ - Update Reuirements file automatically over time
+ 
+ ### Improvements
+ - Additional options for the Search Bar
+ - 3D Map to improve visualisation
+ - Live Weather Displayed directly on the map
+ - Worldwide Sensor Array
+ - Additional Charts on the Details Pages
