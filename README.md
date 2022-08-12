@@ -86,7 +86,7 @@ Similarly, in the file: /airMonitor/management/commands/DataPull.py;
   - Joshua Drage - 52102761
   - Adwoa Serwa Addai - 52105349
   - Tongwei Shi - 54104510
-  - Wen FANG - 50078152
+  - Wen Fang - 50078152
   - Yunhao Yang - 52104330
 
 ## Future Goals
