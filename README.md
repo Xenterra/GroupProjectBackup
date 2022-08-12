@@ -85,7 +85,7 @@ Similarly, in the file: /airMonitor/management/commands/DataPull.py;
 ## Team Members
   - Joshua Drage - 52102761
   - Adwoa Serwa Addai - 52105349
-  - Tongwei Shi - 54104510
+  - Tongwei Shi - 52104510
   - Wen Fang - 50078152
   - Yunhao Yang - 52104330
 
