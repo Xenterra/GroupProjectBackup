@@ -1,8 +1,0 @@
-Project setup
-GitHub backup Created
-Miro setup
-Project Planning
-Comparisons Page Created.
-Scripts for the Map Created
-Chart.js Implemented
-Charts on both Sensor Details page and the Comparisons page
